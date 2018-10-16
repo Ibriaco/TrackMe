@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Luca Conterio - 920261\\  
+		  Ibrahim El Shemy - 920174}
+\date{A.Y. 2018/2019 - Prof. Di Nitto Elisabetta}
+
+
+\title{TrackMe - RASD}
+\begin{document}
+	\maketitle
+	\newpage
+	\tableofcontents
+	\newpage
+	\chapter{Introduction}
+	
+	\section{Purpose}
+	 This document represents the \texttt{Requirement Analysis and Specification Document} (RASD). Goals of this document are to completely describe the system in terms of functional and nonfunctional requirements, analyze the real needs of the customer in order to model the system, show the constraints and the limit of the software and indicate the typical use cases that will occur after the release. This document is addressed to the developers who have to implement
+the requirements and could be used as a contractual basis.
+	\section{Scope}
+	\texttt{TrackMe} is a company that wants to develop a software-base service allowing third parties to monitor the location and health status of individuals.
+Hence, they want to empower their current system by adding two specific services:
+\begin{itemize}
+	\item \textbf{Data4Help}\\\\This service supports the registration of individuals who, by registering, agree that TrackMe acquires their data (through electronic devices such as smartwatches). In addition, it supports the registration of third parties that can request:
+\begin{itemize}
+	\item Access to the data of some specific individuals (for instance, using the fiscal code, which is person Identifier in Italy). In this case, TrackMe passes the request to the speicific individuals who can accept/refuse it.
+	\item Access to anonymized data of groups of individuals. These requests are handled directly by TrackMe that approves them if it is able to properly anonymize the requested data. The request is rejected if it way too specific (for instance, a request from which we can extract other information the system is not allowed to).
+\end{itemize}
+As soon as a request for some certain data is approved, TrackMe makes the previously saved data available to the third party. Also, it allows the third party to subscribe to new data and to receive them as soon as they are produced.
+	\item \textbf{AutomatedSOS}\\\\This service is more oriented to elderly people, monitoring their health status parameters, and when such parameters are below certain thresholds, sends to the location of the customer an ambulance, guaranteeing a reaction time of less than 5 seconds from the time the parameters are below the threshold.
+
+\end{itemize} 
+\subsection{Goals}
+\begin{itemize}
+\item {\textbf[}\textbf{G1}{\textbf]}: Allow the user to register his personal data.
+\item {\textbf[}\textbf{G2}{\textbf]}: Allow the user to simply share personal information/physical parameters.
+\item {\textbf[}\textbf{G3}{\textbf]}: Guarantee the users to receive a immediate assistance by an ambulance in case of high risk disease.
+\item {\textbf[}\textbf{G4}{\textbf]}: Allow third parties to access data of specific individuals (through an identifier).
+\item {\textbf[}\textbf{G5}{\textbf]}: Allow third parties to access anonymized data of groups of individuals.
+\item {\textbf[}\textbf{G6}{\textbf]}: Allow third parties to monitor specific parameters.
+\end{itemize}
+
+
+\section{Definitions, Acronyms and Abbreviations}
+\subsection{Definitions}
+\subsection{Acronyms}
+\begin{itemize}
+\item RASD: Requirements Analysis and Specification Document
+\end{itemize}
+\subsection{Abbreviations}
+\begin{itemize}
+\item {[}Gn{]}: n-goal
+\end{itemize}
+
+
+
+
+
+
+
+\chapter{Appendix}
+\section{Tools used}
+
+\section{Effort Spent}
+	\begin{itemize}
+		\item Luca Conterio
+		\begin{center}
+			\begin{tabular}{| c | c | c |}
+				\hline
+				Day & Subject & Hours \\ \hline
+				15/10/2018 & Scope and goals & 1 \\
+				\hline
+			\end{tabular}
+		\end{center}
+	
+		\item Ibrahim El Shemy
+		\begin{center}
+			\begin{tabular}{| c | c | c |}
+				\hline
+				Day & Subject & Hours \\ \hline
+				15/10/2018 & Scope and goals & 1 \\
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{document}
