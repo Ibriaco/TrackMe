@@ -1,0 +1,165 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Luca Conterio - 920261\\  
+		  Ibrahim El Shemy - 920174}
+\date{A.Y. 2018/2019 - Prof. Di Nitto Elisabetta}
+
+
+\title{%
+	\textbf{TrackMe} \\
+	\large Requirements Analysis and Specification Document
+}
+
+\begin{document}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=1.0\linewidth]{../../../../Downloads/CE87VJgWAAALtdn.jpg}
+	\end{figure}
+	
+	\maketitle
+
+	\newpage
+	\tableofcontents
+	\newpage
+	
+	\section{Introduction}
+		\subsection{Purpose}
+		 This document represents the \texttt{Requirement Analysis and Specification Document} (RASD) for TrackMe software. Main goals of this project are to specify a system that will be able to store and analyze users' health data, to grant third parties to access these data and to offer elderly people a rapid assistance based on their health parameters, if needed.
+		 At the same time, goals of this document are to describe the system through functional and nonfunctional requirements, to analyze customers' needs, to show the limits of the software, indicating the typical use cases that can occur.
+		\subsubsection{Goals}
+		\begin{itemize}
+			\item {\textbf[}\textbf{G1}{\textbf]}: Allow visitors to easily register in the system.
+				\begin{itemize}
+					\item {[G1.1]}: Allow individuals to register providing credentials and personal informations.
+					\item {[G1.2]}: Allow third parties to register providing credentials and legal informations.
+				\end{itemize}
+			\item {\textbf[}\textbf{G2}{\textbf]}: Allow users to simply share personal information/health parameters.
+			\item {\textbf[}\textbf{G3}{\textbf]}: Allow third parties to access data shared by users.
+				\begin{itemize}
+					\item {[G3.1]}: Allow third parties to access data of specific individuals (through an identifier).
+					\item {[G3.2]}: Allow third parties to access anonymized data of groups of individuals.
+				\end{itemize}
+			\item {\textbf[}\textbf{G4}{\textbf]}: Allow third parties to monitor specific people parameters.
+				\begin{itemize}
+					\item {[G4.1]}: Allow third parties to retrieve personal users information.
+					\item {[G4.2]}: Allow third parties to monitor health status parameters.
+					\item {[G4.3]}: Allow third parties to monitor activity parameters.
+				\end{itemize}
+			\item {\textbf[}\textbf{G5}{\textbf]}: Guarantee the elderly users to receive an immediate assistance by an ambulance in case of high risk disease.
+		\end{itemize}
+	
+		\subsection{Scope}
+		\texttt{TrackMe} is a company that wants to develop a software-based service allowing third parties to monitor the location and health status of individuals.
+		Hence, the system has to be composed by two specific services:
+		\begin{itemize}
+			\item \textbf{Data4Help}\\\\This service supports the registration of individuals who agree that TrackMe acquires their data (through electronic devices such as smartwatches). \\In addition, it supports the registration of third parties that can request:
+				\begin{itemize}
+					\item Access to the data of some specific individuals, who can accept/refuse it.
+					\item Access to anonymized data of groups of individuals. These requests are approved by TrackMe if it is able to properly anonymize the requested data. The request is rejected if it is way too specific.
+				\end{itemize}
+		As soon as a request for some certain data is approved, TrackMe makes the previously saved data available to the third party. Also, it allows the third party to subscribe to new data and to receive them as soon as they are produced.
+			\item \textbf{AutomatedSOS}\\\\This service is oriented to elderly people: monitoring their health status parameters, the system can send to the location of the customer an ambulance when some parameters are below certain thresholds, guaranteeing a reaction time of less than 5 seconds from the time the parameters get lower than the threshold.
+		\end{itemize} 
+	
+	
+		\subsection{Definitions, Acronyms and Abbreviations}
+			\subsubsection{Definitions}
+			\subsubsection{Acronyms}
+				\begin{itemize}
+				\item RASD: Requirements Analysis and Specification Document
+				\item API: Application Programming Interface
+				\item GPS: Global Positioning System
+				\end{itemize}
+			\subsubsection{Abbreviations}
+				\begin{itemize}
+				\item {[}Gn{]}: n-goal
+				\end{itemize}
+		
+		\subsection{Reference Documents}
+		To be completed.
+		
+		\subsection{Document Structure}
+			This paper refers to the structure suggested by IEEE for RASD documents, with very slight modifications:
+			\begin{enumerate}
+				\item \texttt{Introduction}: the first section is a general description of the system's scope and its goals. It also includes the revision history of the document and its references. Definitions and abbreviations used along the paper are provided too.
+				\item \texttt{Overall Description}: this section includes shared phenomena, requirements and domain assumptions. It also clarifies users' needs.
+				\item \texttt{Specific Requirements}: 
+				\item \texttt{Formal Analysis Using Alloy}: it includes the Alloy model of the described system.
+				\item \texttt{Effort Spent}: this section includes information about the hours spent to draft this document. 
+				\item \texttt{References}: 
+			\end{enumerate}
+		
+
+	\newpage
+	\section{Overall Description}
+	
+		\subsection{Product Perspective}
+		
+		\subsection{Product Functions}
+		
+		\subsection{User Characteristics}
+			\begin{itemize}
+				\item \texttt{Visitor}: a person visiting TrackMe without being registered. He can only proceed to registration in oder to actually use system services, otherwise he can't have access to any service or data.
+				\item \texttt{Registered user}: called simply \texttt{user} in this document. A person who registered himself to TrackMe, sharing his personal data. He can login to the system through provided credentials to exploit full services.
+				\item \texttt{Third party user}: called simply \texttt{third party} in this document. A company or invidual using the platform for some statistical goal or to offer assistance to registered users.
+				\item \texttt{Ambulance Dispatcher (?)}:
+			\end{itemize}
+		
+		\subsection{Assumptions, Dependencies and Constraints}
+			\subsubsection{Domain Assumptions}
+			\subsubsection{Dependencies}
+			\subsubsection{Constraints}
+				\begin{enumerate}
+					\item Regulatory Policies:
+							Guarantee confidentiality of information.
+					\item Hardware Limitations: 
+						\begin{itemize}
+							\item \texttt{Mobile App}: iOS/Android, internet connection, gps
+							\item \texttt{AppleWatch/WearOS}
+							\item \texttt{Web App}: 
+						\end{itemize}
+					\item Interfaces to other Applications: 
+						\begin{itemize}
+							\item API to ambulance dispatching system.
+							\item API to external applications that monitor users health and activity parameters.
+						\end{itemize}
+				\end{enumerate}
+		
+	\newpage
+	\section{Specific Requirements}
+	
+	\newpage
+	\section{Formal Analysis Using Alloy}
+
+	\newpage
+	\section{Appendix}
+	\subsection{Tools used}
+	
+	\subsection{Effort Spent}
+		\begin{itemize}
+			\item Luca Conterio
+			\begin{center}
+				\begin{tabular}{| c | c | c |}
+					\hline
+					Day & Subject & Hours \\ \hline
+					15/10/2018 & Scope and goals & 1 \\
+					\hline
+				\end{tabular}
+			\end{center}
+		
+			\item Ibrahim El Shemy
+			\begin{center}
+				\begin{tabular}{| c | c | c |}
+					\hline
+					Day & Subject & Hours \\ \hline
+					15/10/2018 & Scope and goals & 1 \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{itemize}
+	\end{document}

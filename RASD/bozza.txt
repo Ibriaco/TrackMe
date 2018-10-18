@@ -1,0 +1,46 @@
+GOALS:
+1) Registration/Login
+	- for individuals
+	- for third parties
+2) Data sharing
+3) Access to data of specific individuals
+4) Access to anonymized data
+5) Monitor specific parameters of an individual (third party)- SI PUO' SUDDIVIDERE IN SOTTO CATEGORIE
+	- health
+	- activity
+	- personal 
+6) Get quick assistance (user)
+
+
+malfunzionamenti:
+	- bug software
+	- utente toglie l'orologio/dispositivo
+	- 
+
+
+ASSUMPTIONS
+Registration data are: name, surname, fiscal code...
+Identity correctness
+Third parties payment method correctness 
+Unicity of usernames
+User locations are retrieved by gps
+User devices support the system app (ex: android > 7.0) and gps
+User registration is confirmed by an email/sms
+Frequenza di monitoraggio
+Tasto per inviare immediatamente dati personali/vitali e richiedere ambulanza (ambulanza cosi sa tutto prima di arrivare)
+If a user eliminates his account: stop sharing activity/health infos, but personal data remain registered
+
+Should we distinguish between the 2 services? YES	.
+Make 2 sections, one for each service
+
+
+SERVIZI:
+- SERVIZIO 1(Data4Help)
+- SERVIZIO 2(AutomatedSOS)
+
+
+USE CASES:
+- look for a user through social security number (identifier) -> request passed to user -> user accepts
+											-> user rejects
+							      -> user doesn't exist
+- 
