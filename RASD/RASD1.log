@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.15)  18 OCT 2018 16:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.15)  19 OCT 2018 10:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -207,11 +207,10 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-<../../../../Downloads/CE87VJgWAAALtdn.jpg, id=1, 602.25pt x 479.7925pt>
-File: ../../../../Downloads/CE87VJgWAAALtdn.jpg Graphic file (type jpg)
-<use ../../../../Downloads/CE87VJgWAAALtdn.jpg>
-Package pdftex.def Info: ../../../../Downloads/CE87VJgWAAALtdn.jpg  used on inp
-ut line 21.
+<images/polimi.jpg, id=1, 602.25pt x 479.7925pt>
+File: images/polimi.jpg Graphic file (type jpg)
+<use images/polimi.jpg>
+Package pdftex.def Info: images/polimi.jpg  used on input line 21.
 (pdftex.def)             Requested size: 390.0pt x 310.712pt.
 LaTeX Font Info:    Try loading font information for U+msa on input line 24.
  (/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -223,8 +222,8 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <..
-/../../../Downloads/CE87VJgWAAALtdn.jpg>] (./RASD1.toc)
+{/usr/local/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./
+images/polimi.jpg>] (./RASD1.toc)
 \tf@toc=\write3
 \openout3 = `RASD1.toc'.
 
@@ -255,7 +254,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--67
 [4] [5] [6] [7] [8] [9] (./RASD1.aux) ) 
 Here is how much of TeX's memory you used:
  2409 strings out of 494091
- 32778 string characters out of 6163522
+ 32658 string characters out of 6163522
  92220 words of memory out of 5000000
  6044 multiletter control sequences out of 15000+600000
  12879 words of font info for 50 fonts, out of 8000000 for 9000
