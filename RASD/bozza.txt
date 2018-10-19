@@ -19,14 +19,18 @@ malfunzionamenti:
 
 
 ASSUMPTIONS
-Registration data are: name, surname, fiscal code...
-Identity correctness
-Third parties payment method correctness 
-Unicity of usernames
-User locations are retrieved by gps
-User devices support the system app (ex: android > 7.0) and gps
-User registration is confirmed by an email/sms
+-Registration data are: name, surname, fiscal code...
+-Identity correctness
+-Contact informations correctness
+-Users have to confirm registration through a code received by sms
+Third parties payment method correctness
+User devices support the mobile app (ex: android > 7.0)
+User devices support the gps technology
+-Users' locations are retrieved by gps
+-User registration is confirmed by an email/sms
 Frequenza di monitoraggio
+Users' devices are supposed to be running
+Data received from users' devices are supposed to be correct.
 Tasto per inviare immediatamente dati personali/vitali e richiedere ambulanza (ambulanza cosi sa tutto prima di arrivare)
 If a user eliminates his account: stop sharing activity/health infos, but personal data remain registered
 
