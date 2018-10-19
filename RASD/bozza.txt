@@ -24,13 +24,15 @@ ASSUMPTIONS
 -Contact informations correctness
 -Users have to confirm registration through a code received by sms
 Third parties payment method correctness
-User devices support the mobile app (ex: android > 7.0)
-User devices support the gps technology
+payment system always up and reliable
+ambulance system always up and reliable
+-User devices support the mobile app (ex: android > 7.0)
+-User devices support the gps technology
 -Users' locations are retrieved by gps
 -User registration is confirmed by an email/sms
 Frequenza di monitoraggio
-Users' devices are supposed to be running
-Data received from users' devices are supposed to be correct.
+-Users' devices are supposed to be running
+-Data received from users' devices are supposed to be correct.
 Tasto per inviare immediatamente dati personali/vitali e richiedere ambulanza (ambulanza cosi sa tutto prima di arrivare)
 If a user eliminates his account: stop sharing activity/health infos, but personal data remain registered
 
