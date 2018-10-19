@@ -74,6 +74,7 @@
 				\item RASD: Requirements Analysis and Specification Document
 				\item API: Application Programming Interface
 				\item GPS: Global Positioning System
+				\item SMS: Short Message Service 
 				\end{itemize}
 			\subsubsection{Abbreviations}
 				\begin{itemize}
@@ -91,7 +92,7 @@
 				\item \texttt{Specific Requirements}: 
 				\item \texttt{Formal Analysis Using Alloy}: it includes the Alloy model of the described system.
 				\item \texttt{Effort Spent}: this section includes information about the hours spent to draft this document. 
-				\item \texttt{References}: 
+				\item \texttt{References}: this section includes references about papers/documents used to support this document.
 			\end{enumerate}
 		
 
@@ -107,11 +108,22 @@
 				\item \texttt{Visitor}: a person visiting TrackMe without being registered. He can only proceed to registration in oder to actually use system services, otherwise he can't have access to any service or data.
 				\item \texttt{Registered user}: called simply \texttt{user} in this document. A person who registered himself to TrackMe, sharing his personal data. He can login to the system through provided credentials to exploit full services.
 				\item \texttt{Third party user}: called simply \texttt{third party} in this document. A company or invidual using the platform for some statistical goal or to offer assistance to registered users.
-				\item \texttt{Ambulance Dispatcher (?)}:
+				\item \texttt{Ambulance Dispatcher}: called simply \texttt{dispatcher} in this document. An external individual to the system, whose role is to dispatch an ambulance to assist specific users.
+				\item \texttt{Monitoring System}: monitors automatically users' health parameters.
+				\item \texttt{Payment Management System}: manages payment transactions, guaranteeing high level of security and reliability.
 			\end{itemize}
 		
 		\subsection{Assumptions, Dependencies and Constraints}
 			\subsubsection{Domain Assumptions}
+			\begin{itemize}
+				\item {\textbf[}\textbf{D1}{\textbf]}: In order to be registered, users must provide the following data: Name, Surname, Social Security Identifier, Date of Birth, Mobile Number, e-mail.
+				\item {\textbf[}\textbf{D2}{\textbf]}: Users are assumed to provide a correct Social Security Identifier.
+				\item {\textbf[}\textbf{D3}{\textbf]}: Users are assumed to provide a valid Mobile Number and e-mail.
+				\item {\textbf[}\textbf{D4}{\textbf]}: Registration must be confirmed through a security code sent by SMS.
+				\item {\textbf[}\textbf{D5}{\textbf]}: Users' locations are retrieved by GPS.
+				\item {\textbf[}\textbf{D6}{\textbf]}: Users' devices must support the Mobile Application.
+				\item {\textbf[}\textbf{D7}{\textbf]}
+			\end{itemize}
 			\subsubsection{Dependencies}
 			\subsubsection{Constraints}
 				\begin{enumerate}
@@ -119,9 +131,9 @@
 							Guarantee confidentiality of information.
 					\item Hardware Limitations: 
 						\begin{itemize}
-							\item \texttt{Mobile App}: iOS/Android, internet connection, gps
-							\item \texttt{AppleWatch/WearOS}
-							\item \texttt{Web App}: 
+							\item \texttt{Mobile App}: iOS/Android, Internet Connection, GPS.
+							\item \texttt{AppleWatch/WearOS}: smartwatches linked to mobile devices or equipped with GPS.
+							\item \texttt{Web App}: browser (e.g. Google Chrome / Safari) able to retrieve users' location.
 						\end{itemize}
 					\item Interfaces to other Applications: 
 						\begin{itemize}
@@ -148,6 +160,7 @@
 					\hline
 					Day & Subject & Hours \\ \hline
 					15/10/2018 & Scope and goals & 1 \\
+					18/10/2018 & Overall Description & 1.30 \\
 					\hline
 				\end{tabular}
 			\end{center}
@@ -158,6 +171,7 @@
 					\hline
 					Day & Subject & Hours \\ \hline
 					15/10/2018 & Scope and goals & 1 \\
+					18/10/2018 & Overall Description & 1 \\
 					\hline
 				\end{tabular}
 			\end{center}
