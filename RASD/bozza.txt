@@ -35,6 +35,7 @@ Frequenza di monitoraggio
 -Data received from users' devices are supposed to be correct.
 Tasto per inviare immediatamente dati personali/vitali e richiedere ambulanza (ambulanza cosi sa tutto prima di arrivare)
 If a user eliminates his account: stop sharing activity/health infos, but personal data remain registered
+ETA for ambulance arrival
 
 Should we distinguish between the 2 services? YES	.
 Make 2 sections, one for each service
