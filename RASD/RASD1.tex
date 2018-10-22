@@ -104,10 +104,10 @@
 		\subsection{Product Perspective}
 		
 		\begin{figure}[h]
-			\centering
-			\includegraphics[width=1.0\linewidth]{Images/first-UML}
-			\caption{}
-			\label{fig:first-uml}
+			%\centering
+			\includegraphics[width=1.25\linewidth]{Images/uml}
+			\caption{UML Class Diagram}
+			\label{fig:uml}
 		\end{figure}
 		
 		
@@ -169,16 +169,26 @@
 	\subsection{External Interface Requirments}
 	\subsubsection{User Interface}
 	The following mockups represt a basic idea of how the mobile application is supposed to look like.\\
-		\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.7\linewidth]{Images/registration}
-		%\caption[Registration Form]{}
-		\label{fig:registration}
+	\begin{figure}[h]
+	  \centering
+	  \includegraphics[width=1.0\linewidth]{Images/login-registration}
+	  \caption{Mobile App Registration form and login page}
+	  \label{fig:login-registration}
 	\end{figure}
+	\begin{figure}
+	   	\centering
+	   	\includegraphics[width=1.0\linewidth]{Images/pages}
+		\caption{Mobile app homepage, personal data activity and ambulance arrival page.}
+		\label{fig:pages}
+	 \end{figure}
+ 
+    \newpage
+   
 	\subsection{Functional Requirments}
 	\subsection{Non-functional Requirments}
 	\subsubsection{Perfomance}
-	The system must be able to handle a huge quantity of requests simultaneously throughout the day, responding to users' necessities in the shortest time possible. In order to improve the perfomance of the system, since data are received in a discrete way (e.g. monitored every 5 seconds), TrackMe relies on a UDP non-persistent connection.
+	The system must be able to handle a huge quantity of requests simultaneously throughout the day, responding to users' necessities in the shortest time possible. In order to improve the perfomance of the system, since data are received in a discrete way (e.g. monitored every 5 seconds), TrackMe relies on a UDP non-persistent connection.\\
+	For what concerns the AutomatedSOS service, it is required that the each ambulance request is generated and sent to the Ambulance Dispatching System within 5 seconds from the moment in which the vital parameters of an elder user get below the fixed threshold.
 	\subsubsection{Reliability}
 	The system must guarantee a 24/7 service. This requirment should not have any sort of deviation (especially concerning AutomatedSOS).
 	\subsubsection{Availability}
@@ -207,7 +217,10 @@
 					Day & Subject & Hours \\ \hline
 					15/10/2018 & Purpose, Scope and goals & 1 \\
 					18/10/2018 & Overall Description & 1.5 \\
-          19/10/2018  & User Interface sketch and Domain assumptioms & 2 \\
+                    19/10/2018  & User Interface sketch and Domain assumptioms & 2 \\
+                    22/10/2018  & UML and Non-Functional Requirements & 3.5 \\
+					\hline
+					Total & & 8\\
 					\hline
 				\end{tabular}
 			\end{center}
@@ -219,7 +232,10 @@
 					Day & Subject & Hours \\ \hline
 					15/10/2018 & Purpose, Scope and goals & 1 \\
 					18/10/2018 & Overall Description & 1 \\
-          19/10/2018  & Domain Assumptions & 2 \\
+         			19/10/2018  & Domain Assumptions & 2 \\
+                    22/10/2018  & Assumptions and Non-Functional Requirements & 3.5 \\
+					\hline
+					Total & & 7.5\\
 					\hline
 				\end{tabular}
 			\end{center}

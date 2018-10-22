@@ -25,7 +25,7 @@ ASSUMPTIONS
 -Users have to confirm registration through a code received by sms
 Third parties payment method correctness
 payment system always up and reliable
-ambulance system always up and reliable
+-ambulance system always up and reliable
 -User devices support the mobile app (ex: android > 7.0)
 -User devices support the gps technology
 -Users' locations are retrieved by gps
@@ -37,9 +37,13 @@ Tasto per inviare immediatamente dati personali/vitali e richiedere ambulanza (a
 If a user eliminates his account: stop sharing activity/health infos, but personal data remain registered
 ETA for ambulance arrival
 
-Should we distinguish between the 2 services? YES	.
+Should we distinguish between the 2 services? YES
 Make 2 sections, one for each service
 
+USER INTERFACE:
+- lato third party solo interfaccia web
+- pagina dopo chiamata ambulanza (con ETA, posizione, ecc)
+- pagina dati personali
 
 SERVIZI:
 - SERVIZIO 1(Data4Help)
