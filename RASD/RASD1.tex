@@ -43,14 +43,16 @@
 				\begin{itemize}
 					\item {[G3.1]}: Allow third parties to access data of specific individuals (through an identifier).
 					\item {[G3.2]}: Allow third parties to access anonymized data of groups of individuals.
+					\item {[G3.3]}: Allow third parties to subscribe to new data of a specific individual and to receive them.
 				\end{itemize}
-			\item {\textbf[}\textbf{G4}{\textbf]}: Allow third parties to monitor specific people parameters.
+			\item {\textbf[}\textbf{G4}{\textbf]}: Allow third parties to monitor specific users' parameters.
 				\begin{itemize}
 					\item {[G4.1]}: Allow third parties to retrieve personal users information.
 					\item {[G4.2]}: Allow third parties to monitor health status parameters.
 					\item {[G4.3]}: Allow third parties to monitor activity parameters.
 				\end{itemize}
 			\item {\textbf[}\textbf{G5}{\textbf]}: Guarantee the elderly users to receive an immediate assistance by an ambulance in case of high risk disease.
+			\item {\textbf[}\textbf{G6}{\textbf]}: Guarantee the preservation of the privacy of the users.
 		\end{itemize}
 	
 		\subsection{Scope}
@@ -71,21 +73,19 @@
 			\subsubsection{Definitions}
 			\subsubsection{Acronyms}
 				\begin{itemize}
-				\item RASD: Requirements Analysis and Specification Document
-				\item API: Application Programming Interface
-				\item GPS: Global Positioning System
-				\item SMS: Short Message Service 
+				\item RASD: Requirements Analysis and Specification Document.
+				\item API: Application Programming Interface.
+				\item GPS: Global Positioning System.
+				\item SMS: Short Message Service. 
+				\item ETA: Estimated Time Arrival.
+				\item RAPS: Reliable Array of Partioned Service.
 				\end{itemize}
 			\subsubsection{Abbreviations}
 				\begin{itemize}
-				\item {[}Gn{]}: n-goal
+				\item {[}Gn{]}: n-goal.
+				\item {App}: application.
 				\end{itemize}
 		
-		\subsection{Reference Documents}
-		   \begin{itemize}
-           \item Specification Document "Mandatory Project Assignment A.Y. 2018/2019"
-           \item 830-1993 - IEEE Recommended Practice for Software Requirements Specifications
-				\end{itemize}
 		\subsection{Document Structure}
 			This paper refers to the structure suggested by IEEE for RASD documents, with very slight modifications:
 			\begin{enumerate}
@@ -103,34 +103,47 @@
 	
 		\subsection{Product Perspective}
 		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1.0\linewidth]{Images/first-UML}
+			\caption{}
+			\label{fig:first-uml}
+		\end{figure}
+		
+		
 		\subsection{Product Functions}
 		
 		\subsection{User Characteristics}
 			\begin{itemize}
 				\item \texttt{Visitor}: a person visiting TrackMe without being registered. He can only proceed to registration in oder to actually use system services, otherwise he can't have access to any service or data.
+				\item \texttt{System Administrator}: doesn't require to register himself. Makes sure there are no issues in the interaction between users and third parties, guaranteeing a certain level of security.
 				\item \texttt{Registered user}: called simply \texttt{user} in this document. A person who registered himself to TrackMe, sharing his personal data. He can login to the system through provided credentials to exploit full services.
 				\item \texttt{Third party user}: called simply \texttt{third party} in this document. A company or invidual using the platform for some statistical goal or to offer assistance to registered users.
 				\item \texttt{Ambulance Dispatcher}: called simply \texttt{dispatcher} in this document. An external individual to the system, whose role is to dispatch an ambulance to assist specific users.
-				\item \texttt{Monitoring System}: monitors automatically users' health parameters.
-				\item \texttt{Payment Management System}: manages payment transactions, guaranteeing high level of security and reliability.
+				\item \texttt{Monitoring System (???)}: monitors automatically users' health parameters.
+				\item \texttt{Payment Management System (???)}: manages payment transactions, guaranteeing high level of security and reliability.
 			\end{itemize}
 		
 		\subsection{Assumptions, Dependencies and Constraints}
-			\subsubsection{Domain Assumptions}
+			\subsubsection{Text Assumptions}
 			\begin{itemize}
-				\item {\textbf[}\textbf{D1}{\textbf]}: In order to get registered, visitor must provide the following data: Name, Surname, Social Security Identifier, Date of Birth, Mobile Number, e-mail.
-				\item {\textbf[}\textbf{D2}{\textbf]}: Users are assumed to provide a correct personal data (name, date of birtg, social security number, etc.).
-				\item {\textbf[}\textbf{D3}{\textbf]}: Users are assumed to provide a valid Mobile Number and e-mail.
-				\item {\textbf[}\textbf{D4}{\textbf]}: Registration must be confirmed through a security code sent by SMS.
-   \item {\textbf[}\textbf{D5}{\textbf]}: Users' devices must support the Mobile Application.
-   \item {\textbf[}\textbf{D6}{\textbf]}: Users' devices must support the GPS technology.
-				\item {\textbf[}\textbf{D7}{\textbf]}: Users' locations are retrieved by GPS.
-				\item {\textbf[}\textbf{D8}{\textbf]}: Users provide correct clinical data (such as blood group, allergies, etc.).
-        \item {\textbf[}\textbf{D9}{\textbf]}: Users' devices are up and running in order to retrieve a d process data.
-        \item {\textbf[}\textbf{D10}{\textbf]}: data received by users' mobile devices are assumed to be correct.
-        \item {\textbf[}\textbf{D11}{\textbf]}: in case of emergency, all data relative to a specific individual are correctly reported to the ambulance dispatching system.
-        \item {\textbf[}\textbf{D12}{\textbf]}: the ambulance dispatching system is always running and reliable.
-        \item {\textbf[}\textbf{D13}{\textbf]}: 
+				\item In order to get registered, visitor must provide the following data: Name, Surname, Social Security Identifier, Date of Birth, Mobile Number, e-mail.
+				\item Registration must be confirmed through a security code sent by SMS.
+				\item Users are assumed to provide a correct personal data (Name, Date of Birth, Social Security Number, etc.).
+				\item Users are assumed to provide a valid Mobile Number and e-mail.
+				\item Users' devices must support the Mobile Application.
+				\item Users' devices must support the GPS technology.
+				\item Users' locations are retrieved by GPS.
+				\item Users provide correct clinical data (such as blood group, allergies, etc.).
+			\end{itemize}
+			\subsubsection{Domain Assumptions}
+			\begin{itemize} 
+				\item {\textbf[}\textbf{D1}{\textbf]}: Social Number Identifier must be unique.
+        \item {\textbf[}\textbf{D2}{\textbf]}: Users' devices are up and running in order to retrieve and process data. 
+        \item {\textbf[}\textbf{D3}{\textbf]}: Data received (such as current location) by users' mobile devices are assumed to be correct.
+        \item {\textbf[}\textbf{D4}{\textbf]}: In case of emergency, all data relative to a specific individual are correctly reported to the ambulance dispatching system.
+        \item {\textbf[}\textbf{D5}{\textbf]}: The ambulance dispatching system is always running and reliable.
+        \item {\textbf[}\textbf{D6}{\textbf]}: The time spent by an ambulance to reach a defined location must be as low as possibile.
 			\end{itemize}
 			\subsubsection{Dependencies}
 			\subsubsection{Constraints}
@@ -140,27 +153,52 @@
 					\item Hardware Limitations: 
 						\begin{itemize}
 							\item \texttt{Mobile App}: iOS/Android, Internet Connection, GPS.
-							\item \texttt{AppleWatch/WearOS}: smartwatches linked to mobile devices or equipped with GPS.
+							\item \texttt{AppleWatch/WearOS}: smartwatches linked to mobile devices or equipped with GPS and equipped with hearbeat/pressure sensors.
 							\item \texttt{Web App}: browser (e.g. Google Chrome / Safari) able to retrieve users' location.
 						\end{itemize}
 					\item Interfaces to other Applications: 
 						\begin{itemize}
 							\item API to ambulance dispatching system.
-							\item API to external applications that monitor users health and activity parameters.
+							\item API to external applications that monitor users health and activity parameters. (???)
+						    \item Google Maps API to have a visual representation of user location.
 						\end{itemize}
 				\end{enumerate}
 		
 	\newpage
 	\section{Specific Requirements}
+	\subsection{External Interface Requirments}
+	\subsubsection{User Interface}
+	The following mockups represt a basic idea of how the mobile application is supposed to look like.\\
+		\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{Images/registration}
+		%\caption[Registration Form]{}
+		\label{fig:registration}
+	\end{figure}
+	\subsection{Functional Requirments}
+	\subsection{Non-functional Requirments}
+	\subsubsection{Perfomance}
+	The system must be able to handle a huge quantity of requests simultaneously throughout the day, responding to users' necessities in the shortest time possible. In order to improve the perfomance of the system, since data are received in a discrete way (e.g. monitored every 5 seconds), TrackMe relies on a UDP non-persistent connection.
+	\subsubsection{Reliability}
+	The system must guarantee a 24/7 service. This requirment should not have any sort of deviation (especially concerning AutomatedSOS).
+	\subsubsection{Availability}
+	The system must fullfil all the requests whenever needed (e.g. get/update personal information, request for medical assistance). Only a small percentage of the total requests is admissible (less than 0.01\% of the total amount of requests). The system relies on a RAPS architecture, to better guarantee availability. The whole system is partitioned in nodes, each one managing a single service, in which data is made redudant in different servers. In this way, the malfuction of a service will not cause a service breakdown, but only a decrease of performance.
+	\subsubsection{Security}
+	Despite the fact that personal information is stored, the system guarantees not to spread them outside, and third parties are obliged to be confirmed with a privacy policy.
+	\subsubsection{Maintainability}
+	Enforced by the usage of specific design patterns (e.g. third party subscription is notified through an Observer Pattern whenever new data is generated by the users) and the provided documentation.
+	\subsubsection{Scalability}
+	Relying on a RAPS architecture, it is easier to enlarge the structure of the system, since it is possible to invest only on those services that need to handle the higher amount of requests or the ones where the number of users is relevant.
+	
 	
 	\newpage
 	\section{Formal Analysis Using Alloy}
 
 	\newpage
-	\section{Appendix}
-	\subsection{Tools used}
+	%\section{Appendix}
+	%\subsection{Tools used}
 	
-	\subsection{Effort Spent}
+	\section{Effort Spent}
 		\begin{itemize}
 			\item Luca Conterio
 			\begin{center}
@@ -186,4 +224,11 @@
 				\end{tabular}
 			\end{center}
 		\end{itemize}
+	\section{Reference Documents}
+	\begin{itemize}
+		\item Specification Document "Mandatory Project Assignment A.Y. 2018/2019"
+		\item 830-1993 - IEEE Recommended Practice for Software Requirements
+		\item "Appunti di Sistemi Informativi per il Settore dell'Informazione" A.Y. 2017/2018
+		 Specifications
+	\end{itemize}
 	\end{document}
