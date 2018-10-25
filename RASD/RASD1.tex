@@ -29,31 +29,9 @@
 	
 	\section{Introduction}
 		\subsection{Purpose}
-		 This document represents the \texttt{Requirement Analysis and Specification Document} (RASD) for TrackMe software. Main goals of this project are to specify a system that will be able to store and analyze users' health data, to grant third parties to access these data and to offer elderly people a rapid assistance based on their health parameters, if needed.
-		 At the same time, goals of this document are to describe the system through functional and nonfunctional requirements, to analyze customers' needs, to show the limits of the software, indicating the typical use cases that can occur.
-		\subsubsection{Goals}
-		\begin{itemize}
-			\item {\textbf[}\textbf{G1}{\textbf]}: Allow visitors to easily register in the system.
-				\begin{itemize}
-					\item {[G1.1]}: Allow individuals to register providing credentials and personal informations.
-					\item {[G1.2]}: Allow third parties to register providing credentials and legal informations.
-				\end{itemize}
-			\item {\textbf[}\textbf{G2}{\textbf]}: Allow users to simply share personal information/health parameters.
-			\item {\textbf[}\textbf{G3}{\textbf]}: Allow third parties to access data shared by users.
-				\begin{itemize}
-					\item {[G3.1]}: Allow third parties to access data of specific individuals (through an identifier).
-					\item {[G3.2]}: Allow third parties to access anonymized data of groups of individuals.
-					\item {[G3.3]}: Allow third parties to subscribe to new data of a specific individual and to receive them.
-				\end{itemize}
-			\item {\textbf[}\textbf{G4}{\textbf]}: Allow third parties to monitor specific users' parameters.
-				\begin{itemize}
-					\item {[G4.1]}: Allow third parties to retrieve personal users information.
-					\item {[G4.2]}: Allow third parties to monitor health status parameters.
-					\item {[G4.3]}: Allow third parties to monitor activity parameters.
-				\end{itemize}
-			\item {\textbf[}\textbf{G5}{\textbf]}: Guarantee the elderly users to receive an immediate assistance by an ambulance in case of high risk disease.
-			\item {\textbf[}\textbf{G6}{\textbf]}: Guarantee the preservation of the privacy of the users.
-		\end{itemize}
+		 This document represents the \texttt{Requirement Analysis and Specification Document} (RASD) for TrackMe software. Main goals of this project are to specify a system that will be able to store and analyze users' health data and whereabouts, to grant third parties to access these data or to subscribe to new data of a specific individual or to retrieve them, and to offer elderly people a rapid assistance based on their health parameters, if needed.
+		 At the same time, this document aims at describing the system through functional and nonfunctional requirements, to analyze customers' needs, to show the limits of the software, indicating the typical use cases that can occur.
+	
 	
 		\subsection{Scope}
 		\texttt{TrackMe} is a company that wants to develop a software-based service allowing third parties to monitor the location and health status of individuals.
@@ -67,6 +45,21 @@
 		As soon as a request for some certain data is approved, TrackMe makes the previously saved data available to the third party. Also, it allows the third party to subscribe to new data and to receive them as soon as they are produced.
 			\item \textbf{AutomatedSOS}\\\\This service is oriented to elderly people: monitoring their health status parameters, the system can send to the location of the customer an ambulance when some parameters are below certain thresholds, guaranteeing a reaction time of less than 5 seconds from the time the parameters get lower than the threshold.
 		\end{itemize} 
+	
+			\subsubsection{Goals}
+		\begin{itemize}
+			\item {\textbf[}\textbf{G1}{\textbf]}: Allow visitors to easily register in the system.
+			\item {\textbf[}\textbf{G2}{\textbf]}: Allow users to simply share personal information/health parameters.
+			\item {\textbf[}\textbf{G3}{\textbf]}: Allow third parties to access data shared by users.
+			\begin{itemize}
+				\item {[G3.1]}: Allow third parties to access data of specific individuals (through an identifier).
+				\item {[G3.2]}: Allow third parties to access anonymized data of groups of individuals.
+				\item {[G3.3]}: Allow third parties to subscribe to new data of a specific individual and to receive them.
+			\end{itemize}
+			\item {\textbf[}\textbf{G4}{\textbf]}: Allow third parties to monitor specific users' parameters.
+			\item {\textbf[}\textbf{G5}{\textbf]}: Guarantee the elderly users to receive an immediate assistance by an ambulance in case of high risk disease.
+			\item {\textbf[}\textbf{G6}{\textbf]}: Guarantee the preservation of the privacy of the users.
+		\end{itemize}
 	
 	
 		\subsection{Definitions, Acronyms and Abbreviations}
@@ -133,17 +126,17 @@
 				\item Users are assumed to provide a valid Mobile Number and e-mail.
 				\item Users' devices must support the Mobile Application.
 				\item Users' devices must support the GPS technology.
-				\item Users' locations are retrieved by GPS.
 				\item Users provide correct clinical data (such as blood group, allergies, etc.).
 			\end{itemize}
 			\subsubsection{Domain Assumptions}
 			\begin{itemize} 
 				\item {\textbf[}\textbf{D1}{\textbf]}: Social Number Identifier must be unique.
-        \item {\textbf[}\textbf{D2}{\textbf]}: Users' devices are up and running in order to retrieve and process data. 
-        \item {\textbf[}\textbf{D3}{\textbf]}: Data received (such as current location) by users' mobile devices are assumed to be correct.
-        \item {\textbf[}\textbf{D4}{\textbf]}: In case of emergency, all data relative to a specific individual are correctly reported to the ambulance dispatching system.
-        \item {\textbf[}\textbf{D5}{\textbf]}: The ambulance dispatching system is always running and reliable.
-        \item {\textbf[}\textbf{D6}{\textbf]}: The time spent by an ambulance to reach a defined location must be as low as possibile.
+				\item {\textbf[}\textbf{D2}{\textbf]}: The verification message sent by SMS/e-mail will be certainly received by the User.
+		        \item {\textbf[}\textbf{D3}{\textbf]}: Users' devices are up and running in order to retrieve and process data. 
+		        \item {\textbf[}\textbf{D4}{\textbf]}: Data received (such as current location) by users' mobile devices are assumed to be correct.
+		        \item {\textbf[}\textbf{D5}{\textbf]}: In case of emergency, all parameters relative to a specific individual are correctly reported to the ambulance dispatching system.
+		        \item {\textbf[}\textbf{D6}{\textbf]}: The ambulance dispatching system is always running and reliable.
+		        \item {\textbf[}\textbf{D7}{\textbf]}: The time spent by an ambulance to reach a defined location must be as low as possibile.
 			\end{itemize}
 			\subsubsection{Dependencies}
 			\subsubsection{Constraints}
@@ -185,6 +178,77 @@
     \newpage
    
 	\subsection{Functional Requirments}
+	\subsubsection*{{[}{G1}{]}: Allow visitors to easily register in the system}
+	\begin{itemize}
+			\begin{itemize}
+					\item {[D1]}: The SSN must be unique.
+					\item {[D2]}: The verification message sent by SMS/e-mail will be certainly received by the User/Third Party.
+					\\
+					\item {[R1]}: The system must allow the Visitor/Third Party to provide credentials and personal data.
+					\item {[R2]}: The system must verify the correspondance between the SSN provided by the Visitor/Third Party and their personal information.
+					\item {[R3]}: The system must verify the correctness of the data provided by the Visitor/Third Parties with an e-mail/SMS verification.
+					\item {[R4]}: The system must verify that there are no other registered Users/Third Parties with the same SSN/e-mail.
+					\item {[R5]}: In order to register successfully a Third Party, the system must oblige it to accept data privacy conditions.
+			\end{itemize} 
+	\end{itemize}
+	\subsubsection*{{[}{G2}{]}: Allow Users to share personal information/health parameters}
+	\begin{itemize}
+		\begin{itemize}
+			\item {[D1]}: Users' devices are up and running in order to retrieve and process data.
+			\item {[D27]}: Users' devices must support the GPS technology.
+			\item {[D28]}: Users' devices must support the Mobile Application
+			\item {[D4]}: 
+			\item {[D2]}: Data periodically received by Users' devices are assumed to have a good accuracy. 
+			\item {[D5]}: Parameters provided by Users' are assumed to be correct. 
+			\item {[D3]}: Users' devices are assumed to communicate throught the Internet.
+			\\\\
+			\item {[R1]}: Users locations are retrieved by GPS.
+			\item {[R2]}: The system must allow the Users to update their personal data.
+			\item {[R3]}: The system must allow the Users to upload their medical records (such as blood group).
+		\end{itemize} 
+	\end{itemize}
+	\subsubsection*{{[}{G3}{]}: Allow Third Parties to access data shared by the Users}
+	\begin{itemize}
+		\item {[G3.1]}: Allow Third Parties to access data of specific individuals.
+		\begin{itemize}
+			\item {[R1]}: The system must allow Third Parties to search Users through their SSN's.
+			\item {[R2]}: The system must allow Third Parties to send requests in order to access specific data.
+			\item {[R3]}: The system must allow Users either to accept or refuse Third Parties' requests.
+		\end{itemize} 
+		
+		\item {[G3.2]}: Allow Third Parties to access anonymized data of groups of individuals.
+		\begin{itemize}
+			\item {[R1]}:The system must allow Third Parties to perform samplings according to some parameters (such as Geographical ones).
+			\item {[R2]}: The system must anonymize sampling result data.
+			\item {[R3]}: The system must accept sampling if and only if results are related to more than 1000 Users.
+		\end{itemize} 
+	
+		\item {[G3.3]}: Allow Third Parties to subscribe to new data of a specific individual and to receive them.
+		\begin{itemize}
+			\item {[R1]}: If a User accepts a requests, the system must allow Third Parties to store and access the previously saved data.
+			\item {[R2]}: The system must show Third Parties new data whenever they are available.
+		\end{itemize}
+	\end{itemize}
+	\subsubsection*{{[}{G4}{]}: Allow Third Parties to monitor specific Users' parameters}
+		\begin{itemize}
+			\item {[D2]}: Data periodically received by Users' devices are assumed to have a good accuracy. 
+			\item {[D5]}: Parameters provided by Users' are assumed to be correct. 
+			
+			\item {[R1]}: If a User accepts a requests, the system must allow Third Parties to store and access the previously saved data.
+		\end{itemize}
+	
+	\subsubsection*{{[}{G5}{]}: Guarantee the elderly users to receive an immediate assistance by an ambulance in case of high risk disease}
+	\begin{itemize}
+ 		\item {[D1]}: In case of emergency, all parameters relative to a specific individual are correctly reported to the ambulance dispatching system.
+		\item {[D3]}: The ambulance dispatching system is always running and reliable.
+		\item {[D4]}: The time spent by an ambulance to reach a defined location must be as low as possibile.
+		\item {[D2]}: Data periodically received by Users' devices are assumed to have a good accuracy. 
+		
+		\item {[R1]}: The AutomatedSOS service is automatically activated during the registration process if the Visitor is over 60.
+		\item {[R2]}: The Health Status Monitoring System must notify the Ambulance Dispatching System. 
+		\item {[R3]}: When the Ambulance Dispatching System is notified, the Health Status Monitoring System sends all the User's clinical parameters.
+		\item {[R4]}: The system should let the User have the possibily to request directly help from an ambulance if he feels it is necessary.
+	\end{itemize}
 	\subsection{Non-functional Requirments}
 	\subsubsection{Perfomance}
 	The system must be able to handle a huge quantity of requests simultaneously throughout the day, responding to users' necessities in the shortest time possible. In order to improve the perfomance of the system, since data are received in a discrete way (e.g. monitored every 5 seconds), TrackMe relies on a UDP non-persistent connection.\\
