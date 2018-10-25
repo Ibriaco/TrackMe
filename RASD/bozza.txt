@@ -49,6 +49,7 @@ SERVIZI:
 - SERVIZIO 1(Data4Help)
 - SERVIZIO 2(AutomatedSOS)
 
+USARE NUOVA VERSIONE DI TLS PER HTTP (Communication Interface)
 
 USE CASES:
 - look for a user through social security number (identifier) -> request passed to user -> user accepts
