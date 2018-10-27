@@ -263,6 +263,7 @@
 					\item {[R17]}: The Health Status Monitoring System must notify the Ambulance Dispatching System. 
 					\item {[R18]}: When the Ambulance Dispatching System is notified, the Health Status Monitoring System sends all the User's clinical parameters.
 					\item {[R19]}: The system should let the User have the possibily to request directly help from an ambulance if he feels it is necessary.
+					\item {[R20]}: Users' devices must support sensors for retrieving health parameters.
 				\end{itemize}
 			\end{itemize}
 		\subsubsection*{{[}{G5}{]}: Guarantee the preservation of the privacy of the Users.}
@@ -279,29 +280,36 @@
 			\end{itemize}
 		
 		\newpage
-		\subsubsection{Visitor Use Case Diagram}
+		\subsection{Use Case Diagram}
 			\begin{figure}[h]
 				\centering
-				\includegraphics[width=0.7\linewidth]{Images/use_case_visitor}
+				\includegraphics[width=1.25\linewidth]{Images/use_case_diagram}
 				\label{fig:use_case_visitor}
 			\end{figure}
 		
-		\subsubsection{User Use Case Diagram}
-			\begin{figure}[h]
-				\centering
-				%\includegraphics[width=0.7\linewidth]{Images/use_case_user}
-				\label{fig:use_case_user}
-			\end{figure}
+			\begin{center}
+				\begin{tabular}{| c | l |}
+					\hline
+					Name & Register to TrackMe & \\ \hline
+					Actor & Visitor & \\ \hline
+					Entry Condition & The Visitor must have installed \\
+				                &	the Application on his/her Mobile device \\ \hline
+ 					Events Flow  & 
+ 						1. Fill all mandatory fields in the Registration form\\
+ 						&2. Click on "Register" button\\
+ 						&3. System saves Users' data\\
+ 					  \\ \hline
+					Exit Conditions  & The Vistor has become a registered User \\ \hline
+					Exceptions & 
+					1. The User is already registered\\
+					&2. The e-mail is already registered\\
+					&3. The Mobile Number is already registered\\
+					&2. The SSN provided is invalid\\
+					&3. Some mandatory field are not filled\\
+					\hline
+				\end{tabular}
+			\end{center}
 		
-		\subsubsection{Third Party Use Case Diagram}
-			\begin{figure}[h]
-				\centering
-			    %\includegraphics[width=0.7\linewidth]{Images/use_case_third_party}
-				\label{fig:use_case_third_party}
-			\end{figure}
-		
-		\subsubsection{System Manager Use Case Diagram ???}
-		???????
 	
 	\subsection{Performance Requirments}
 	The system must be able to handle a huge quantity of requests simultaneously throughout the day, responding to users' necessities in the shortest time possible. In order to improve the perfomance of the system, since data are received in a discrete way (e.g. monitored every 5 seconds), TrackMe relies on a UDP non-persistent connection.\\
@@ -362,8 +370,9 @@
 				22/10/2018  & Assumptions and Non-Functional Requirements & 3.5 \\
 				25/10/2018 & Functional Requirements & 3 \\
 				26/10/2018 & Functional Requirements & 1 \\
+				27/10/2018 & Use Case Diagrams & 3 \\
 				\hline
-				Total & & 11.5\\
+				Total & & 14.5\\
 				\hline
 			\end{tabular}
 		\end{center}
