@@ -18,7 +18,7 @@ malfunzionamenti:
 	- 
 
 
-ASSUMPTIONS
+ASSUMPTIONS ---> RIMUOVERE TEXT ASSUMPTIONS
 -Registration data are: name, surname, fiscal code...
 -Identity correctness
 -Contact informations correctness
@@ -44,6 +44,8 @@ USER INTERFACE:
 - lato third party solo interfaccia web
 - pagina dopo chiamata ambulanza (con ETA, posizione, ecc)
 - pagina dati personali
+Scrivere qualcosa di descrizione
+
 
 SERVIZI:
 - SERVIZIO 1(Data4Help)
