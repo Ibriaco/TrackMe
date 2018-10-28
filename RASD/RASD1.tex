@@ -97,19 +97,19 @@
 	
 	\subsection{Product Perspective}
 		\begin{figure}[h]
-			%\centering
+			\centering
 			\includegraphics[width=1.25\linewidth]{Images/uml}
 			\caption{UML Class Diagram}
 			\label{fig:uml}
 		\end{figure}
 		\begin{figure}[H]
-			%\centering
+			\centering
 			\includegraphics[width=1.0\linewidth]{Images/statechart_user}
 			\caption{User Statechart Diagram}
 			\label{fig:statechart_user}
 		\end{figure}
 		\begin{figure}[H]
-			%\centering
+			\centering
 			\includegraphics[width=1.0\linewidth]{Images/statechart_third_party}
 			\caption{Third Party Statechart Diagram}
 			\label{fig:statechart_third_party}
@@ -120,10 +120,10 @@
 	
 	\subsection{User Characteristics}
 		\begin{itemize}
-			\item \texttt{Visitor}: a person visiting TrackMe without being registered. He can only proceed to registration in oder to actually use system services, otherwise he can't have access to any service or data.
+			\item \texttt{Visitor}: a person/third party visiting TrackMe without being registered. He can only proceed to registration in oder to actually use system services, otherwise he can't have access to any service or data.
 			\item \texttt{System Administrator}: doesn't require to register himself. Makes sure there are no issues in the interaction between users and third parties, guaranteeing a certain level of security.
-			\item \texttt{Registered user}: called simply \texttt{user} in this document. A person who registered himself to TrackMe, sharing his personal data. He can login to the system through provided credentials to exploit full services.
-			\item \texttt{Third party user}: called simply \texttt{third party} in this document. A company or invidual using the platform for some statistical goal or to offer assistance to registered users.
+			\item \texttt{Registered User}: called simply \texttt{user} in this document. A person who registered himself to TrackMe, sharing his personal data. He can login to the system through provided credentials to exploit full services.
+			\item \texttt{Third Party User}: called simply \texttt{third party} in this document. A company or invidual using the platform for some statistical goal or to offer assistance to registered users.
 			\item \texttt{Ambulance Dispatcher}: called simply \texttt{dispatcher} in this document. An external individual to the system, whose role is to dispatch an ambulance to assist specific users.
 		\end{itemize}
 	
@@ -176,20 +176,32 @@
 	\section{Specific Requirements}
 		\subsection{External Interface Requirments}
 			\subsubsection{User Interfaces}
-				The following mockups represt a basic idea of how the mobile application is supposed to look like.\\
+				The following mockups represent a basic idea of how the mobile application is supposed to look like.\\ Users can access to complete TrackMe functionalities through the smartphone application, while the smartwatch one will only support a subset of the system's services.
 				\begin{figure}[h]
 					\centering
 					\includegraphics[width=1.0\linewidth]{Images/login-registration}
-					\caption{Mobile App Registration form and login page}
+					\caption{Mobile App Registration form and login page.}
 					\label{fig:login-registration}
-				\end{figure}
-				\begin{figure}[H]
+			   \end{figure}
+		      \begin{figure}[H]
 					\centering
 					\includegraphics[width=1.0\linewidth]{Images/pages}
-					\caption{Mobile app homepage with activity data, AutomatedSOS interface during an ambulance request and personal data pages.}
-					\label{fig:pages}
-				\end{figure}
-			
+					\caption{Mobile app homepage with activity data, AutomatedSOS interface during an ambulance request.}
+			    \end{figure}
+		        \begin{figure}[H]
+		        	\centering
+		        	\includegraphics[width=1.0\linewidth]{Images/data-pages}
+		        	\caption{Personal data pages.}
+		        	\label{fig:data-pages}
+		        \end{figure}
+	            \begin{figure}[h]
+				 	\centering
+				 	\includegraphics[width=1.0\linewidth]{Images/smartwatch}
+				 	\caption{Smartwatch app homepage with activity data, heartbeat testing page and AutomatedSOS interface during an ambulance request.}
+				 	\label{fig:smartwatch}
+				 \end{figure}
+			\newpage
+			\subsubsection{Third Party Interfaces}
 			\newpage
 			\subsubsection{Hardware Interfaces}
 			\subsubsection{Software Interfacse}
@@ -284,9 +296,10 @@
 			\begin{figure}[h]
 				\centering
 				\includegraphics[width=1.25\linewidth]{Images/use_case_diagram}
-				\label{fig:use_case_visitor}
+				\label{fig:use_case_diagram}
 			\end{figure}
 		
+		\newpage
 		\subsection{Use cases}
 			\begin{center}
 				\begin{tabular}{| c | l |}
