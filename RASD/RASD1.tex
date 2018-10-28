@@ -175,39 +175,60 @@
 	\newpage
 	\section{Specific Requirements}
 		\subsection{External Interface Requirments}
+			The following mockups represent a basic idea of how the Mobile Application and the Web Interface are supposed to look like.
+			\\ \\
+			Users can access to complete TrackMe functionalities through the smartphone application, while the smartwatch one will only support a subset of the system's services.
+			\\ \\
+			On the other side, TrackMe provides a Web Interface for Third Parties. Here they can exploit all the functionalities at their disposal, such as the request of a sampling according to some parameters.
+			
 			\subsubsection{User Interfaces}
-				The following mockups represent a basic idea of how the mobile application is supposed to look like.\\ Users can access to complete TrackMe functionalities through the smartphone application, while the smartwatch one will only support a subset of the system's services.
 				\begin{figure}[h]
 					\centering
 					\includegraphics[width=1.0\linewidth]{Images/login-registration}
-					\caption{Mobile App Registration form and login page.}
+					\caption{Mobile App registration form and login page.}
 					\label{fig:login-registration}
 			   \end{figure}
 		      \begin{figure}[H]
 					\centering
 					\includegraphics[width=1.0\linewidth]{Images/pages}
-					\caption{Mobile app homepage with activity data, AutomatedSOS interface during an ambulance request.}
+					\caption{Mobile App homepage with activity data and AutomatedSOS interface during an ambulance request.}
 			    \end{figure}
+		    	
 		        \begin{figure}[H]
 		        	\centering
 		        	\includegraphics[width=1.0\linewidth]{Images/data-pages}
-		        	\caption{Personal data pages.}
+		        	\caption{Personal data and clinical data pages.}
 		        	\label{fig:data-pages}
 		        \end{figure}
 	            \begin{figure}[h]
 				 	\centering
 				 	\includegraphics[width=1.0\linewidth]{Images/smartwatch}
-				 	\caption{Smartwatch app homepage with activity data, heartbeat testing page and AutomatedSOS interface during an ambulance request.}
+				 	\caption{Smartwatch App homepage with activity data, heartbeat testing page and AutomatedSOS interface during an ambulance request.}
 				 	\label{fig:smartwatch}
 				 \end{figure}
 			\newpage
 			\subsubsection{Third Party Interfaces}
+				
 			\newpage
 			\subsubsection{Hardware Interfaces}
 			\subsubsection{Software Interfacse}
 			\subsubsection{Communication Interfaces}
 			
+		\newpage
 		\subsection{Scenarios}
+			\subsubsection*{Scenario 1 - Registration}
+				Marco saw the advertisement of TrackMe and decided to download the mobile application in order to exploit in a useful way his new smartwatch. After opening the new app, it is asked to fill a form with all his personal information, full name, date of birth, mobile number, SSN, etc. To proceed with his registration, after all fields have been filled, Marco clicks on the "Register" button and, as soon as he does, he receives an SMS on his mobile phone confirming the positive outcome of his operation. Marco is now a Registered User of TrackMe: he can login to update his clinical information and benefit of all functionalities of the application.
+			\subsubsection*{Scenario 2 - Automatic Ambulance Request}
+				Maria is a 76 years old User of TrackMe, so she can benefit of the AutomatedSOS service. Thanks to this functionality the system checks periodically her heart rate. During a relax time, Maria's heart rate get so low that her heart risks to stop. Luckily she always wears a smartwatch on her wrist, because she's aware of the utility and importance of TrackMe's monitoring. In fact, as soon as her heart rate gets lower than 30 bpm, AutomatedSOS sends an assistance request to the Ambulance Dispatching System, notifying Maria about the estimated time of arrival of the aid team.
+			
+			\subsubsection*{Scenario 3 - On-Demand Ambulance Request}
+				% A sport addicted User such as Jhon always 
+			
+			\subsubsection*{Scenario 4 - Search for a User}
+				
+			
+			\subsubsection*{Scenario 4 - Anonymous Sampling}
+				ItalianStatistica is a big company that performs statistical analysis on the italian territory studying the differences between some geographical areas. For a new analysis on Milan's population, ItalianStatistica decides to retrieve samples from the Data4Help database. After the registration the company can perform anonymous samplings on the people living in Milan. Since asking for how many people with blue eyes and younger than 15 live in the city center results in sampling than 1000 individuals, Data4Help refuses such a request. In order to produce a sampling, ItalianStatistica extends the search to the entire municipality. In this way, a group of more than 1000 individuals is found and the sample with all relevant data is made accessible to the company.
 			
 	\newpage
 	
@@ -235,7 +256,7 @@
 					\item {[D6]}: Data periodically received by Users' devices are assumed to have a good accuracy. 
 					\item {[D7]}: Parameters provided by Users' are assumed to be correct. 
 					\item {[D8]}: Users' devices are assumed to communicate throught the Internet.
-					\\\\
+					\\ \\
 					\item {[R6]}: Users locations are retrieved by GPS.
 					\item {[R7]}: The system must allow the Users to update their personal data.
 					\item {[R8]}: The system must allow the Users to upload their medical records (such as blood group).
@@ -270,9 +291,9 @@
 					\item {[D9]}: In case of emergency, all parameters relative to a specific individual are correctly reported to the ambulance dispatching system.
 					\item {[D10]}: The ambulance dispatching system is always running and reliable.
 					\item {[D12]}: The time spent by an ambulance to reach a defined location must be as low as possibile. 
-					\\\\
+					\\ \\
 					\item {[R16]}: The AutomatedSOS service is automatically activated during the registration process if the Visitor is over 60.
-					\item {[R17]}: The Health Status Monitoring System must notify the Ambulance Dispatching System. 
+					\item {[R17]}: The Health Status Monitoring System must notify the Ambulance Dispatching System as soon as possible (within 5 seconds).
 					\item {[R18]}: When the Ambulance Dispatching System is notified, the Health Status Monitoring System sends all the User's clinical parameters.
 					\item {[R19]}: The system should let the User have the possibily to request directly help from an ambulance if he feels it is necessary.
 					\item {[R20]}: Users' devices must support sensors for retrieving health parameters.
@@ -283,7 +304,7 @@
 				\begin{itemize}
 					\item {[D2]}: Parameters periodically received by Users' devices are assumed to have a good accuracy. 
 					\item {[D5]}: Data provided by Users' are assumed to be correct. 
-					\\\\
+					\\ \\
 					\item {[R5]}: In order to register successfully a Third Party, the system must oblige it to accept data privacy conditions.
 					\item {[R8]}: A Third Party can access data and parameters of a specific User if and only if he/she accepts the request.
 					\item {[R3]}: The system must accept sampling if and only if results are related to more than 1000 Users.
@@ -373,8 +394,9 @@
 				22/10/2018  & UML and Non-Functional Requirements & 3.5 \\
 				25/10/2018 & Functional Requirements & 3 \\
 				26/10/2018 & Statechart Diagrams & 2 \\
+				28/10/2018 & Mockups and Scenarios & 1.5 \\
 				\hline
-				Total & & 13\\
+				Total & & 14.5 \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -392,7 +414,7 @@
 				26/10/2018 & Functional Requirements & 1 \\
 				27/10/2018 & Use Case Diagrams & 3 \\
 				\hline
-				Total & & 14.5\\
+				Total & & 14.5 \\
 				\hline
 			\end{tabular}
 		\end{center}
