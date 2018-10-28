@@ -1,3 +1,7 @@
+
+Requirement access a body sensors?
+Mandare conferma registrazione solo per SMS, correggere in tutto il documento
+
 GOALS:
 1) Registration/Login
 	- for individuals

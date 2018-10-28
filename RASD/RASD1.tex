@@ -287,25 +287,32 @@
 				\label{fig:use_case_visitor}
 			\end{figure}
 		
+		\subsection{Use cases}
 			\begin{center}
 				\begin{tabular}{| c | l |}
 					\hline
-					Name & Register to TrackMe & \\ \hline
-					Actor & Visitor & \\ \hline
+					Name & Register to TrackMe \\
+					\hline
+					Actor & Visitor \\
+					\hline
+					Goals & [G1] \\
+					\hline
 					Entry Condition & The Visitor must have installed \\
 				                &	the Application on his/her Mobile device \\ \hline
- 					Events Flow  & 
+ 					Events Flow  &
  						1. Fill all mandatory fields in the Registration form\\
  						&2. Click on "Register" button\\
- 						&3. System saves Users' data\\
- 					  \\ \hline
+ 						&3. System checks data validity\\
+ 						&4. System sends an SMS as confirmation\\
+ 						&5. System saves Users' data\\
+ 					  \hline
 					Exit Conditions  & The Vistor has become a registered User \\ \hline
 					Exceptions & 
 					1. The User is already registered\\
 					&2. The e-mail is already registered\\
 					&3. The Mobile Number is already registered\\
 					&2. The SSN provided is invalid\\
-					&3. Some mandatory field are not filled\\
+					&3. Some mandatory fields are not filled\\
 					\hline
 				\end{tabular}
 			\end{center}
