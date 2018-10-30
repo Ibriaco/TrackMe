@@ -129,91 +129,93 @@
 	\end{itemize}
 	
 	\subsection{Assumptions, Dependencies and Constraints}
-	\subsubsection{Text Assumptions}
-	\begin{itemize}
-		\item In order to get registered, a Visitor must provide the following data: Name, Surname, Social Security Number, Date of Birth, Mobile Number, e-mail.
-		\item In order to get registered, visitor must provide the following data: Name, Surname, Social Security Number, Date of Birth, Mobile Number, e-mail.
-		\item Registration must be confirmed through a security code sent by SMS.
-		\item Users are assumed to provide correct personal data (Name, Date of Birth, Social Security Number, etc.).
-		\item Users are assumed to provide a valid Mobile Number and e-mail.
-		\item Users' devices must support the Mobile Application.
-		\item Users' devices must support the GPS technology.
-		\item Users provide correct clinical data (such as blood group, allergies, etc.).
-	\end{itemize}
-	\subsubsection{Domain Assumptions}
-	\begin{itemize} 
-		\item {\textbf[}\textbf{D1}{\textbf]}: Social Security Number must be unique.
-		\item {\textbf[}\textbf{D2}{\textbf]}: The verification message sent by SMS/e-mail will be certainly received by the User.
-		\item {\textbf[}\textbf{D3}{\textbf]}: Users' devices are up and running in order to retrieve and process data. 
-		\item {\textbf[}\textbf{D4}{\textbf]}: Data received (such as current location) by users' mobile devices are assumed to be correct.
-		\item {\textbf[}\textbf{D5}{\textbf]}: Users' devices must support the Mobile Application.
-		\item {\textbf[}\textbf{D6}{\textbf]}: Parameters provided by Users' are assumed to be correct.
-		\item {\textbf[}\textbf{D7}{\textbf]}: The time spent by an ambulance to reach a defined location must be as low as possibile.
-		\item {\textbf[}\textbf{D8}{\textbf]}: Users' devices are assumed to communicate through the Internet.
-		\item {\textbf[}\textbf{D9}{\textbf]}: In case of emergency, all parameters relative to a specific individual are correctly reported to the ambulance dispatching system.
-		\item {\textbf[}\textbf{D10}{\textbf]}: The Ambulance Dispatching System is always running and available.
-		\item {\textbf[}\textbf{D11}{\textbf]}: The time spent by an ambulance to reach a defined location must be as low as possible.
-		\item {\textbf[}\textbf{D12}{\textbf]}: The time spent by an ambulance to reach a defined location must be as low as possibile.
-	\end{itemize}
-	\subsubsection{Dependencies and Constraints}
-	\begin{enumerate}
-		\item Regulatory Policies:
-		Guarantee confidentiality of information.
-		\item Hardware Limitations: 
-		\begin{itemize}
-			\item \texttt{Mobile App}: iOS/Android, Internet Connection, GPS.
-			\item \texttt{AppleWatch/WearOS}: smartwatches linked to mobile devices or equipped with GPS and equipped with hearbeat/pressure sensors.
-			\item \texttt{Web App}: browser (e.g. Google Chrome / Safari) able to retrieve users' location.
-		\end{itemize}
-		\item Interfaces to other Applications: 
-		\begin{itemize}
-			\item API to ambulance dispatching system.
-			\item API to external applications that monitor users health and activity parameters. (???)
-			\item Google Maps API to have a visual representation of user location.
-		\end{itemize}
-	\end{enumerate}
+		\subsubsection{Text Assumptions}
+			\begin{itemize}
+				\item In order to get registered, a Visitor must provide the following data: Name, Surname, Social Security Number, Date of Birth, Mobile Number, e-mail.
+				\item Registration must be confirmed through a security code sent by SMS.
+				\item Users are assumed to provide correct personal data (Name, Date of Birth, Social Security Number, etc.).
+				\item Users are assumed to provide a valid Mobile Number and e-mail.
+				\item Users' devices must support the Mobile Application.
+				\item Users' devices must support the GPS technology.
+				\item Users provide correct clinical data (such as blood group, allergies, etc.).
+			\end{itemize}
+		\subsubsection{Domain Assumptions}
+			\begin{itemize} 
+				\item {\textbf[}\textbf{D1}{\textbf]}: The Social Security Number is be unique.
+				\item {\textbf[}\textbf{D2}{\textbf]}: The verification message sent by SMS/e-mail will be certainly received by the User/Third Party.
+				\item {\textbf[}\textbf{D3}{\textbf]}: Users' devices are up and running in order to retrieve and process data.
+				\item {\textbf[}\textbf{D4}{\textbf]}: Data periodically received by Users' devices are assumed to have a good accuracy.
+				\item {\textbf[}\textbf{D5}{\textbf]}: Data provided by Users' are assumed to be correct.
+				\item {\textbf[}\textbf{D6}{\textbf]}: Users' devices support the GPS technology.
+				\item {\textbf[}\textbf{D7}{\textbf]}: Users' devices support the Mobile Application.
+				\item {\textbf[}\textbf{D8}{\textbf]}: Users' devices communicate through the Internet.
+				\item {\textbf[}\textbf{D9}{\textbf]}: In case of emergency, all parameters relative to a specific individual are correctly reported to the Ambulance Dispatching System.
+				\item {\textbf[}\textbf{D10}{\textbf]}: The Ambulance Dispatching System is always running and available.
+				\item {\textbf[}\textbf{D11}{\textbf]}: The time spent by an ambulance to reach a defined location is as low as possible.
+			\end{itemize}
+		\subsubsection{Dependencies and Constraints}
+			\begin{enumerate}
+				\item Regulatory Policies:
+				Guarantee confidentiality of information.
+				\item Hardware Limitations:  				 ??? moved below
+				\item Interfaces to other Applications:  ??? moved below
+			\end{enumerate}
 	
 	\newpage
 	\section{Specific Requirements}
-	\subsection{External Interface Requirments}
-	The following mockups represent a basic idea of how the Mobile Application and the Web Interface are supposed to look like.
-	\\ \\
-	Users can access to complete TrackMe functionalities through the smartphone application, while the smartwatch one will only support a subset of the system's services.
-	\\ \\
-	On the other side, TrackMe provides a Web Interface for Third Parties. Here they can exploit all the functionalities at their disposal, such as the request of a sampling according to some parameters.
+		\subsection{External Interface Requirments}
+			The following mockups represent a basic idea of how the Mobile Application and the Web Interface are supposed to look like.
+			\\ \\
+			Users can access to complete TrackMe functionalities through the smartphone application, while the smartwatch one will only support a subset of the system's services.
+			\\ \\
+			On the other side, TrackMe provides a Web Interface for Third Parties. Here they can exploit all the functionalities at their disposal, such as the request of a sampling according to some parameters.
 	
 	\subsubsection{User Interfaces}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1.0\linewidth]{Images/login-registration}
-		\caption{Mobile App registration form and login page.}
-		\label{fig:login-registration}
-	\end{figure}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1.0\linewidth]{Images/pages}
-		\caption{Mobile App homepage with activity data and AutomatedSOS interface during an ambulance request.}
-	\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1.0\linewidth]{Images/login-registration}
+			\caption{Mobile App registration form and login page.}
+			\label{fig:login-registration}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1.0\linewidth]{Images/pages}
+			\caption{Mobile App homepage with activity data and AutomatedSOS interface during an ambulance request.}
+		\end{figure}
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1.0\linewidth]{Images/data-pages}
-		\caption{Personal data and clinical data pages.}
-		\label{fig:data-pages}
-	\end{figure}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1.0\linewidth]{Images/smartwatch}
-		\caption{Smartwatch App homepage with activity data, heartbeat testing page and AutomatedSOS interface during an ambulance request.}
-		\label{fig:smartwatch}
-	\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1.0\linewidth]{Images/data-pages}
+			\caption{Personal data and clinical data pages.}
+			\label{fig:data-pages}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1.0\linewidth]{Images/smartwatch}
+			\caption{Smartwatch App homepage with activity data, heartbeat testing page and AutomatedSOS interface during an ambulance request.}
+			\label{fig:smartwatch}
+		\end{figure}
+	
 	\newpage
 	\subsubsection{Third Party Interfaces}
 	
 	\newpage
 	\subsubsection{Hardware Interfaces}
-	\subsubsection{Software Interfacse}
+	
+	\subsubsection{Software Interfaces}
+		TrackMe will make use of some Application Programming Interfaces to simplify the implementation, since these components are largely used and compatible with the majority of the devices currently on the market:
+		\begin{itemize}
+			\item Google Maps API to have a visual representation of user location and to get it in critical moments, such as AutomatedSOS requests to the Ambulance Dispatching System.
+			\item Google Fit Sensors API to read raw sensor data in real time. It allows listing the available sensors on the device on which te application is running and registering a listener on specific sensors to retrieve data automatically.
+			\item Ambulance Dispatching System API to perform assistance requests. Actually it could be an automatic phone call to the ambulance contact center, during which an algorithm communicates all relevant data to the interlocutor (e.g. name, age, location etc.).
+		\end{itemize}
 	\subsubsection{Communication Interfaces}
+		\begin{itemize}
+			Since the TLS versions 1.0 and 1.1 will not be more supported, TrackMe must rely on the newer TLS version 1.3, released in 2018, to guarantee the best security possible, at least during the HTTPS connections involving messages carrying credentials or other sensible data. 
+			
+			For other types of connections, e.g. to retrieve periodical data from users' devices, TCP persistent connections can be avoided: even if a packet is lost another one will be generated within a slight amount of time, so UDP non-persistent connections can be used (it is a stream of data). This can also provide a lower server load, as pointed out later in section 3.6, Performance Requirements.
+		\end{itemize}
+	
 	
 	\newpage
 	\subsection{Scenarios}
@@ -223,42 +225,43 @@
 	Maria is a 76 years old User of TrackMe, so she can benefit of the AutomatedSOS service. Thanks to this functionality the system checks periodically her heart rate. During a relax time, Maria's heart rate get so low that her heart risks to stop. Luckily she always wears a smartwatch on her wrist, because she's aware of the utility and importance of TrackMe's monitoring. In fact, as soon as her heart rate gets lower than 30 bpm, AutomatedSOS sends an assistance request to the Ambulance Dispatching System, notifying Maria about the estimated time of arrival of the aid team.
 	
 	\subsubsection*{Scenario 3 - On-Demand Ambulance Request}
-	% A sport addicted User such as Jhon always 
+		A sport addicted user such as Jhon always goes out during the morning to have a run in the park. 
+		In the last period he didn't have time to train himself so much as before and now he has more difficulties. Coming back to home, he starts feeling weak. He measure his pressure values and notice that they are lower than their normal level. To speed up the operation and to avoid calling the ambulance service, he logs in his TrackMe account and in the homepage he clicks on "Request assistance". The application confirms that the request has been successfully sent and updates Jhon about the Estimated Time of Arrival of the ambulance.
 	
 	\subsubsection*{Scenario 4 - Search for a User}
+		
 	
-	
-	\subsubsection*{Scenario 4 - Anonymous Sampling}
+	\subsubsection*{Scenario 5 - Anonymous Sampling}
 	ItalianStatistica is a big company that performs statistical analysis on the italian territory studying the differences between some geographical areas. For a new analysis on Milan's population, ItalianStatistica decides to retrieve samples from the Data4Help database. After the registration the company can perform anonymous samplings on the people living in Milan. Since asking for how many people with blue eyes and younger than 15 live in the city center results in sampling than 1000 individuals, Data4Help refuses such a request. In order to produce a sampling, ItalianStatistica extends the search to the entire municipality. In this way, a group of more than 1000 individuals is found and the sample with all relevant data is made accessible to the company.
 	
 	\newpage
 	
-	\subsection{Functional Requirments}
+	\subsection{Functional Requirements}
 	
 	\subsubsection*{{[}{G1}{]}: Allow visitors to easily register in the system}
 	\begin{itemize}\\
 		\begin{itemize}
-			\item {[D1]}: The SSN must be unique.
+			\item {[D1]}: The Social Security Number is be unique.
 			\item {[D2]}: The verification message sent by SMS/e-mail will be certainly received by the User/Third Party.
 			\\\\
 			\item {[R1]}: The system must allow the Visitor/Third Party to provide credentials and personal data.
 			\item {[R2]}: The system must verify the correspondance between the SSN provided by the Visitor/Third Party and their personal information.
 			\item {[R3]}: The system must verify the correctness of the data provided by the Visitor/Third Parties with an e-mail/SMS verification.
-			\item {[R4]}: The system must verify that there are no other registered Users/Third Parties with the same SSN/e-mail.
-			\item {[R5]}: In order to register successfully a Third Party, the system must oblige it to accept data privacy conditions.
+			\item {[R4]}: The system must verify that there are no other registered Users/Third Parties with the same e-mail/SSN.
+			\item {[R5]}: In order to register successfully a Third Party, the system must oblige it to accept users data privacy conditions.
 		\end{itemize} 
 	\end{itemize}
 	\subsubsection*{{[}{G2}{]}: Allow Users to share personal information/health parameters}
 	\begin{itemize}\\
 		\begin{itemize}
 			\item {[D3]}: Users' devices are up and running in order to retrieve and process data.
-			\item {[D4]}: Users' devices must support the GPS technology.
-			\item {[D5]}: Users' devices must support the Mobile Application
-			\item {[D6]}: Data periodically received by Users' devices are assumed to have a good accuracy. 
-			\item {[D7]}: Parameters provided by Users' are assumed to be correct. 
-			\item {[D8]}: Users' devices are assumed to communicate throught the Internet.
+			\item {[D4]}: Data periodically received by Users' devices are assumed to have a good accuracy.
+			\item {[D5]}: Data provided by Users' are assumed to be correct. 
+			\item {[D6]}: Users' devices support the GPS technology.
+			\item {[D7]}: Users' devices support the Mobile Application 
+			\item {[D8]}: Users' devices communicate throught the Internet.
 			\\ \\
-			\item {[R6]}: Users locations are retrieved by GPS.
+			\item {[R6]}: Users locations must be retrieved by GPS.
 			\item {[R7]}: The system must allow the Users to update their personal data.
 			\item {[R8]}: The system must allow the Users to upload their medical records (such as blood group).
 		\end{itemize} 
@@ -288,28 +291,28 @@
 	\subsubsection*{{[}{G4}{]}: Guarantee the elderly users to receive an immediate assistance by an ambulance in case of high risk disease}
 	\begin{itemize}\\
 		\begin{itemize}
-			\item {[D6]}: Parameters periodically received by Users' devices are assumed to have a good accuracy. 
-			\item {[D9]}: In case of emergency, all parameters relative to a specific individual are correctly reported to the ambulance dispatching system.
-			\item {[D10]}: The ambulance dispatching system is always running and reliable.
-			\item {[D12]}: The time spent by an ambulance to reach a defined location must be as low as possibile. 
+			\item {[D4]}: Data periodically received by Users' devices are assumed to have a good accuracy.
+			\item {[D9]}: In case of emergency, all parameters relative to a specific individual are correctly reported to the Ambulance Dispatching System.
+			\item {[D10]}: The Ambulance Dispatching System is always running and reliable. 
+			\item {[D11]}: The time spent by an ambulance to reach a defined location is as low as possibile. 
 			\\ \\
 			\item {[R16]}: The AutomatedSOS service is automatically activated during the registration process if the Visitor is over 60.
 			\item {[R17]}: The Health Status Monitoring System must notify the Ambulance Dispatching System as soon as possible (within 5 seconds).
 			\item {[R18]}: When the Ambulance Dispatching System is notified, the Health Status Monitoring System sends all the User's clinical parameters.
-			\item {[R19]}: The system should let the User have the possibily to request directly help from an ambulance if he feels it is necessary.
+			\item {[R19]}: The system should let the User have the possibily to request directly help from an ambulance if he/she feels it is necessary.
 			\item {[R20]}: Users' devices must support sensors for retrieving health parameters.
 		\end{itemize}
 	\end{itemize}
 	\subsubsection*{{[}{G5}{]}: Guarantee the preservation of the privacy of the Users.}
 	\begin{itemize}\\
 		\begin{itemize}
-			\item {[D2]}: Parameters periodically received by Users' devices are assumed to have a good accuracy. 
+			\item {[D4]}: Data periodically received by Users' devices are assumed to have a good accuracy. 
 			\item {[D5]}: Data provided by Users' are assumed to be correct. 
 			\\ \\
 			\item {[R5]}: In order to register successfully a Third Party, the system must oblige it to accept data privacy conditions.
-			\item {[R8]}: A Third Party can access data and parameters of a specific User if and only if he/she accepts the request.
-			\item {[R3]}: The system must accept sampling if and only if results are related to more than 1000 Users.
-			\item {[R9]}: The system must implement some form of accurate access control on databases.
+			\item {[R14]}: The system must accept sampling if and only if results are related to more than 1000 Users.
+			\item {[R21]}: A Third Party can access data and parameters of a specific User if and only if he/she accepts the request.
+			\item {[R22]}: The system must implement some form of accurate access control on databases.
 		\end{itemize}
 	\end{itemize}
 	
@@ -428,7 +431,7 @@
 			\hline
 			EXIT CONDITIONS  & The Third Party has successfully logged in \\ \hline
 			EXCEPTIONS & 
-			1. The User is not registered\\
+			1. The Third Party is not registered\\
 			&2. The e-mail is wrong\\
 			&3. The SSN is wrong\\
 			&2. The password is wrong\\
@@ -449,7 +452,8 @@
 			\hline
 			ENTRY CONDITION & The User must be in the HomePage \\ \hline
 			EVENTS FLOW  &
-			Click on "Request Assistance" button\\
+			1. Click on "Request Assistance" button\\
+			&2. Confirm the operation when it is asked.\\
 			\hline
 			EXIT CONDITIONS  & The User has successfully requested Assistance \\ \hline
 			EXCEPTIONS & 
@@ -466,6 +470,11 @@
 	\subsection{Desgin Constraints}
 	\subsubsection{Standards Compliance}
 	\subsubsection{Hardware Limitations}
+		\begin{itemize}
+			\item \texttt{Mobile App}: iOS/Android, Internet Connection, GPS.
+			\item \texttt{AppleWatch/WearOS}: smartwatches linked to mobile devices or equipped with GPS and equipped with hearbeat/pressure sensors.
+			\item \texttt{Web App}: browser (e.g. Google Chrome / Safari) able to retrieve users' location.
+		\end{itemize}
 	\subsubsection{Other Constraints}
 	
 	\subsection{Software System Attributes}
@@ -501,9 +510,10 @@
 				22/10/2018  & UML and Non-Functional Requirements & 3.5 \\
 				25/10/2018 & Functional Requirements & 3 \\
 				26/10/2018 & Statechart Diagrams & 2 \\
-				28/10/2018 & Mockups and Scenarios & 1.5 \\
+				28/10/2018 & User Interface and Scenarios & 1.5 \\
+				29/10/2018 & Interfaces and Scenarios & 1.5 \\
 				\hline
-				Total & & 14.5 \\
+				Total & & 16 \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -519,9 +529,10 @@
 				22/10/2018  & Assumptions and Non-Functional Requirements & 3.5 \\
 				25/10/2018 & Functional Requirements & 3 \\
 				26/10/2018 & Functional Requirements & 1 \\
-				27/10/2018 & Use Case Diagrams & 3 \\
+				27/10/2018 & Use Case Diagram & 3 \\
+				28/10/2018 & Use Case Diagram and Use Cases & 1 \\
 				\hline
-				Total & & 14.5 \\
+				Total & & 15.5 \\
 				\hline
 			\end{tabular}
 		\end{center}
