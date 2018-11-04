@@ -1,4 +1,10 @@
 
+Use case Check Personal Information non trope inference ai goals
+Use case Report Abuse è uni funzionalità non citata da nessun'altra parte
+
+
+User state chart diagram should not include AutomatedSOS functionalities and states
+
 Requirement access a body sensors?
 Mandare conferma registrazione solo per SMS, correggere in tutto il documento
 

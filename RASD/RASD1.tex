@@ -49,7 +49,7 @@
 	
 	\subsubsection{Goals}
 	\begin{itemize}
-		\item {\textbf[}\textbf{G1}{\textbf]}: Allow visitors to easily register in the system.
+		\item {\textbf[}\textbf{G1}{\textbf]}: Allow visitors to easily register in the system and later to login.
 		\item {\textbf[}\textbf{G2}{\textbf]}: Allow users to simply share personal information/health parameters.
 		\item {\textbf[}\textbf{G3}{\textbf]}: Allow third parties to access information shared by users.
 		\begin{itemize}
@@ -57,9 +57,8 @@
 			\item {[G3.2]}: Allow third parties to access anonymized information of groups of individuals.
 			\item {[G3.3]}: Allow third parties to subscribe to new information of a specific individual and to receive it.
 		\end{itemize}
-		\item {\textbf[}\textbf{G4}{\textbf]}: Allow third parties to monitor specific users' parameters.
-		\item {\textbf[}\textbf{G5}{\textbf]}: Guarantee the elderly users to receive an immediate assistance by an ambulance in case of high risk disease.
-		\item {\textbf[}\textbf{G6}{\textbf]}: Guarantee the preservation of the privacy of the users.
+		\item {\textbf[}\textbf{G4}{\textbf]}: Guarantee the elderly users to receive an immediate assistance by an ambulance in case of high risk disease.
+		\item {\textbf[}\textbf{G5}{\textbf]}: Guarantee the preservation of the privacy of the users.
 	\end{itemize}
 	
 	
@@ -210,11 +209,9 @@
 			\item Ambulance Dispatching System API to perform assistance requests. Actually it could be an automatic phone call to the ambulance contact center, during which an algorithm communicates all relevant data to the interlocutor (e.g. name, age, location etc.).
 		\end{itemize}
 	\subsubsection{Communication Interfaces}
-		\begin{itemize}
 			Since the TLS versions 1.0 and 1.1 will not be more supported, TrackMe must rely on the newer TLS version 1.3, released in 2018, to guarantee the best security possible, at least during the HTTPS connections involving messages carrying credentials or other sensible data. 
-			
+			\\
 			For other types of connections, e.g. to retrieve periodical data from users' devices, TCP persistent connections can be avoided: even if a packet is lost another one will be generated within a slight amount of time, so UDP non-persistent connections can be used (it is a stream of data). This can also provide a lower server load, as pointed out later in section 3.6, Performance Requirements.
-		\end{itemize}
 	
 	
 	\newpage
@@ -231,7 +228,7 @@
 	
 	\subsubsection*{Scenario 4 - Search for a User}
 		San Paolo, a hospital located in Milan is looking for a blood donor, whose  group is O- in order to help out a patient with a blood transufion. According to medicine, a recipient with blood type O- can only receive blood from blood group O- only. Therefore, San Paolo, which is registered to TrackMe as a Third Party, is searching for Users whose blood group matches with the patient one.
-		Franco, a registered User both to TrackMe and to San Paolo, receives a request in which there is a brief description about the reasearch of a blood donor. Knowing about the importance of such fact and that he has blood group O- (which is the one requested for the blood transufion), Franco accepts the request.
+		Franco, a registered User to TrackMe and a patient of San Paolo, receives a request in which there is a brief description about the research of a blood donor. Knowing about the importance of such fact and that he has blood group O- (which is the one requested for the blood transfusion), Franco accepts the request.
 		
 	\subsubsection*{Scenario 5 - Anonymous Sampling}
 		ItalianStatistica is a big company that performs statistical analysis on the italian territory studying the differences between some geographical areas. For a new analysis on Milan's population, ItalianStatistica decides to retrieve samples from the Data4Help database. After the registration the company can perform anonymous samplings on the people living in Milan. Since asking for how many people with blue eyes and younger than 15 live in the city center results in sampling than 1000 individuals, Data4Help refuses such a request. In order to produce a sampling, ItalianStatistica extends the search to the entire municipality. In this way, a group of more than 1000 individuals is found and the sample with all relevant data is made accessible to the company.
@@ -240,7 +237,7 @@
 	
 	\subsection{Functional Requirements}
 	
-	\subsubsection*{{[}{G1}{]}: Allow visitors to easily register in the system}
+	\subsubsection*{{[}{G1}{]}: Allow visitors to easily register in the system and later to login.}
 	\begin{itemize}\\
 		\begin{itemize}
 			\item {[D1]}: The Social Security Number is be unique.
@@ -320,6 +317,7 @@
 	
 	\newpage
 	\subsection{Use Case Diagram}
+	Here is represented a Use Case diagram representing all functionalities accessible by each actor:
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1.25\linewidth]{Images/use_case_diagram}
@@ -328,304 +326,322 @@
 	
 	\newpage
 	\subsection{Use cases}
-	\subsubsection{Visitor Registration }
-	\begin{center}
-		\begin{tabular}{| c | l |}
-			\hline
-			\textbf{NAME} & Register to TrackMe \\
-			\hline
-			\textbf{ACTOR} & Visitor \\
-			\hline
-			\textbf{GOALS} & [G1] \\
-			\hline
-			\textbf{ENTRY CONDITIONS} & The Visitor must have installed \\
-			&	the Application on his/her Mobile device \\ \hline
-			\textbf{EVENTS FLOW}  &
-			1. Fill all mandatory fields in the Registration form\\
-			&2. Click on "Register" button\\
-			&3. System checks data validity\\
-			&4. System sends an SMS as confirmation\\
-			&5. System saves Users' data\\
-			\hline
-			\textbf{EXIT CONDITIONS}  & The Vistor has successfully registered to TrackMe\\ \hline
-			\textbf{EXCEPTIONS} & 
-			1. The User is already registered\\
-			&2. The e-mail is already registered\\
-			&3. The Mobile Number is already registered\\
-			&2. The SSN provided is invalid\\
-			&3. Some mandatory fields are not filled\\
-			\hline
-		\end{tabular}
-	\end{center}
-
-	\subsubsection{Third Party Registration }
-	\begin{center}
-		\begin{tabular}{| c | l |}
-			\hline
-			\textbf{NAME} & Register to TrackMe \\
-			\hline
-			\textbf{ACTOR} & Third Party \\
-			\hline
-			\textbf{GOALS} & [G1] \\
-			\hline
-			\textbf{ENTRY CONDITIONS} & The Third Party must have installed \\
-			&	the Application on its Mobile device \\ \hline
-			\textbf{EVENTS FLOW}  &
-			1. Fill all mandatory fields in the Registration form\\
-			&2. Click on "Register" button\\
-			&3. System checks data validity\\
-			&4. System sends an SMS as confirmation\\
-			&5. System saves Third Party's data\\
-			\hline
-			\textbf{EXIT CONDITIONS}  & The Third Party has successfully registered to TrackMe \\ \hline
-			\textbf{EXCEPTIONS} & 
-			1. The Third Party is already registered\\
-			&2. The e-mail is already registered\\
-			&3. The Mobile Number is already registered\\
-			&2. The SSN provided is invalid\\
-			&3. Some mandatory fields are not filled\\
-			\hline
-		\end{tabular}
-	\end{center}
-
-	\subsubsection{User Login }
-	\begin{center}
-		\begin{tabular}{| c | l |}
-			\hline
-			\textbf{NAME} & Login \\
-			\hline
-			\textbf{ACTOR} & User \\
-			\hline
-			\textbf{GOALS} & [G1] \\
-			\hline
-			\textbf{ENTRY CONDITIONS} & The Visitor must be in the Login page \\ \hline
-			\textbf{EVENTS FLOW}  &
-			1. Enter e-mail or SSN\\
-			&2. Enter the password\\
-			&3. Click on "Login" button\\
-			\hline
-			\textbf{EXIT CONDITIONS}  & The User has successfully logged in \\ \hline
-			\textbf{EXCEPTIONS} & 
-			1. The User is not registered\\
-			&2. The e-mail is wrong\\
-			&3. The SSN is wrong\\
-			&2. The password is wrong\\
-			&3. Some mandatory fields are not filled\\
-			\hline
-		\end{tabular}
-	\end{center}
-
-	\subsubsection{Third Party Login}
-	\begin{center}
-		\begin{tabular}{| c | l |}
-			\hline
-			\textbf{NAME} & Login \\
-			\hline
-			\textbf{ACTOR} & Third Party \\
-			\hline
-			\textbf{GOALS} & [G1] \\
-			\hline
-			\textbf{ENTRY CONDITION} & The Third Party must be in the Login page \\ \hline
-			\textbf{EVENTS FLOW}  &
-			1. Enter e-mail or SSN\\
-			&2. Enter the password\\
-			&3. Click on "Login" button\\
-			\hline
-			\textbf{EXIT CONDITIONS}  & The Third Party has successfully logged in \\ \hline
-			\textbf{EXCEPTIONS} & 
-			1. The Third Party is not registered\\
-			&2. The e-mail is wrong\\
-			&3. The SSN is wrong\\
-			&2. The password is wrong\\
-			&3. Some mandatory fields are not filled\\
-			\hline
-		\end{tabular}
-	\end{center}
-
-	\subsubsection{Request Assistance}
-	\begin{center}
-		\begin{tabular}{| c | l |}
-			\hline
-			\textbf{NAME} & Request Assistance \\
-			\hline
-			\textbf{ACTOR} & User \\
-			\hline
-			\textbf{GOALS} & [G1] \\
-			\hline
-			\textbf{ENTRY CONDITION} & The User must be in the HomePage \\ \hline
-			\textbf{EVENTS FLOW}  &
-			1. Click on "Request Assistance" button\\
-			&2. Confirm the operation when it is asked\\
-			\hline
-			\textbf{EXIT CONDITIONS}  & The User has successfully requested Assistance \\ \hline
-			\textbf{EXCEPTIONS} & 
-			GPS is not active on User's device\\
-			\hline
-		\end{tabular}
-	\end{center}
-
-	\subsubsection{Accept Request}
-	\begin{center}
-		\begin{tabular}{| c | l |}
-			\hline
-			\textbf{NAME} & Accept Request \\
-			\hline
-			\textbf{ACTOR} & User \\
-			\hline
-			\textbf{GOALS} & [G1] \\
-			\hline
-			\textbf{ENTRY CONDITION} & The User must receive a Third Party request \\ \hline
-			\textbf{EVENTS FLOW}  &
-			1. User receives request from Third Party\\
-			&2. Users clicks on "Accept" button\\
-			\hline
-			\textbf{EXIT CONDITIONS}  & The User has successfully accepted the request \\ \hline
-			\textbf{EXCEPTIONS} & 
-			GPS is not active on User's device\\
-			\hline
-		\end{tabular}
-	\end{center}
-
-	\subsubsection{Reject Request}
-	\begin{center}
-		\begin{tabular}{| c | l |}
-			\hline
-			\textbf{NAME} & Reject Request \\
-			\hline
-			\textbf{ACTOR} & User \\
-			\hline
-			\textbf{GOALS} & [G1] \\
-			\hline
-			\textbf{ENTRY CONDITION} & The User must receive a Third Party request \\ \hline
-			\textbf{EVENTS FLOW}  &
-			1. User receives request from Third Party\\
-			&2. Users clicks on "Reject" button\\
-			\hline
-			\textbf{EXIT CONDITIONS}  & The User has successfully rejected the request \\ \hline
-			\textbf{EXCEPTIONS} & 
-			GPS is not active on User's device\\
-			\hline
-		\end{tabular}
-	\end{center}
-
-	\subsubsection{Update Personal Information}
-	\begin{center}
-		\begin{tabular}{| c | l |}
-			\hline
-			\textbf{NAME} & Update Personal Information \\
-			\hline
-			\textbf{ACTOR} & User \\
-			\hline
-			\textbf{GOALS} & [G1] \\
-			\hline
-			\textbf{ENTRY CONDITION} & The User must be in the personal data Page \\ \hline
-			\textbf{EVENTS FLOW}  &
-			1. User changes his/her personal information\\
-			&2. Users clicks on "Edit" button\\
-			\hline
-			\textbf{EXIT CONDITIONS}  & The User has successfully edited his/her personal information \\ \hline
-			\textbf{EXCEPTIONS} & 
-			User edited a field in an inappropriate way (e.g. added \\
-			&a non-existent address)\\
-			\hline
-		\end{tabular}
-	\end{center}
-
-	\subsubsection{Check Personal Information}
-	\begin{center}
-		\begin{tabular}{| c | l |}
-			\hline
-			\textbf{NAME} & Check Personal Information \\
-			\hline
-			\textbf{ACTOR} & User \\
-			\hline
-			\textbf{GOALS} & [G1] \\
-			\hline
-			\textbf{ENTRY CONDITION} & The User must be in his/her personal data Page \\ \hline
-			\textbf{EVENTS FLOW}  &
-			1. User opens his/her personal data Page\\
-			&2. Users checks his personal information\\
-			\hline
-			\textbf{EXIT CONDITIONS}  & The User goes back to the App homepage \\ \hline
-			\textbf{EXCEPTIONS} & 
-			None\\
-			\hline
-		\end{tabular}
-	\end{center}
-
-	\subsubsection{Send Request}
-	\begin{center}
-		\begin{tabular}{| c | l |}
-			\hline
-			\textbf{NAME} & Send Request \\
-			\hline
-			\textbf{ACTOR} & Third Party \\
-			\hline
-			\textbf{GOALS} & [G1] \\
-			\hline
-			\textbf{ENTRY CONDITION} & The Third Party must be in the Homepage \\ \hline
-			\textbf{EVENTS FLOW}  &
-			1. Third party sends a request to the User\\
-			&2. Third party waits for User's response\\
-			\hline
-			\textbf{EXIT CONDITIONS}  & The User accepted/rejected the request \\ \hline
-			\textbf{EXCEPTIONS} & 
-			1. The User's SSN is invalid\\
-			&2. The User is not registered\\
-			\hline
-		\end{tabular}
-	\end{center}
-
-	\subsubsection{Anonymous Sampling}
-	\begin{center}
-		\begin{tabular}{| c | l |}
-			\hline
-			\textbf{NAME} & Anonymous Sampling \\
-			\hline
-			\textbf{ACTOR} & Third Party \\
-			\hline
-			\textbf{GOALS} & [G1] \\
-			\hline
-			\textbf{ENTRY CONDITION} & The Third Party wants to collect sample information \\ \hline
-			\textbf{EVENTS FLOW}  &
-			1. Third party conducts a sample search\\
-			&2. Third party saves the collected information\\
-			\hline
-			\textbf{EXIT CONDITIONS}  & The Third Party has successfully completed the sampling \\ \hline
-			\textbf{EXCEPTIONS} & 
-			The number of Users the Third Party wants to do a sample\\
-			&search on is lower than 1000.\\
-			\hline
-		\end{tabular}
-	\end{center}
-
-	\subsubsection{Report Abuse}
-	\begin{center}
-		\begin{tabular}{| c | l |}
-			\hline
-			\textbf{NAME} & Report Abuse \\
-			\hline
-			\textbf{ACTOR} & System Manager \\
-			\hline
-			\textbf{GOALS} & [G1] \\
-			\hline
-			\textbf{ENTRY CONDITION} & The Third Party must be in the Homepage \\ \hline
-			\textbf{EVENTS FLOW}  &
-			1. Third party sends a request to the User\\
-			&2. Third party waits for User's response\\
-			\hline
-			\textbf{EXIT CONDITIONS}  & The User accepted/rejected the request \\ \hline
-			\textbf{EXCEPTIONS} & 
-			1. The User's SSN is invalid\\
-			&2. The User is not registered\\
-			\hline
-		\end{tabular}
-	\end{center}
-
+		\subsubsection{Visitor Registration}
+		\begin{center}
+			\begin{tabular}{| c | l |}
+				\hline
+				\textbf{NAME} & Register to TrackMe \\
+				\hline
+				\textbf{ACTOR} & Visitor \\
+				\hline
+				\textbf{GOALS} & [G1] \\
+				\hline
+				\textbf{ENTRY CONDITIONS} & The Visitor has installed \\
+				&	the Application on his/her Mobile device \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. Fill all mandatory fields in the Registration form\\
+				&2. Click on "Register" button\\
+				&3. System checks data validity\\
+				&4. System sends an SMS as confirmation\\
+				&5. System saves Users' data\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The Vistor has successfully registered to TrackMe\\ \hline
+				\textbf{EXCEPTIONS} & 
+				1. The User is already registered\\
+				&2. The e-mail is already registered\\
+				&3. The Mobile Number is already registered\\
+				&4. The SSN provided is invalid\\
+				&5. Some mandatory fields are not filled\\
+				\hline
+			\end{tabular}
+		\end{center}
 	
+		\subsubsection{User Login}
+		\begin{center}
+			\begin{tabular}{| c | l |}
+				\hline
+				\textbf{NAME} & User Login \\
+				\hline
+				\textbf{ACTOR} & User \\
+				\hline
+				\textbf{GOALS} & [G1] \\
+				\hline
+				\textbf{ENTRY CONDITIONS} & The User is in the Login page \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. Enter e-mail or SSN\\
+				&2. Enter the password\\
+				&3. Click on "Login" button\\
+				&4. Systems checks the correctness of the credentials\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The User has successfully logged in \\ \hline
+				\textbf{EXCEPTIONS} & 
+				1. The User is not registered\\
+				&2. The e-mail is wrong\\
+				&3. The SSN is wrong\\
+				&4. The password is wrong\\
+				&5. Some mandatory fields are not filled\\
+				\hline
+			\end{tabular}
+		\end{center}
 	
+		\subsubsection{Third Party Login}
+		\begin{center}
+			\begin{tabular}{| c | l |}
+				\hline
+				\textbf{NAME} & Third Party Login \\
+				\hline
+				\textbf{ACTOR} & Third Party \\
+				\hline
+				\textbf{GOALS} & [G1] \\
+				\hline
+				\textbf{ENTRY CONDITION} & The Third Party is in the Login page \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. Enter e-mail or SSN\\
+				&2. Enter the password\\
+				&3. Click on "Login" button\\
+				&4. Systems checks the correctness of the credentials\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The Third Party has successfully logged in \\ \hline
+				\textbf{EXCEPTIONS} & 
+				1. The Third Party is not registered\\
+				&2. The e-mail is wrong\\
+				&3. The SSN is wrong\\
+				&4. The password is wrong\\
+				&5. Some mandatory fields are not filled\\
+				\hline
+			\end{tabular}
+		\end{center}
 	
+		\subsubsection{Update Personal Information}
+		\begin{center}
+			\begin{tabular}{| c | l |}
+				\hline
+				\textbf{NAME} & Update Personal Information \\
+				\hline
+				\textbf{ACTOR} & User \\
+				\hline
+				\textbf{GOALS} & [G2] \\
+				\hline
+				\textbf{ENTRY CONDITION} & The User is in the personal data Page \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. User clicks on "Edit" button\\
+				&2. User changes his/her personal information\\
+				&3. User confirms the changes\\
+				\hline
+				\textbf{EXIT CONDITIONS}  
+				& The User has successfully edited his/her \\
+				& personal information \\ \hline
+				\textbf{EXCEPTIONS} & 
+				1. User edited a field in an inappropriate way \\
+				& (e.g. added a non-existent address)\\
+				\hline
+			\end{tabular}
+		\end{center}
+		
+		\subsubsection{Check Personal Information}
+		\begin{center}
+			\begin{tabular}{| c | l |}
+				\hline
+				\textbf{NAME} & Check Personal Information \\
+				\hline
+				\textbf{ACTOR} & User \\
+				\hline
+				\textbf{GOALS} & [G2] \\
+				\hline
+				\textbf{ENTRY CONDITION} & The User is in his/her personal data Page \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. User opens his/her personal data Page\\
+				&2. Users checks his personal information\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The User goes back to the App homepage \\ \hline
+				\textbf{EXCEPTIONS} & 
+				None\\
+				\hline
+			\end{tabular}
+		\end{center}
 	
+		\subsubsection{Request Assistance}
+		\begin{center}
+			\begin{tabular}{| c | l |}
+				\hline
+				\textbf{NAME} & Request Assistance \\
+				\hline
+				\textbf{ACTOR} & User \\
+				\hline
+				\textbf{GOALS} & ??? \\
+				\hline
+				\textbf{ENTRY CONDITION} & The User is in the HomePage \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. Click on "Request Assistance" button\\
+				&2. Confirm the operation when it is asked\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The User has successfully requested Assistance \\ \hline
+				\textbf{EXCEPTIONS} & 
+				1. GPS is not active on User's device\\ \hline
+				\textbf{SPECIAL REQ.} & 
+				1. The request must be processed in less than 5 seconds.\\
+				\hline
+			\end{tabular}
+		\end{center}
+	
+		\subsubsection{Accept Request}
+		\begin{center}
+			\begin{tabular}{| c | l |}
+				\hline
+				\textbf{NAME} & Accept Request \\
+				\hline
+				\textbf{ACTOR} & User \\
+				\hline
+				\textbf{GOALS} & [G3.1] \\
+				\hline
+				\textbf{ENTRY CONDITION} & The User has received a Third Party request \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. User receives a request from a Third Party\\
+				&2. Users clicks on "Accept" button\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The User has successfully accepted the request \\ \hline
+				\textbf{EXCEPTIONS} & 
+				None\\
+				\hline
+			\end{tabular}
+		\end{center}
+	
+		\subsubsection{Reject Request}
+		\begin{center}
+			\begin{tabular}{| c | l |}
+				\hline
+				\textbf{NAME} & Reject Request \\
+				\hline
+				\textbf{ACTOR} & User \\
+				\hline
+				\textbf{GOALS} & [G3.1], [G5] \\
+				\hline
+				\textbf{ENTRY CONDITION} & The User must receive a Third Party request \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. User receives request from Third Party\\
+				&2. Users clicks on "Reject" button\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The User has successfully rejected the request \\ \hline
+				\textbf{EXCEPTIONS} & 
+				None\\
+				\hline
+			\end{tabular}
+		\end{center}
+	
+		\subsubsection{Send Request}
+		\begin{center}
+			\begin{tabular}{| c | l |}
+				\hline
+				\textbf{NAME} & Send Request \\
+				\hline
+				\textbf{ACTOR} & Third Party \\
+				\hline
+				\textbf{GOALS} & [G3.1] \\
+				\hline
+				\textbf{ENTRY CONDITION} & The Third Party must be in the Homepage \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. Third party searches a User through his/her SSN\\
+				&2. Third party sends a request to the User\\
+				&3. Third party waits for User's response\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The User accepted/rejected the request \\ \hline
+				\textbf{EXCEPTIONS} & 
+				1. The User's SSN is invalid\\
+				&2. The person with the specified SSN\\
+				&is not registered\\
+				\hline
+			\end{tabular}
+		\end{center}
+	
+		\subsubsection{Anonymous Sampling}
+		\begin{center}
+			\begin{tabular}{| c | l |}
+				\hline
+				\textbf{NAME} & Anonymous Sampling \\
+				\hline
+				\textbf{ACTOR} & Third Party \\
+				\hline
+				\textbf{GOALS} & [G3.2] \\
+				\hline
+				\textbf{ENTRY CONDITION} & The Third Party wants to collect sample information \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. Third party conducts a sample search\\
+				&2. Third party saves the collected information\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The Third Party has successfully completed the sampling \\ \hline
+				\textbf{EXCEPTIONS} & 
+				The number of Users matching with the Third Party's\\
+				&sample search is lower than 1000.\\
+				\hline
+			\end{tabular}
+		\end{center}
+	
+		\subsubsection{Subscription to User's Data}
+		\begin{center}
+			\begin{tabular}{| c | l |}
+				\hline
+				\textbf{NAME} & Subscription to User's Data \\
+				\hline
+				\textbf{ACTOR} & Third Party \\
+				\hline
+				\textbf{GOALS} & [G3.3] \\
+				\hline
+				\textbf{ENTRY CONDITION} & The User has accepted Third Party's access request \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. Third party clicks on "Subscribe to new data" button\\
+				&2. Third party confirms the subscription\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The Third Party has successfully subscripted to new\\
+				& User's data \\ \hline
+				\textbf{EXCEPTIONS} & 
+				None\\
+				\hline
+			\end{tabular}
+		\end{center}
+	
+		\subsubsection{Report Abuse}
+		\begin{center}
+			\begin{tabular}{| c | l |}
+				\hline
+				\textbf{NAME} & Report Abuse \\
+				\hline
+				\textbf{ACTOR} & System Manager \\
+				\hline
+				\textbf{GOALS} & ??? \\
+				\hline
+				\textbf{ENTRY CONDITION} & The Third Party must be in the Homepage \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. Third party sends a request to the User\\
+				&2. Third party waits for User's response\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The User accepted/rejected the request \\ \hline
+				\textbf{EXCEPTIONS} & 
+				1. The User's SSN is invalid\\
+				&2. The User is not registered\\
+				\hline
+			\end{tabular}
+		\end{center}
+
+	\subsection{Sequence Diagrams}
+		\subsubsection{Visitor Registration}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.0\linewidth]{Images/registration_sequence}
+				\label{fig:registration_sequence}
+			\end{figure}
+		\subsubsection{Login}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1.0\linewidth]{Images/login_sequence}
+			\label{fig:login_sequence}
+		\end{figure}
+		\subsubsection{User Data Access Request and Subscription}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1.25\linewidth]{Images/request_subscription_sequence}
+			\label{fig:request_subscription_sequence}
+		\end{figure}
+		
 	\subsection{Performance Requirments}
 	The system must be able to handle a huge quantity of requests simultaneously throughout the day, responding to users' necessities in the shortest time possible. In order to improve the perfomance of the system, since data are received in a discrete way (e.g. monitored every 5 seconds), TrackMe relies on a UDP non-persistent connection.\\
 	For what concerns the AutomatedSOS service, it is required that each ambulance request is generated and sent to the Ambulance Dispatching System within 5 seconds from the moment in which the vital parameters of an elder user get below the fixed threshold.
@@ -675,8 +691,9 @@
 				26/10/2018 & Statechart Diagrams & 2 \\
 				28/10/2018 & User Interface and Scenarios & 1.5 \\
 				29/10/2018 & Interfaces and Scenarios & 1.5 \\
+				03/11/2018 & Sequence Diagrams & 2 \\
 				\hline
-				Total & & 16 \\
+				Total & & 18 \\
 				\hline
 			\end{tabular}
 		\end{center}
