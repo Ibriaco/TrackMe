@@ -194,7 +194,11 @@
 
 	\newpage
 	\subsubsection{Hardware Interfaces}
-
+	\begin{itemize}
+		\item Wi-Fi 5 802.11ac+ antenna.
+		\item 4G/LTE antenna.
+		\item Body sensors.
+	\end{itemize}
 	\subsubsection{Software Interfaces}
 		TrackMe will make use of some Application Programming Interfaces to simplify the implementation, since these components are largely used and compatible with the majority of the devices currently on the market:
 		\begin{itemize}
@@ -489,6 +493,30 @@
 				1. GPS is not active on User's device\\ \hline
 				\textbf{SPECIAL REQ.} &
 				1. The request must be processed in less than 5 seconds.\\
+				\hline
+			\end{tabular}
+		\end{center}
+	
+		\subsubsection{Provide Automated Assistance}
+		\begin{center}
+			\begin{tabular}{| c | l |}
+				\hline
+				\textbf{NAME} & Provide Automated Assistance \\
+				\hline
+				\textbf{ACTOR} & Health Status Monitoring System \\
+				\hline
+				\textbf{GOALS} & [G4.1] \\
+				\hline
+				\textbf{ENTRY CONDITION} & Some User's parameters are below a certain threshold \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. System detects that some parameters are below a threshold\\
+				&2. System retrieves user's location and forward it to the\\ 
+				&Ambulance Dispatching System\\
+				&3. System request an ambulance to assist the user\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The ambulance has reached the user's location \\ \hline
+				\textbf{EXCEPTIONS} &
+				None\\
 				\hline
 			\end{tabular}
 		\end{center}
