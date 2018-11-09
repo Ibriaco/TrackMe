@@ -44,6 +44,7 @@
 			\item Access to anonymized data of groups of individuals. These requests are approved by TrackMe if it is able to properly anonymize the requested data. The request is rejected if it is way too specific.
 		\end{itemize}
 		As soon as a request for some certain data is approved, TrackMe makes the previously saved data available to the third party. Also, it allows the third party to subscribe to new data and to receive them as soon as they are produced.
+		\newpage
 		\item \textbf{AutomatedSOS}\\\\This service is oriented to elderly people: monitoring their health status parameters, the system can send to the location of the customer an ambulance when some parameters are below certain thresholds, guaranteeing a reaction time of less than 5 seconds from the time the parameters get lower than the threshold.
 	\end{itemize}
 
@@ -130,6 +131,13 @@
 
 		\newpage
 		\subsection{Product Functions}
+			According to the goals defined for the current system, we can highlight briefly the main functions of the Application, that can be divided in 4 groups which are the following:
+			\begin{itemize}
+				\item \texttt{Registration and Login}: This functionality lets a Visitor (either a Visitor or a Third Party) to register to TrackMe and therefore be able to Login.
+				\item \texttt{Data Monitoring}: Data4Help periodically monitors Users' parameters.
+				\item \texttt{Data Access and Update}: Users registered to TrackMe can either visualize their data or update it. Moreover, Third Parties can have access to some Users' data after their approval.
+				\item \texttt{Automated Assistance}: This functionality is very crucial for the system. It allows registered Users to receive an assistance when it's necessary.
+			\end{itemize}
 	
 		\newpage
 		\subsection{User Characteristics}
@@ -604,7 +612,7 @@
 				\hline
 			\end{tabular}
 		\end{center}
-
+		\newpage
 		\subsubsection{Send Request}
 		\begin{center}
 			\begin{tabular}{| c | l |}
@@ -713,7 +721,6 @@
 	For what concerns the AutomatedSOS service, it is required that each ambulance request is generated and sent to the Ambulance Dispatching System within 5 seconds from the moment in which the vital parameters of an elder user get below the fixed threshold.
 
 	\subsection{Desgin Constraints}
-	\subsubsection{Standards Compliance}
 	\subsubsection{Hardware Limitations}
 		\begin{itemize}
 			\item \texttt{Mobile App}: iOS/Android, Internet Connection, GPS.
