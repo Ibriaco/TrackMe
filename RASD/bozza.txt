@@ -2,8 +2,6 @@
 Use case Check Personal Information non troppo inerente ai goals
 Use case Report Abuse è una funzionalità non citata da nessun'altra parte
 
-Use case su automated sos ---> utente può rifiutare?
-
 User state chart diagram should not include AutomatedSOS functionalities and states
 
 Sequence Diagrams troppo dettagliati
@@ -18,7 +16,5 @@ Section su interfaces deve incentrarsi sulle interfacce da fornire/offrire, non 
 Togliere frecce in class diagram
 
 Mockup della Web interface per third parties
-
-Aggiungere assistance request e actor in definitions
 
 Fixare distinzione fra Purpose e Scope e descrizione del sistema

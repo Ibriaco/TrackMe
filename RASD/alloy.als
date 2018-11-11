@@ -113,12 +113,14 @@ fact automatedSOSMember {
 	-- all people monitored by AutomatedSOS must be subscribed to it, hence the sos boolean must be set to True
 	(all user: User | 
 		(user in AutomatedSOS.monitoredPeople iff user.sos = True) and 
-		-- if the user's age is greater or equal that 60 years (indicated in this model by value 6), then he/she is automatically subscribed to AutomatedSOS
+		-- if the user's age is greater or equal that 60 years (indicated in this model by value 6), 
+		-- then he/she is automatically subscribed to AutomatedSOS
 		(user.age >= 6 implies user.sos = True))
 }
 
 fact automatedAssistanceRequest {
-	-- a user is automatically assisted if and only he/she is subscribed to AutomatedSOS and his/her health status is negative (which means he/she is need of assistance)
+	-- a user is automatically assisted if and only he/she is subscribed to AutomatedSOS 
+	-- and his/her health status is negative (which means he/she is need of assistance)
 	all u: User | (u.sos = True and u.healthStatus < 0) iff (one a : AssistanceRequest | a.user.ssn = u.ssn)
 }
 
