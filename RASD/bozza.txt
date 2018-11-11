@@ -1,16 +1,10 @@
 
-Mondo con più di un third party (?)
-
-Use case Check Personal Information non troppo inerente ai goals
-Use case Report Abuse è una funzionalità non citata da nessun'altra parte
+Mondo Alloy con più di un third party (?)
 
 User state chart diagram should not include AutomatedSOS functionalities and states
 
 Sequence Diagrams troppo dettagliati
 Manca sequence diagram su samplings
-
-Riordinare use case diagram
-Ricontrollare e specificare un po' meglio use cases
 
 Section su interfaces deve incentrarsi sulle interfacce da fornire/offrire, non da usare
 	---> anche in class diagram togliere "google maps api", scrivere solo "maps api"

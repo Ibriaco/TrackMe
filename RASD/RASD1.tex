@@ -372,11 +372,11 @@
 				\textbf{ENTRY CONDITIONS} & The Visitor has installed \\
 				&	the Application on his/her Mobile device \\ \hline
 				\textbf{EVENTS FLOW}  &
-				1. Fill all mandatory fields in the Registration form\\
-				&2. Click on "Register" button\\
-				&3. System checks data validity\\
-				&4. System sends an SMS as confirmation\\
-				&5. System saves Users' data\\
+				1. Fill all mandatory fields in the Registration Form\\
+				&2. The visitor clicks on "Register" button\\
+				&3. The system checks data validity\\
+				&4. The system sends an SMS as confirmation\\
+				&5. The system saves Users' data\\
 				\hline
 				\textbf{EXIT CONDITIONS}  & The Vistor has successfully registered to TrackMe\\ \hline
 				\textbf{EXCEPTIONS} &
@@ -401,10 +401,10 @@
 				\hline
 				\textbf{ENTRY CONDITIONS} & The User is in the Login page \\ \hline
 				\textbf{EVENTS FLOW}  &
-				1. Enter e-mail or SSN\\
-				&2. Enter the password\\
-				&3. Click on "Login" button\\
-				&4. Systems checks the correctness of the credentials\\
+				1. The User enters e-mail or SSN\\
+				&2. The User enters the password\\
+				&3. The User clicks on "Login" button\\
+				&4. The system checks the correctness of the credentials\\
 				\hline
 				\textbf{EXIT CONDITIONS}  & The User has successfully logged in \\ \hline
 				\textbf{EXCEPTIONS} &
@@ -429,10 +429,11 @@
 				\hline
 				\textbf{ENTRY CONDITION} & The Third Party is in the Login page \\ \hline
 				\textbf{EVENTS FLOW}  &
-				1. Enter e-mail or SSN\\
-				&2. Enter the password\\
-				&3. Click on "Login" button\\
-				&4. Systems checks the correctness of the credentials\\
+				1. The Third Party enters e-mail or SSN\\
+				&2. The Third Party enters the password\\
+				&3. The Third Party clicks on "Login" button\\
+				&4. The Third Party systems checks the correctness\\
+				& of the credentials\\
 				\hline
 				\textbf{EXIT CONDITIONS}  & The Third Party has successfully logged in \\ \hline
 				\textbf{EXCEPTIONS} &
@@ -455,18 +456,20 @@
 				\hline
 				\textbf{GOALS} & [G2] \\
 				\hline
-				\textbf{ENTRY CONDITION} & The User is in the personal data Page \\ \hline
+				\textbf{ENTRY CONDITION} & The User is in the personal data page after Login\\ \hline
 				\textbf{EVENTS FLOW}  &
-				1. User clicks on "Edit" button\\
-				&2. User changes his/her personal information \\
-				&3. User confirms the changes\\
+				1. The User clicks on "Edit" button\\
+				&2. The User changes his/her personal information \\
+				&3. The User confirms the changes\\
+				&4. The system checks that the inserted values are\\
+				& appropriate\\
 				\hline
 				\textbf{EXIT CONDITIONS}
 				& The User has successfully edited his/her \\
 				& personal information \\ \hline
 				\textbf{EXCEPTIONS} &
-				1. User edited a field in an inappropriate way \\
-				& (e.g. added a non-existent address)\\
+				1. The User edited one or more fields in an \\
+				& inappropriate way (e.g. added a non-existing address)\\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -484,19 +487,22 @@
 				\hline
 				\textbf{ENTRY CONDITION} & Some User's parameters are below a certain threshold \\ \hline
 				\textbf{EVENTS FLOW}  &
-				1. System detects that some parameters are below a threshold\\
-				&2. System retrieves user's location and forward it to the\\ 
-				&Ambulance Dispatching System\\
-				&3. System request an ambulance to assist the user\\
+				1. The system detects that some parameters are below a \\
+				& threshold\\
+				&2. The system requests an ambulance to assist the user\\
+				&3. The system retrieves user's location and data and\\
+				&forwards them to the Ambulance Dispatching System\\
+				&4. The Ambulance System confirms the availability\\
+				&5. The Ambulance System communicates the ETA\\
 				\hline
-				\textbf{EXIT CONDITIONS}  & The ambulance has reached the user's location \\ \hline
+				\textbf{EXIT CONDITIONS}  & An ambulance has been sent to the user's location \\ \hline
 				\textbf{EXCEPTIONS} &
-				None\\
+				GPS is not active on User's device\\
 				\hline
 			\end{tabular}
 		\end{center}
 	
-		\subsubsection{Request Assistance}
+		\subsubsection{On-Demand Assistance Request}
 		\begin{center}
 			\begin{tabular}{| c | l |}
 				\hline
@@ -506,20 +512,27 @@
 				\hline
 				\textbf{GOALS} & [G4.2] \\
 				\hline
-				\textbf{ENTRY CONDITION} & The User is in the HomePage \\ \hline
+				\textbf{ENTRY CONDITION} & The User is in the HomePage after Login\\ \hline
 				\textbf{EVENTS FLOW}  &
-				1. Click on "Request Assistance" button\\
-				&2. Confirm the operation when it is asked\\
+				1. The User clicks on "Request Assistance" button\\
+				&2. The User confirms the operation when it is asked\\
+				&3. The system requests an ambulance to assist the user\\
+				&4. The system retrieves user's location and data and\\
+				&forwards them to the Ambulance Dispatching System\\
+				&5. The Ambulance System confirms the availability\\
+				&6. The Ambulance System communicates the ETA\\
 				\hline
-				\textbf{EXIT CONDITIONS}  & The User has successfully requested Assistance \\ \hline
+				\textbf{EXIT CONDITIONS}  & The User has successfully requested Assistance\\
+				& and an ambulance has been sent to the user's location\\ \hline
 				\textbf{EXCEPTIONS} &
-				1. GPS is not active on User's device\\ \hline
+				GPS is not active on User's device\\ \hline
 				\textbf{SPECIAL REQ.} &
 				1. The request must be processed in less than 5 seconds.\\
 				\hline
 			\end{tabular}
 		\end{center}
 	
+		\newpage
 		\subsubsection{Report Abuse}
 		\begin{center}
 			\begin{tabular}{| c | l |}
@@ -530,21 +543,27 @@
 				\hline
 				\textbf{GOALS} & [G4.2] \\
 				\hline
-				\textbf{ENTRY CONDITION} & The Third Party must be in the Homepage \\ \hline
-				\textbf{EVENTS FLOW}  &
-				1. Third party sends a request to the User\\
-				&2. Third party waits for User's response\\
+				\textbf{ENTRY CONDITION} & The System Manager notices an abuse\\ 
+				& of the assistance request system\\
 				\hline
-				\textbf{EXIT CONDITIONS}  & The User accepted/rejected the request \\ \hline
-				\textbf{EXCEPTIONS} &
-				1. The User's SSN is invalid\\
-				&2. The User is not registered\\
+				\textbf{EVENTS FLOW}  &
+				1. The System Manager signals the User that is \\
+				& misusing the service\\
+				&2. The system notifies the User that he/she will no more\\
+				& be able to exploit the on-demand assistance request\\
+				& service\\
+				&3. The system inserts the User in the list of the users\\
+				& that don't have access to such a service\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The User is no more able to use the on-demand\\
+				& assistance request service\\ 
+				\hline
+				\textbf{EXCEPTIONS} & None \\
 				\hline
 			\end{tabular}
 		\end{center}
 
-		\newpage
-		\subsubsection{Accept Request}
+		\subsubsection{Accept Access Request}
 		\begin{center}
 			\begin{tabular}{| c | l |}
 				\hline
@@ -554,19 +573,23 @@
 				\hline
 				\textbf{GOALS} & [G3.1] \\
 				\hline
-				\textbf{ENTRY CONDITION} & The User has received a Third Party request \\ \hline
+				\textbf{ENTRY CONDITION} & The User has received an access request\\
+				& from a Third Party\\  \hline
 				\textbf{EVENTS FLOW}  &
-				1. User receives a request from a Third Party\\
-				&2. Users clicks on "Accept" button\\
+				1. The User receives a request from a Third Party\\
+				&2. The User clicks on "Accept" button\\
 				\hline
-				\textbf{EXIT CONDITIONS}  & The User has successfully accepted the request \\ \hline
+				\textbf{EXIT CONDITIONS}  & The User has successfully accepted the request\\ 
+				& and the Third Party can access to his/her data\\
+				\hline
 				\textbf{EXCEPTIONS} &
 				None\\
 				\hline
 			\end{tabular}
 		\end{center}
 
-		\subsubsection{Reject Request}
+		\newpage
+		\subsubsection{Reject Access Request}
 		\begin{center}
 			\begin{tabular}{| c | l |}
 				\hline
@@ -576,19 +599,23 @@
 				\hline
 				\textbf{GOALS} & [G3.1], [G5] \\
 				\hline
-				\textbf{ENTRY CONDITION} & The User must receive a Third Party request \\ \hline
-				\textbf{EVENTS FLOW}  &
-				1. User receives request from Third Party\\
-				&2. Users clicks on "Reject" button\\
+				\textbf{ENTRY CONDITION} & The User has received an access request\\
+				& from a Third Party\\ 
 				\hline
-				\textbf{EXIT CONDITIONS}  & The User has successfully rejected the request \\ \hline
+				\textbf{EVENTS FLOW}  &
+				1. The User receives a request from Third Party\\
+				&2. The User clicks on "Reject" button\\
+				\hline
+				\textbf{EXIT CONDITIONS}  & The User has successfully rejected the request\\ 
+				& and the Third Party can not access to his/her data\\
+				\hline
 				\textbf{EXCEPTIONS} &
 				None\\
 				\hline
 			\end{tabular}
 		\end{center}
-		\newpage
-		\subsubsection{Send Request}
+		
+		\subsubsection{Send Access Request}
 		\begin{center}
 			\begin{tabular}{| c | l |}
 				\hline
@@ -598,7 +625,9 @@
 				\hline
 				\textbf{GOALS} & [G3.1] \\
 				\hline
-				\textbf{ENTRY CONDITION} & The Third Party must be in the Homepage \\ \hline
+				\textbf{ENTRY CONDITION} & The Third Party must be in the Homepage\\ 
+				& after Login\\ 
+				\hline
 				\textbf{EVENTS FLOW}  &
 				1. Third party searches a User through his/her SSN\\
 				&2. Third party sends a request to the User\\
@@ -613,29 +642,7 @@
 			\end{tabular}
 		\end{center}
 
-		\subsubsection{Anonymous Sampling}
-		\begin{center}
-			\begin{tabular}{| c | l |}
-				\hline
-				\textbf{NAME} & Anonymous Sampling \\
-				\hline
-				\textbf{ACTOR} & Third Party \\
-				\hline
-				\textbf{GOALS} & [G3.2] \\
-				\hline
-				\textbf{ENTRY CONDITION} & The Third Party wants to collect sample information \\ \hline
-				\textbf{EVENTS FLOW}  &
-				1. Third party conducts a sample search\\
-				&2. Third party saves the collected information\\
-				\hline
-				\textbf{EXIT CONDITIONS}  & The Third Party has successfully completed the sampling \\ \hline
-				\textbf{EXCEPTIONS} &
-				The number of Users matching with the Third Party's\\
-				&sample search is lower than 1000.\\
-				\hline
-			\end{tabular}
-		\end{center}
-
+		\newpage
 		\subsubsection{Subscription to User's Data}
 		\begin{center}
 			\begin{tabular}{| c | l |}
@@ -648,7 +655,8 @@
 				\hline
 				\textbf{ENTRY CONDITION} & The User has accepted Third Party's access request \\ \hline
 				\textbf{EVENTS FLOW}  &
-				1. Third party clicks on "Subscribe to new data" button\\
+				1. Third party clicks on "Subscribe to User's new data" \\ 
+				& button\\
 				&2. Third party confirms the subscription\\
 				\hline
 				\textbf{EXIT CONDITIONS}  & The Third Party has successfully subscripted to new\\
@@ -658,6 +666,30 @@
 				\hline
 			\end{tabular}
 		\end{center}
+	
+	\subsubsection{Anonymous Sampling}
+	\begin{center}
+		\begin{tabular}{| c | l |}
+			\hline
+			\textbf{NAME} & Anonymous Sampling \\
+			\hline
+			\textbf{ACTOR} & Third Party \\
+			\hline
+			\textbf{GOALS} & [G3.2], [G5] \\
+			\hline
+			\textbf{ENTRY CONDITION} & The Third Party wants to collect sample\\ & information and it is in the HomePage after Login \\ 
+			\hline
+			\textbf{EVENTS FLOW}  &
+			1. Third party conducts a sample search\\
+			&2. Third party saves the collected information\\
+			\hline
+			\textbf{EXIT CONDITIONS}  & The Third Party can access the sampling's data\\ \hline
+			\textbf{EXCEPTIONS} &
+			The number of Users matching with the Third Party's\\
+			&sample search is lower than 1000.\\
+			\hline
+		\end{tabular}
+	\end{center}
 
 	\subsection{Sequence Diagrams}
 		\subsubsection{Visitor Registration}
@@ -720,49 +752,51 @@
 
 	\newpage
 	\section{Formal Analysis Using Alloy}
-	Through this model we want to formalize some principal aspects of the TrackMe system:
-	\begin{itemize}
-		\item All the users that receive an automated assistance are necessarily subscribed to the AutomatedSOS service. 
-		Furthermore, users cannot receive multiple assistances at the same time and an automatic assistance is generated 
-		whenever his/her health status gets below the critical threshold (here represented by 0). All the users with an age grater or equal to 60 (here represented by 6) are automatically registered to AutomatedSOS, but this doesn't preclude younger users to subscribe to the service too. If an automated assistance request is generated, then it must be sent to the Ambulance System within 5 seconds.
-		\item All the third parties in order to have access to some users' data, have to send a request to the specific user, that can be either accepted or requested. Only if the user accepts the request, then the third party can access all his/her data. If the access is granted, then the third party has the possibility to subscribe to user's new data (but it is not necessary).
-		\item Third Parties have the possibility to do sample searches according to some filters. TrackMe validates only those searches that result in more than 1000 users (here represented by 1). 
-	\end{itemize}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1.4\linewidth]{Images/signatures}
-		\label{fig:signatures}
-	\end{figure}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1.3\linewidth]{Images/facts1}
-		\label{fig:facts1}
-	\end{figure}
-		\begin{figure}[H]
-		\centering
-		\includegraphics[width=1.3\linewidth]{Images/facts2}
-		\label{fig:facts2}
-	\end{figure}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1.3\linewidth]{Images/assertions}
-		\label{fig:assertions}
-	\end{figure}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.7\linewidth]{Images/predicates}
-		\label{fig:predicates}
-	\end{figure}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1.2\linewidth]{Images/alloy-consistency}
-		\label{fig:alloy-consistency}
-	\end{figure}
+		\subsection{Purpose of the Model}
+			Through this model we want to formalize some principal aspects of the TrackMe system:
+			\begin{itemize}
+				\item All the users that receive an automated assistance are necessarily subscribed to the AutomatedSOS service. 
+				Furthermore, users cannot receive multiple assistances at the same time and an automatic assistance is generated 
+				whenever his/her health status gets below the critical threshold (here represented by 0). All the users with an age grater or equal to 60 (here represented by 6) are automatically registered to AutomatedSOS, but this doesn't preclude younger users to subscribe to the service too. If an automated assistance request is generated, then it must be sent to the Ambulance System within 5 seconds.
+				\item All the third parties in order to have access to some users' data, have to send a request to the specific user, that can be either accepted or requested. Only if the user accepts the request, then the third party can access all his/her data. If the access is granted, then the third party has the possibility to subscribe to user's new data (but it is not necessary).
+				\item Third Parties have the possibility to do sample searches according to some filters. TrackMe validates only those searches that result in more than 1000 users (here represented by 1). 
+			\end{itemize}
+		\subsection{Alloy Model}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.4\linewidth]{Images/signatures}
+				\label{fig:signatures}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.3\linewidth]{Images/facts1}
+				\label{fig:facts1}
+			\end{figure}
+				\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.3\linewidth]{Images/facts2}
+				\label{fig:facts2}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.3\linewidth]{Images/assertions}
+				\label{fig:assertions}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=0.7\linewidth]{Images/predicates}
+				\label{fig:predicates}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.2\linewidth]{Images/alloy-consistency}
+				\label{fig:alloy-consistency}
+			\end{figure}
 	\newpage
 	\subsection{Generated World}
 		\subsubsection{First Instance}
 			As can be seen from this instance there are two different users, but only User1 is monitored by AutomatedSOS, since his age is equal to 7 (>= 6). In addition his health status is negative and there exist an AssistanceRequest that has already been sent (the elapsed time equals to 5). 
-			Moreover, there's a Third Party that has access to both of the users' data, but it is subscribed only to User0. This situation is possible thanks to the two accepted IndividualAccessRequest sent by the Third Party to both the users.
+			Moreover, there's a Third Party that has access to both of the users' data, but it is subscribed only to User0. This situation is possible thanks to the two accepted IndividualAccessRequest sent by the Third Party to both the users.\\
 			\begin{figure}[H]
 				\centering
 				\includegraphics[height=1.1\linewidth]{Images/first-world}
@@ -770,7 +804,7 @@
 			\end{figure}
 		\subsubsection{Second Instance}
 			The illustrated situation is similar to the previous one, even though both users are monitored by AutomatedSOS (one has age greater than 6, the other one doesn't). 
-			In addition three different sampling searches have been generated. AnonymousSampling2 is valid, since it contains in its results list both User0 and User1 (#results > 1). The other two samplings are not validated by TrackMe because they don't respect the privacy policies the system is based on (#results = 0).
+			In addition three different sampling searches have been generated. AnonymousSampling2 is valid, since it contains in its results list both User0 and User1 (#results > 1). The other two samplings are not validated by TrackMe because they don't respect the privacy policies the system is based on (#results = 0).\\
 			\begin{figure}[H]
 				\centering
 				\includegraphics[width=1.25\linewidth]{Images/second-world}
@@ -831,11 +865,11 @@
 			\end{tabular}
 		\end{center}
 	\end{itemize}
-	\section{Reference Documents}
-	\begin{itemize}
-		\item Specification Document "Mandatory Project Assignment A.Y. 2018/2019"
-		\item 830-1993 - IEEE Recommended Practice for Software Requirements
-		\item "Appunti di Sistemi Informativi per il Settore dell'Informazione" A.Y. 2017/2018
-		\item Alloy Language Reference "http://alloytools.org/download/alloy-language-reference.pdf"
-	\end{itemize}
+	\section{References}
+		\begin{itemize}
+			\item Specification Document "Mandatory Project Assignment A.Y. 2018/2019"
+			\item 830-1993 - IEEE Recommended Practice for Software Requirements
+			\item "Appunti di Sistemi Informativi per il Settore dell'Informazione" A.Y. 2017/2018
+			\item Alloy Language Reference "http://alloytools.org/download/alloy-language-reference.pdf"
+		\end{itemize}
 \end{document}
