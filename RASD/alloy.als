@@ -90,10 +90,14 @@ fact requestAcceptedIffUserExists {
 	-- can't exists an accepted access request if the involved user doesn't exist
 	all r: IndividualAccessRequest | 
 		((r.found = False and r.accepted = False) or
-		(r.found = True and r.accepted = False) or
+		(r.found = True and  r.accepted = False) or
 		(r.found = True and r.accepted = True))
 		and 
 		(r.found = True iff (one u: User | u.ssn = r.user.ssn))
+}
+
+fact noSamplingWithoutThirdParty {
+	all s: AnonymousSampling | s in ThirdParty.samplings
 }
 
 fact samplingRequestValidity {
@@ -106,27 +110,33 @@ fact samplingRequestValidity {
 
 -- Automated SOS
 fact automatedSOSMember {
-	-- all people 
+	-- all people monitored by AutomatedSOS must be subscribed to it, hence the sos boolean must be set to True
 	(all user: User | 
 		(user in AutomatedSOS.monitoredPeople iff user.sos = True) and 
-		(user.age >= 6 implies user.sos = True)) -- 60 years is indicated with 6
+		-- if the user's age is greater or equal that 60 years (indicated in this model by value 6), then he/she is automatically subscribed to AutomatedSOS
+		(user.age >= 6 implies user.sos = True))
 }
 
 fact automatedAssistanceRequest {
+	-- a user is automatically assisted if and only he/she is subscribed to AutomatedSOS and his/her health status is negative (which means he/she is need of assistance)
 	all u: User | (u.sos = True and u.healthStatus < 0) iff (one a : AssistanceRequest | a.user.ssn = u.ssn)
 }
 
 fact assistanceRequestSentWithin5Seconds {
 	all a: AssistanceRequest | 
+		-- if the request of assistance has not been sent, then the elapsed time can not be greter that 5 seconds
 		(a.requestSent = False implies a.elapsedTime < 5) and  
+		-- if the elapsed time is greater or equal to 5 seconds, then it means that a request has been sent
 		(a.elapsedTime >= 5 iff a.requestSent = True)
 }
 
 fact noAssistanceForOKPeople {
+	-- there is no assistance request sent for healthy people
 	no a: AssistanceRequest | a.user.healthStatus >= 0
 }
 
-fact onlyOneAssistancePerUser {
+fact onlyOneAssistancePerUser {	
+		-- there can be only one exclusive assistance for each user
 		no disjoint a1, a2: AssistanceRequest | a1.user = a2.user
 }
 
@@ -138,21 +148,28 @@ fact allAssistancesAreInAutomatedSOS {
 
 assert uniquenessOfAssistanceRequestInAutomatedSOS {
 	all u: User | 
-		(u.age > 6 and u.sos = True implies u in AutomatedSOS.monitoredPeople)  and
+		-- if a user's age is greater or equal than 60 and is subcribed to AutomatedSOS, then he/she is monitored by AutomatedSOS
+		(u.age >= 6 and u.sos = True implies u in AutomatedSOS.monitoredPeople)  and
+		-- a request is sent to a user if and only if his health status is negative and monitored by AutomatedSOS
 		((one a: AssistanceRequest | a.user.ssn = u.ssn) iff (u.healthStatus < 0 and u in AutomatedSOS.monitoredPeople))
 }
+
 check uniquenessOfAssistanceRequestInAutomatedSOS
 
 assert userAccessibleOnlyIfRequestAccepted {
 	all u: User, tp: ThirdParty | 
+		-- if a user is accessible by a third party, then there exists only one request sent by that third party and accepted by that user sent
 		(u in tp.accessibleUsers implies (one r: IndividualAccessRequest | r.user = u and r.thirdParty = tp and r.accepted = True))
 		and
+		-- if a third party is subscribed to a user, then it implies also that that user is 
+		-- accessible and there exists only one request sent by that third party and accepted by that user sent
 		(u in tp.subbedTo implies (u in tp.accessibleUsers and 
 			(one r: IndividualAccessRequest | r.user = u and r.thirdParty = tp and r.accepted = True)))
 }
 check userAccessibleOnlyIfRequestAccepted
 
 assert noMoreThan5SecondsToSendAssistance {
+	-- if the elapsed time is greater or equal that 5 seconds, then it means that a request has been sent
 	all a: AssistanceRequest | a.elapsedTime >= 5 implies a.requestSent = True
 }
 check noMoreThan5SecondsToSendAssistance
@@ -164,15 +181,16 @@ pred createUser[u: User, s: Ssn, st: Int] {
 	u.healthStatus = st
 }
 
-pred show[u: User, tp: ThirdParty] {
+pred show[tp: ThirdParty] {
 	#User > 1
-	--u.healthStatus < 0
-	--u.age = 7
-	--u in tp.accessibleUsers
+	#AutomatedSOS.monitoredPeople > 0
+	some u: User | u.healthStatus < 0
+	some u: User | u in tp.accessibleUsers
+	some r: IndividualAccessRequest | r.thirdParty.ssn = tp.ssn
 }
 
 run show
---run createUser for 2
+
 
 
 	
