@@ -6,52 +6,19 @@ Use case su automated sos ---> utente può rifiutare?
 
 User state chart diagram should not include AutomatedSOS functionalities and states
 
-Requirement access a body sensors?
-Mandare conferma registrazione solo per SMS, correggere in tutto il documento
+Sequence Diagrams troppo dettagliati
+Manca sequence diagram su samplings
 
-GOALS:
-1) Registration/Login
-	- for individuals
-	- for third parties
-2) Data sharing
-3) Access to data of specific individuals
-4) Access to anonymized data
-5) Monitor specific parameters of an individual (third party)- SI PUO' SUDDIVIDERE IN SOTTO CATEGORIE
-	- health
-	- activity
-	- personal 
-6) Get quick assistance (user)
+Riordinare use case diagram
+Ricontrollare e specificare un po' meglio use cases
 
+Section su interfaces deve incentrarsi sulle interfacce da fornire/offrire, non da usare
+	---> anche in class diagram togliere "google maps api", scrivere solo "maps api"
 
-malfunzionamenti:
-	- bug software
-	- utente toglie l'orologio/dispositivo
-	- 
+Togliere frecce in class diagram
 
+Mockup della Web interface per third parties
 
-ASSUMPTIONS ---> RIMUOVERE TEXT ASSUMPTIONS
--Registration data are: name, surname, fiscal code...
--Identity correctness
--Contact informations correctness
--Users have to confirm registration through a code received by sms
-Third parties payment method correctness
-payment system always up and reliable
--ambulance system always up and reliable
--User devices support the mobile app (ex: android > 7.0)
--User devices support the gps technology
--Users' locations are retrieved by gps
--User registration is confirmed by an email/sms
-Frequenza di monitoraggio
--Users' devices are supposed to be running
--Data received from users' devices are supposed to be correct.
-Tasto per inviare immediatamente dati personali/vitali e richiedere ambulanza (ambulanza cosi sa tutto prima di arrivare)
-If a user eliminates his account: stop sharing activity/health infos, but personal data remain registered
-ETA for ambulance arrival
+Aggiungere assistance request e actor in definitions
 
-Should we distinguish between the 2 services? YES
-Make 2 sections, one for each service
-
-
-SERVIZI:
-- SERVIZIO 1(Data4Help)
-- SERVIZIO 2(AutomatedSOS)
+Fixare distinzione fra Purpose e Scope e descrizione del sistema
