@@ -1,4 +1,6 @@
 
+Riguardare UML, ho messo Maps API ma non Sensors API ecc, meglio toglierlo
+
 Mondo Alloy con più di un third party (?)
 
 User state chart diagram should not include AutomatedSOS functionalities and states
