@@ -1,4 +1,10 @@
 
+Manca scenario e blocco in use case diagram sulla rimozione dell'accesso ai third parties
+
+Togliere parti su udp e rasp
+
+Add used tools
+
 Riguardare UML, ho messo Maps API ma non Sensors API ecc, meglio toglierlo
 
 Mondo Alloy con più di un third party (?)
