@@ -85,6 +85,30 @@ The architecture of our system can be streamlined into 3 logic layers:
 	
 \section{Component View}
 	\subsection{High Level Component Diagram}	
+	The following diagrams illustrate the system components and the interfaces through which they interact to fullfil their functionalities. A distinction can be made between Client side and Server side:
+	\begin{itemize}
+		\item The Client side is composed by two components, \texttt{Web Application} and \texttt{Mobile Application},  referring to the following services:\\
+		\texttt{ThirdPartiesWebServices}, \texttt{UserMobileServices} and \texttt{UserSmartwatchServices}. 
+		
+		\item The Server side is composed of three components, \texttt{Third Parties web services} that will provide functionalities aiming to fullfill third parties needs, such as sending requests to Users, \texttt{User mobile services} that will provide an interface to User in order to manage his own profile, check information about his health status, accept/reject requests, etc. and \texttt{User smartwatch services} that will provide the User a similar interface to the one provides by the mobile services.
+	\end{itemize}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\linewidth]{images/high_lvl_comp_diag}
+		\label{fig:highlvlcompdiag}
+	\end{figure}
+
+	\newpage
+	\subsection{User Mobile Services Projection}
+	User mobile services subsystem is composed by five components: \texttt{Activity Tracker Module}, \texttt{Health Monitoring Module}, \texttt{SOS Assistance Module}, \texttt{Access Requests Module} and \texttt{Profile Manager}. These components provide to the User Mobile Application the following interfaces: \texttt{TrackUserActivity}, \texttt{HealthMonitor}, \texttt{AssistanceRequestHandler}, \texttt{RequestHandler} and \texttt{ProfileManagement}. The components need also to communicate with \texttt{Google Maps API}, \texttt{Google Sensors API}, \texttt{Ambulance Dispatching System API} and the \texttt{DBMS} to work properly and guarantee a better User experience with the Application. 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=1.0\linewidth]{images/user_projection}
+		\label{fig:userprojection}
+	\end{figure}
+	
+	\newpage
 	\subsection{Deployment View}
 	For the deployment of the system, we opted for a 4-tier architecture composed as follows:
 	\begin{itemize}
