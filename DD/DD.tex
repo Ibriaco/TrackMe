@@ -13,7 +13,7 @@
 
 \title{%
 	\textbf{\Huge{TrackMe}} \\
-	\large \texttt{Design Document}
+	\large Design Document
 }
 
 \begin{document}
@@ -101,20 +101,17 @@ The architecture of our system can be streamlined into 3 logic layers:
 	As mentioned briefly in the RASD (sections 3.9.2, 3.9.5), our system has to rely on a RAPS architecture, in order to prevent unavailability of some functionalities in case of breakdowns. This architecture consists in a partitioned and redundant structure: servers are cloned to achieve this objective.
 	More precisly, multiple services are divided on different machines and each machine can access in turn to a copy of the stored data. Such architecture guarantees better availability and scalability and provides a high rate of maintainability: in case of breakdowns, it is sufficient to work on the damaged machine, without interfering with the other machines' tasks, while the specific service can still be perfomed. 
 	In addition, if the system is willing to expand some services, it is sufficient invest on the specific partition associated to that service.
-	
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1.0\linewidth]{images/deployment_diagram}
+			\caption{Deployment View Diagram}
+			\label{fig:deploymentdiagram}
+		\end{figure}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.6\linewidth]{images/raps}
 			\caption{RAPS Architecture}
 			\label{fig:raps}
-		\end{figure}
-		
-
-		\begin{figure}[H]
-		\centering
-		\includegraphics[width=1.0\linewidth]{images/deployment_diagram}
-		\caption{Deployment View Diagram}
-		\label{fig:deploymentdiagram}
 		\end{figure}
 	\subsection{Runtime View}
 		

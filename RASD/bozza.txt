@@ -22,3 +22,8 @@ Togliere frecce in class diagram
 Mockup della Web interface per third parties
 
 Fixare distinzione fra Purpose e Scope e descrizione del sistema
+
+-----------------------------------------
+
+REVISION HISTORY:
+22/11/2018 added used tools 
