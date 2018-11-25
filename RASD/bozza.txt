@@ -27,3 +27,4 @@ Fixare distinzione fra Purpose e Scope e descrizione del sistema
 
 REVISION HISTORY:
 22/11/2018 added used tools 
+24/11/2018 update in UML class diagram (error correction)
