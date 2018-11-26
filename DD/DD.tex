@@ -47,6 +47,8 @@
  				\item \textbf{ERP}: Enterprise Resource Planning
  				\item \textbf{DMZ}: Demilitarized Zone
  				\item \textbf{RAPS}: Reliable Array of Partitioned Service
+ 				\item \textbf{API}: Application Programming Interface
+ 				\item \textbf{DBMS}: Database Management System
  			\end{itemize}
  		\subsubsection{Abbreviations}
 	\subsection{Document Structure}
@@ -107,9 +109,18 @@ The architecture of our system can be streamlined into 3 logic layers:
 		\includegraphics[height=1.0\linewidth]{images/user_projection}
 		\label{fig:userprojection}
 	\end{figure}
-	
+	\newpage
+		\subsection{User Smartwatch Services Projection}
+	User smartwatch services subsystem is similiar to the User mobile services system with a minor difference; in fact it is composed by four components: \texttt{Activity Tracker Module}, \texttt{Health Monitoring Module}, \texttt{SOS Assistance Module} and \texttt{Access Requests Module}. These components provide to the User Mobile Application the following interfaces: \texttt{TrackUserActivity}, \texttt{HealthMonitor}, \texttt{AssistanceRequestHandler} and \texttt{RequestHandler}. The components need also to communicate with \texttt{Google Maps API}, \texttt{Google Sensors API}, \texttt{Ambulance Dispatching System API} and the \texttt{DBMS} to work properly and guarantee a better User experience with the Application.\\
+	We decided not to provide the User an interface to manage his profile from smartwatch, since it is not user friendly nor comfortable.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=0.9\linewidth]{images/user_smartwatch_projection}
+		\label{fig:userprojection}
+	\end{figure}
 	\newpage
 	\subsection{Deployment View}
+	\subsubsection{Overall Architecture}
 	For the deployment of the system, we opted for a 4-tier architecture composed as follows:
 	\begin{itemize}
 		\item \textbf{Tier 1}\\
@@ -137,6 +148,21 @@ The architecture of our system can be streamlined into 3 logic layers:
 			\caption{RAPS Architecture}
 			\label{fig:raps}
 		\end{figure}
+	\newpage
+	\subsubsection{Design Patterns}
+	In order to better formalize our architecture and make it as flexible as possible and speed up the devolpment process of our system we used different design patterns:
+	
+	\begin{itemize}
+		\item \textbf{Model View Controller}\\ 
+		The majority of Mobile and Web applications rely on this pattern. In fact, these applications retrieve data from a data collector (generally a Database) and update the User Interface, according to the input provided and the validity of the requested operation is checked by the Controller.\\
+		Thus, the main key of this pattern is to create a separation between the User Interface (View), the data (Model) and the response and validity checking of the User's input (Controller).
+		\item \textbf{Observer and Observable}\\
+		In this pattern, there are many observers (objects) which are observing a particular subject (observable object). Observers are basically interested and want to be notified when there is a change made inside that subject. So, they register themselves to that subject. When they lose interest in the subject they simply unregister from the subject. In our system, the intent of this pattern is to let the User execute some query through the UI and after searching the Database, the result is reflected back in the UI. In most of the cases we segregate the UI with the Database. If a change occurs in the database, the UI should be notified so that it can update its display according to the change. When a change is occurring an event is notified and the changes are applied and updated for the User.
+		\item \textbf{Visitor Pattern}\\
+		This pattern's main purpose is to abstract functionalities that can be applied to an aggregate hierarchy of 'element' objects. In particular, we adopted this pattern in order to handle events that notify changes to the User Interface (View component). This way, we create a double dispatching mechanism, and the Controller is able to recognize the event type and associate correctly the requested operation.
+	\end{itemize}
+	
+	\newpage
 	\subsection{Runtime View}
 		
 
