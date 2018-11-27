@@ -1,0 +1,6 @@
+
+Evitare duplicazione dei moduli per smartwatch: riutilizzare quelli della mobile application.
+
+Muovere descrizione del RAPS da Deployment View a Other Design Decisions (?)
+
+Definizione di mobile application per dire che ci riferiamo anche all'app per smartwatch (?)

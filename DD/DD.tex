@@ -99,9 +99,9 @@ The architecture of our system can be streamlined into 3 logic layers:
 			The following diagrams illustrate the system components and the interfaces through which they interact to fullfil their functionalities. A distinction can be made between Client side and Server side:
 			\begin{itemize}
 				\item The Client side is composed by two components, \texttt{Web Application} and \texttt{Mobile Application},  referring to the following services:\\
-				\texttt{ThirdPartiesWebServices}, \texttt{UserMobileServices} and \texttt{UserSmartwatchServices}. 
+				\texttt{ThirdPartiesWebServices} and \texttt{UserMobileServices}.
 				
-				\item The Server side is composed of three components, \texttt{Third Parties web services} that will provide functionalities aiming to fullfill third parties needs, such as sending requests to Users, \texttt{User mobile services} that will provide an interface to User in order to manage his own profile, check information about his health status, accept/reject requests, etc. and \texttt{User smartwatch services} that will provide the User a similar interface to the one provides by the mobile services.
+				\item The Server side is composed of two main components, \texttt{Third Parties web services} that will provide functionalities aiming to fullfill third parties needs, such as sending requests to Users, \texttt{User mobile services} that will provide an interface to User in order to manage his own profile, check information about his health status, accept/reject requests, etc.
 			\end{itemize}
 			
 			\begin{figure}[h]
@@ -112,34 +112,30 @@ The architecture of our system can be streamlined into 3 logic layers:
 	
 		\newpage
 		\subsubsection{User Mobile Services Projection}
-			User Mobile Services subsystem is composed by five components: \texttt{Activity Tracker Module}, \texttt{Health Monitoring Module}, \texttt{SOS Assistance Module}, \texttt{Access Requests Module} and \texttt{Profile Manager}. These components provide to the User Mobile Application the following interfaces: \texttt{TrackUserActivity}, \texttt{HealthMonitor}, \texttt{AssistanceRequestHandler}, \texttt{RequestHandler} and \texttt{ProfileManagement}. The components need also to communicate with \texttt{Google Maps API}, \texttt{Google Sensors API}, \texttt{Ambulance Dispatching System API} and the \texttt{DBMS} to work properly and guarantee a better User experience with the Application. 
+			User Mobile Services subsystem is composed by five components: \texttt{Activity Tracker Module}, \texttt{Health Monitoring Module}, \texttt{SOS Assistance Module}, \texttt{Access Requests Module} and \texttt{Profile Manager Module}. These components provide to the User Mobile Application the following interfaces: \texttt{ActivityTracker}, \texttt{HealthMonitor}, \texttt{AssistanceRequestHandler}, \texttt{RequestHandler} and \texttt{ProfileManager}. The components need also to communicate with \texttt{Google Maps}, \texttt{Google Sensors}, \texttt{Google Notifications}, \texttt{Ambulance Dispatching System}, \texttt{SMS gateway} and the \texttt{DBMS} to work properly and guarantee a better User experience with the Application.
 			\begin{figure}[H]
 				\centering
 				\includegraphics[height=1.0\linewidth]{images/user_projection}
 				\label{fig:user_projection}
 			\end{figure}
+			\newpage
+			For what concerns smartwatches, the server will not distinguish between messages and requests received directly by the smartwatch device (e.g. if it is equipped with GPS) and those retrieved by the sensors and forwarded to the server thanks to the connectivity of a smartphone.
+			The User Mobile Services subsystem will handle all the mentioned situations.\\
+			The only difference is that the smartwatch interface will not provide the user the possibility to manage his/her profile, since it would not be user friendly nor comfortable.
+		
 			\subsubsection*{Module Functionalities}
 				\begin{itemize}
 					\item \texttt{Activity Tracker Module}: this module is devoted to everything that concerns data retrieved by user's devices, such as location, steps, covered distance, heartbeat, blood pressure and sleep.
 					\item \texttt{Health Monitoring Module}: this component persists in an idle state as long as a user is not registered to AutomatedSOS service.\\
-					Otherwise, it interpellates directly the Activity Tracker Module, through the TrackUserActivity interface in order to check the user's health status. Moreover, thanks to the AutomatedAssistance interface it can ask for an automated assistance request.
+					Otherwise, it interpellates directly the Activity Tracker Module, through the ActivityTracker interface in order to check the user's health status. Moreover, thanks to the AutomatedAssistance interface it can ask for an automated assistance request.
 					\item \texttt{SOS Assistance Module}: in this module all functions dealing with assistance requests are implemented. It directy handles on-demand assistance requests and automated assistance requests performed by the Health Monitoring Module through the AutomatedAssistance interface.
 					\item \texttt{Access Requests Module}: this component handles the access requests coming from some third parties, that want to have access to the user's data, giving the user the possibility to accept or reject them. It also manages the updates performed by the user to the permissions given to the third parties.
-					\item \texttt{Profile Manager}: it provides all the functions concerning the user authentication and the update of profile informations.
+					\item \texttt{Profile Manager Module}: it provides all the functions concerning the user authentication and the update of profile informations.
 				\end{itemize}
 		
 		\newpage
-		\subsubsection{User Smartwatch Services Projection}
-			User Smartwatch Services subsystem is similiar to the User mobile services system with a minor difference; in fact it is composed by four components: \texttt{Activity Tracker Module}, \texttt{Health Monitoring Module}, \texttt{SOS Assistance Module} and \texttt{Access Requests Module}. These components provide to the User Mobile Application the following interfaces: \texttt{TrackUserActivity}, \texttt{HealthMonitor}, \texttt{AssistanceRequestHandler} and \texttt{RequestHandler}. The components need also to communicate with \texttt{Google Maps API}, \texttt{Google Sensors API}, \texttt{Ambulance Dispatching System API} and the \texttt{DBMS} to work properly and guarantee a better User experience with the Application.\\
-			We decided not to provide the User an interface to manage his profile from smartwatch, since it is not user friendly nor comfortable.
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=1.2\linewidth]{images/user_smartwatch_projection}
-				\label{fig:user_smartwatch_projection}
-			\end{figure}
-		
 		\subsubsection{Third Party Web Services Projection}
-				 Third Party Web Services subsystem is composed by five components: \texttt{Data Access Module}, \texttt{Subscription Module}, \texttt{Access Requests Module}, \texttt{Sampling Requests Module} and \texttt{Authantication Manager}. These components provide to the Web Application the following interfaces: \texttt{DataAccess}, \texttt{SubscriptionManagement}, \texttt{RequestProvider} and \texttt{AuthenticationManagement}. The components need also to communicate with the \texttt{DBMS} to work properly.
+				 Third Party Web Services subsystem is composed by five components: \texttt{Data Access Module}, \texttt{Subscription Module}, \texttt{Access Requests Module}, \texttt{Sampling Requests Module} and \texttt{Authentication Manager Module}. These components provide to the Web Application the following interfaces: \texttt{DataAccessManager}, \texttt{SubscriptionManager}, \texttt{RequestProvider} and \texttt{AuthenticationManager}. The components need also to communicate with \texttt{Google Notifications} and the \texttt{DBMS} to work properly.
 			\begin{figure}[H]
 				\centering
 				\includegraphics[height=1.0\linewidth]{images/third_party_projection}
@@ -153,7 +149,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 					\item \texttt{Access Requests Module}: it provides the third party with an interface that allows it to send data access request to a specific user.
 					If a request is accepted, it also gives the possibility to the third party to subscribe to user's new data.
 					\item \texttt{Sampling Requests Module}: similar to the Access Requests Module, provides an interface to allow the third party retrieving anonymized information of a group of users.
-					\item \texttt{Authentication Manager}: this module provides all functionalities concerning with the registration and login of a third party to the system.
+					\item \texttt{Authentication Manager Module}: this module provides all functionalities concerning with the registration and login of a third party to the system.
 				\end{itemize}
 		
 		\newpage
@@ -177,7 +173,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 				\centering
 				\includegraphics[width=1.0\linewidth]{images/deployment_diagram}
 				\caption{Deployment View Diagram}
-				\label{fig:deploymentdiagram}
+				\label{fig:deployment_diagram}
 			\end{figure}
 			\begin{figure}[H]
 				\centering
@@ -187,10 +183,16 @@ The architecture of our system can be streamlined into 3 logic layers:
 			\end{figure}
 		
 		\newpage
-		\subsection{Runtime View}
-		
-		\newpage 
 		\subsection{Component Interfaces}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[height=1.2\linewidth]{images/comp_interfaces}
+				\caption{Component interfaces and their interactions.}
+				\label{fig:comp_interfaces}
+			\end{figure}
+		
+		\newpage
+		\subsection{Runtime View}
 		
 		\newpage
 		\subsection{Architectural Styles and Design Patterns}
