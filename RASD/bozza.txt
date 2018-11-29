@@ -1,4 +1,6 @@
 
+Fornire API per third parties in sezione Software Interfaces
+
 Requirement R18 (e di conseguenza il sequence diagram 3.6.5) non coerente con component diagram nel DD: non è health status monitor che comunica con l'ambulance system ma SOS assistance module
 R18 e R21, R19 e R22  possono essere unificati
 

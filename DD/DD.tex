@@ -46,6 +46,7 @@
  				\item \texttt{Assistance Request}: it is a request formulated by the system and sent to the Ambulance Dispatching System in order to guarantee users the necessary assistance.
  				\item \texttt{Individual Access Request}: sometimes referred only as \texttt{individual request} or \texttt{access request}. It refers to a singular request sent by a Third Party to a User whenever it wants to have access to User's data. It needs the User's approval. 
  				\item \texttt{Sampling Search}: it refers to a search conducted by a Third Party according to some filters, returning anonymized results for a group of people. In this document it is often called only \texttt{sampling}.
+ 				\item \texttt{Mobile App}: an application that can be run by mobile devices, both smartphones and smartwatches.
  			\end{itemize}
  		\subsubsection{Acronyms}
  			\begin{itemize}
@@ -56,6 +57,7 @@
  				\item \textbf{RAPS}: Reliable Array of Partitioned Service
  				\item \textbf{API}: Application Programming Interface
  				\item \textbf{DBMS}: Database Management System
+ 				\item \textbf{SMS}: Short Message Service
  			\end{itemize}
  		\subsubsection{Abbreviations}
  			\begin{itemize}
@@ -199,17 +201,6 @@ The architecture of our system can be streamlined into 3 logic layers:
 				\label{fig:web_browser_artifacts}
 			\end{figure}
 		
-			\newpage
-			As mentioned briefly in the RASD (sections 3.9.2, 3.9.5), our system has to rely on a RAPS architecture, in order to prevent unavailability of some functionalities in case of breakdowns. This architecture consists in a partitioned and redundant structure: servers are cloned to achieve this objective.
-			More precisly, multiple services are divided on different machines and each machine can access in turn to a copy of the stored data. Such architecture guarantees better availability and scalability and provides a high rate of maintainability: in case of breakdowns, it is sufficient to work on the damaged machine, without interfering with the other machines' tasks, while the specific service can still be perfomed. 
-			In addition, if the system is willing to expand some services, it is sufficient invest on the specific partition associated to that service.
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.6\linewidth]{images/raps}
-				\caption{RAPS Architecture}
-				\label{fig:raps}
-			\end{figure}
-		
 		\newpage
 		\subsection{Component Interfaces}
 			\begin{figure}[H]
@@ -243,9 +234,21 @@ The architecture of our system can be streamlined into 3 logic layers:
 		
 		\newpage
 		\subsection{Other Design Decisions}
+			As mentioned briefly in the RASD (sections 3.9.2, 3.9.5), our system has to rely on a RAPS (texttt{Reliable Array of Partitioned Service}) architecture, in order to prevent unavailability of some functionalities in case of breakdowns. This architecture consists in a partitioned and redundant structure: servers are cloned to achieve this objective.
+			More precisly, multiple services are divided on different machines and each machine can access in turn to a copy of the stored data. Such architecture guarantees better availability and scalability and provides a high rate of maintainability: in case of breakdowns, it is sufficient to work on the damaged machine, without interfering with the other machines' tasks, while the specific service can still be perfomed. 
+			In addition, if the system is willing to expand some services, it is sufficient invest on the specific partition associated to that service.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=0.6\linewidth]{images/raps}
+				\caption{RAPS Architecture}
+				\label{fig:raps}
+			\end{figure}
 		
 	\newpage
 	\section{User Interface Design}
+		As already mentioned in the texttt{Requirements Analysis and Specification Document} (RASD) the idea is to provide a Mobile App for individual users, both for smartphone and for smartwatch, while TrackMe just have a Web Interfaces for third parties. This choice has been driven by the idea that it would be more comfortable for third party companies, since their employees can access the system through their office laptop or desktop PC.
+		\\ \\
+		For a render of how we thought the user experience should look like, we refer to the specification document in which some mockups have been presented (section 3.1.1, page 13).
 	
 	\newpage
 	\section{Requirements Traceability}
