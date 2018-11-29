@@ -110,7 +110,7 @@
 	\section{Overall Description}
 
 		\subsection{Product Perspective}
-			The following is an high level UML Class Diagram. It the describes the structure of the system, including external services (such Google Maps and the Ambulance System), user devices and components devoted to specific software functionalities: 
+			The following is an high level UML Class Diagram. It the describes the structure of the system, including external services (such Maps service and the Ambulance System), user devices and components devoted to specific software functionalities: 
 			\begin{figure}[h]
 				\centering
 				\includegraphics[width=1.25\linewidth]{Images/uml}
@@ -254,7 +254,7 @@
 
 	\subsection{Functional Requirements}
 
-	\subsubsection*{{[}{G1}{]}: Allow visitors to easily register in the system and later to login.}
+	\subsubsection*{{[}{G1}{]}: Allow visitors to easily register in the system and later to login}
 	\begin{itemize}\\
 		\begin{itemize}
 			\item {[D1]}: The Social Security Number is be unique.
@@ -306,7 +306,7 @@
 			\item {[R16]}: The system must show Third Parties new data whenever they are available.
 		\end{itemize}
 	\end{itemize}
-	\subsubsection*{{[}{G4}{]}: Guarantee users an assistance service when necessary.}
+	\subsubsection*{{[}{G4}{]}: Guarantee users an assistance service when necessary}
 		\begin{itemize}
 			\item {[G4.1]}: Guarantee the elderly users to receive an immediate assistance by an ambulance in case of high risk disease.
 			\begin{itemize}
@@ -315,10 +315,10 @@
 				\item {[D12]}: The Ambulance Dispatching System is always running and reliable.
 				\item {[D13]}: The time spent by an ambulance to reach a defined location is as low as possible.
 				\\ \\
-				\item {[R16]}: The AutomatedSOS service is automatically activated during the registration process if the Visitor is over 60.
-				\item {[R17]}: The Health Status Monitoring System must notify the Ambulance Dispatching System as soon as possible (within 5 seconds).
-				\item {[R18]}: When the Ambulance Dispatching System is notified, the Health Status Monitoring System sends all the User's clinical parameters.
-				\item {[R19]}: Users' devices must support sensors for retrieving health parameters.
+				\item {[R17]}: The AutomatedSOS service is automatically activated during the registration process if the Visitor is over 60.
+				\item {[R18]}: The Health Status Monitoring System must notify the Ambulance Dispatching System as soon as possible (within 5 seconds).
+				\item {[R19]}: When the Ambulance Dispatching System is notified, the Health Status Monitoring System sends all the User's clinical parameters.
+				\item {[R20]}: Users' devices must support sensors for retrieving health parameters.
 			\end{itemize}
 			\item {[G4.2]}: Allow users to request on-demand ambulance assistance.
 			\begin{itemize}
@@ -327,13 +327,13 @@
 				\item {[D12]}: The Ambulance Dispatching System is always running and reliable.
 				\item {[D13]}: The time spent by an ambulance to reach a defined location is as low as possible.
 				\\ \\
-				\item {[R20]}: The On-Demand Assistance Request System must notify the Ambulance Dispatching System as soon as possible (within 5 seconds).
-				\item {[R21]}: When the Ambulance Dispatching System is notified, the On-Demand Assistance Request System sends all the User's clinical parameters.
-				\item {[R22]}: The system must avoid abuses of on-demand assistance requests functionality.
+				\item {[R21]}: The On-Demand Assistance Request System must notify the Ambulance Dispatching System as soon as possible (within 5 seconds).
+				\item {[R22]}: When the Ambulance Dispatching System is notified, the On-Demand Assistance Request System sends all the User's clinical parameters.
+				\item {[R23]}: The system must avoid abuses of on-demand assistance requests functionality.
 			\end{itemize}
 		\end{itemize}
 	
-	\subsubsection*{{[}{G5}{]}: Guarantee the preservation of the privacy of the Users.}
+	\subsubsection*{{[}{G5}{]}: Guarantee the preservation of the privacy of the Users}
 	\begin{itemize}\\
 		\begin{itemize}
 			%\item {[D5]}: Parameters periodically received by Users' devices are assumed to have a good accuracy.
@@ -342,10 +342,10 @@
 			%\\ \\
 			\item {[R5]}: In order to register successfully a Third Party, the system must oblige it to accept data privacy conditions.
 			\item {[R14]}: The system must accept sampling if and only if results are related to more than 1000 Users.
-			\item {[R23]}: A Third Party can access data and parameters of a specific User if and only if he/she accepts the request.
-			\item {[R24]}: The system must allow Users to check the list of third parties accessing their data.
-			\item {[R25]}: The system must allow the User to enable/disable data access by third parties.
-			\item {[R26]}: The system must implement some form of accurate access control on databases.
+			\item {[R24]}: A Third Party can access data and parameters of a specific User if and only if he/she accepts the request.
+			\item {[R25]}: The system must allow Users to check the list of third parties accessing their data.
+			\item {[R26]}: The system must allow the User to enable/disable data access by third parties.
+			\item {[R27]}: The system must implement some form of accurate access control on databases.
 		\end{itemize}
 	\end{itemize}
 

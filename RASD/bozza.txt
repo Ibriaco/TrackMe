@@ -1,7 +1,14 @@
 
+Requirement R18 (e di conseguenza il sequence diagram 3.6.5) non coerente con component diagram nel DD: non è health status monitor che comunica con l'ambulance system ma SOS assistance module
+R18 e R21, R19 e R22  possono essere unificati
+
+DUBBIO SU REQUIREMENT R20: è davvero un requirement? O un assumption? Se il dispositivo dell'utente non ha sensori si inviano i soli dati in possesso del sistema.
+
+Offrire api per third parties per farsi il loro software che interagisce con il server di trackme??
+
 Manca scenario e blocco in use case diagram sulla rimozione dell'accesso ai third parties
 
-Togliere parti su udp e rasp
+Togliere parti su udp e raps
 
 Add used tools
 
@@ -15,9 +22,9 @@ Sequence Diagrams troppo dettagliati
 Manca sequence diagram su samplings
 
 Section su interfaces deve incentrarsi sulle interfacce da fornire/offrire, non da usare
-	---> anche in class diagram togliere "google maps api", scrivere solo "maps api"
 
 Togliere frecce in class diagram
+Aggiungere sensors api in uml class diagram
 
 Mockup della Web interface per third parties
 

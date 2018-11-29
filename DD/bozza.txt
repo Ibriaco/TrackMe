@@ -1,5 +1,14 @@
 
-Evitare duplicazione dei moduli per smartwatch: riutilizzare quelli della mobile application.
+SOS Assistance Module deve usare ActivityTracker per poter prendere la posizione dell'utente quando viene richiesta assistenza (?)
+
+Il modulo Access Requests Module non può avere lo stesso nome sia per Users che per Third Parties
+
+Menzionare processo di sviluppo utilizzato (incremental, devops, waterfall, etc)
+
+Dare motivazioni dell'ordine di implementazione e integrazione
+Meglio la rappresentazione tramite un albero/grafo anzi che come una lista
+
+Non più parlato neanche dei collegamenti con system administrator
 
 Muovere descrizione del RAPS da Deployment View a Other Design Decisions (?)
 
