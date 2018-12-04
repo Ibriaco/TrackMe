@@ -5,4 +5,4 @@ Meglio la rappresentazione tramite un albero/grafo anzi che come una lista
 
 Non più parlato neanche dei collegamenti con system administrator
 
-Muovere descrizione del RAPS da Deployment View a Other Design Decisions (?)
+Visitor pattern troppo rivolto all'implementazione piuttosto che all'architettura.

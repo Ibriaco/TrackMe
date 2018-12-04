@@ -6,6 +6,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
 \author{Luca Conterio - 920261\\
 	Ibrahim El Shemy - 920174}
 \date{A.Y. 2018/2019 - Prof. Di Nitto Elisabetta}
@@ -77,6 +78,7 @@
 				\item \texttt{Assistance Request}: it is a request formulated by the system and sent to the Ambulance Dispatching System in order to guarantee users the necessary assistance.
 				\item \texttt{Individual Access Request}: sometimes referred only as \texttt{individual request} or \texttt{access request}. It refers to a singular request sent by a Third Party to a User whenever it wants to have access to User's data. It needs the User's approval. 
 				\item \texttt{Sampling Search}: it refers to a search conducted by a Third Party according to some filters, returning anonymized results for a group of people. In this document it is often called only \texttt{sampling}.
+				\item \texttt{Mobile App}: an application that can be run by mobile devices, both smartphones and smartwatches.
 			\end{itemize}
 		\subsubsection{Acronyms}
 			\begin{itemize}
@@ -164,10 +166,11 @@
 				\item {\textbf[}\textbf{D7}{\textbf]}: Users provide correct clinical data (such as blood group, allergies, etc.).
 				\item {\textbf[}\textbf{D8}{\textbf]}: Users' devices support the GPS technology.
 				\item {\textbf[}\textbf{D9}{\textbf]}: Users' devices support the Mobile Application.
-				\item {\textbf[}\textbf{D10}{\textbf]}: Users' devices communicate through the Internet.
-				\item {\textbf[}\textbf{D11}{\textbf]}: In case of emergency, all relevant data relative to a specific individual are correctly reported to the Ambulance Dispatching System.
-				\item {\textbf[}\textbf{D12}{\textbf]}: The Ambulance Dispatching System is always running and available.
-				\item {\textbf[}\textbf{D13}{\textbf]}: The time spent by an ambulance to reach a defined location is as low as possible.
+				\item {\textbf[}\textbf{D10}{\textbf]}: Users' devices support sensors for retrieving health parameters.
+				\item {\textbf[}\textbf{D11}{\textbf]}: Users' devices communicate through the Internet.
+				\item {\textbf[}\textbf{D12}{\textbf]}: In case of emergency, all relevant data relative to a specific individual are correctly reported to the Ambulance Dispatching System.
+				\item {\textbf[}\textbf{D13}{\textbf]}: The Ambulance Dispatching System is always running and available.
+				\item {\textbf[}\textbf{D14}{\textbf]}: The time spent by an ambulance to reach a defined location is as low as possible.
 			\end{itemize}
 
 	\newpage
@@ -232,18 +235,13 @@
 			\item Client-side: e.g. Wi-Fi 802.11ac+ antenna, 3G/4G antenna. Moreover, Bluetooth antenna and Body Sensors will be needed to use all services provided by TrackMe. 
 		\end{itemize}
 	\subsubsection{Software Interfaces}
-		TrackMe will make use of some Application Programming Interfaces to simplify the implementation, since these components are largely used and compatible with the majority of the devices currently on the market:
-		\begin{itemize}
-			\item \texttt{Google Maps API} to have a visual representation of user location and to get it in critical moments, such as AutomatedSOS requests to the Ambulance Dispatching System.
-			\item \texttt{Google Fit Sensors API} to read raw sensor data in real time. It allows listing the available sensors on the device on which te application is running and registering a listener on specific sensors to retrieve data automatically.
-			\item \texttt{Ambulance Dispatching System API} to perform assistance requests. Actually it could be an automatic phone call to the ambulance contact center, during which an algorithm communicates all relevant data to the interlocutor (e.g. name, age, location etc.).
-		\end{itemize}
+		TrackMe will provide an API for third parties, besides the already mentioned Web Application Interface.\\
+		More specifically, it will provide an API that allows third parties to access the entire set of functionalities provided by the Data4Help system. In such a way third party companies and applications can embed in their system the functionalities concerning with the individual access requests and sampling requests. 
+		
 	\subsubsection{Communication Interfaces}
 			Since the TLS versions 1.0 and 1.1 will not be more supported, TrackMe must rely on the newer TLS version 1.3, released in 2018, to guarantee the best security possible, at least during the HTTPS connections involving messages carrying credentials or other sensible data.
 			\\ \\
-			For other types of connections, e.g. to retrieve periodical data from users' devices, TCP persistent connections can be avoided: even if a packet is lost another one will be generated within a slight amount of time, so UDP non-persistent connections can be used (it is a stream of data). This can also provide a lower server load, as pointed out later in section 3.6, Performance Requirements.
-			\\ \\
-			Furthermore, Bluetooth connectivity is required in order to interface between themselves Users' devices. Indeed, the Mobile Application running on a smartphone needs to communicate with a smartwatch in order to fully exploit TrackMe's functionalities. The newest Bluetooth 5.0 will be preferred, even though older versions of the standard have to be supported, since the majority of devices don't support the latest one yet.
+			Furthermore, Bluetooth connectivity is required in order to interface between themselves Users' devices. Indeed, the Mobile Application running on a smartphone needs to communicate with a smartwatch (if this last device doesn't have a GPS module and internet connectivity) in order to fully exploit TrackMe's functionalities. The newest Bluetooth 5.0 will be preferred, even though older versions of the standard have to be supported, since the majority of devices don't support the latest one yet.
 
 	\newpage
 	\subsection{Scenarios}
@@ -290,8 +288,9 @@
 			\item {[D6]}: Personal information provided by Users' are assumed to be correct.
 			\item {[D7]}: Users provide correct clinical data (such as blood group, allergies, etc.).
 			\item {[D8]}: Users' devices support the GPS technology.
-			\item {[D9]}: Users' devices support the Mobile Application
-			\item {[D10]}: Users' devices communicate throught the Internet.
+			\item {[D9]}: Users' devices support the Mobile Application.
+			\item {[D10]}: Users' devices support sensors for retrieving health parameters.
+			\item {[D11]}: Users' devices communicate through the Internet.
 			\\ \\
 			\item {[R6]}: Users locations must be retrieved by GPS.
 			\item {[R7]}: The system must allow the Users to update their personal data.
@@ -325,25 +324,27 @@
 			\item {[G4.1]}: Guarantee the elderly users to receive an immediate assistance by an ambulance in case of high risk disease.
 			\begin{itemize}
 				\item {[D5]}: Data periodically received by Users' devices are assumed to have a good accuracy.
-				\item {[D11]}: In case of emergency, all relevant data relative to a specific individual are correctly reported to the Ambulance Dispatching System.
-				\item {[D12]}: The Ambulance Dispatching System is always running and reliable.
-				\item {[D13]}: The time spent by an ambulance to reach a defined location is as low as possible.
+				\item {D8}: Users' devices support the GPS technology.
+				\item {[D10]}: Users' devices must support sensors for retrieving health parameters.
+				\item {[D12]}: In case of emergency, all relevant data relative to a specific individual are correctly reported to the Ambulance Dispatching System.
+				\item {[D13]}: The Ambulance Dispatching System is always running and reliable.
+				\item {[D14]}: The time spent by an ambulance to reach a defined location is as low as possible.
 				\\ \\
-				\item {[R17]}: The AutomatedSOS service is automatically activated during the registration process if the Visitor is over 60.
-				\item {[R18]}: The Health Status Monitoring System must notify the Ambulance Dispatching System as soon as possible (within 5 seconds).
-				\item {[R19]}: When the Ambulance Dispatching System is notified, the Health Status Monitoring System sends all the User's clinical parameters.
-				\item {[R20]}: Users' devices must support sensors for retrieving health parameters.
+				\item {[R17]}: The AutomatedSOS service is automatically activated during the registration process if the User is over 60.
+				\item {[R18]}: The system must notify the Ambulance Dispatching System as soon as possible (within 5 seconds), when it is needed.
+				\item {[R19]}: When the Ambulance Dispatching System is notified, the system sends all the User's clinical parameters.
 			\end{itemize}
 			\item {[G4.2]}: Allow users to request on-demand ambulance assistance.
 			\begin{itemize}
 				\item {[D5]}: Parameters periodically received by Users' devices are assumed to have a good accuracy.
-				\item {[D11]}: In case of emergency, all relevant data relative to a specific individual are correctly reported to the Ambulance Dispatching System.
-				\item {[D12]}: The Ambulance Dispatching System is always running and reliable.
-				\item {[D13]}: The time spent by an ambulance to reach a defined location is as low as possible.
+				\item {D8}: Users' devices support the GPS technology.
+				\item {[D12]}: In case of emergency, all relevant data relative to a specific individual are correctly reported to the Ambulance Dispatching System.
+				\item {[D13]}: The Ambulance Dispatching System is always running and reliable.
+				\item {[D14]}: The time spent by an ambulance to reach a defined location is as low as possible.
 				\\ \\
-				\item {[R21]}: The On-Demand Assistance Request System must notify the Ambulance Dispatching System as soon as possible (within 5 seconds).
-				\item {[R22]}: When the Ambulance Dispatching System is notified, the On-Demand Assistance Request System sends all the User's clinical parameters.
-				\item {[R23]}: The system must avoid abuses of on-demand assistance requests functionality.
+				\item {[R18]}: The system must notify the Ambulance Dispatching System as soon as possible (within 5 seconds), when it is needed.
+				\item {[R19]}: When the Ambulance Dispatching System is notified, the system sends all the User's clinical parameters.
+				\item {[R20]}: The system must avoid abuses of on-demand assistance requests functionality.
 			\end{itemize}
 		\end{itemize}
 	
@@ -356,10 +357,10 @@
 			%\\ \\
 			\item {[R5]}: In order to register successfully a Third Party, the system must oblige it to accept data privacy conditions.
 			\item {[R14]}: The system must accept sampling if and only if results are related to more than 1000 Users.
-			\item {[R24]}: A Third Party can access data and parameters of a specific User if and only if he/she accepts the request.
-			\item {[R25]}: The system must allow Users to check the list of third parties accessing their data.
-			\item {[R26]}: The system must allow the User to enable/disable data access by third parties.
-			\item {[R27]}: The system must implement some form of accurate access control on databases.
+			\item {[R21]}: A Third Party can access data and parameters of a specific User if and only if he/she accepts the request.
+			\item {[R22]}: The system must allow Users to check the list of third parties accessing their data.
+			\item {[R23]}: The system must allow the User to enable/disable data access by third parties.
+			\item {[R24]}: The system must implement some form of accurate access control on databases.
 		\end{itemize}
 	\end{itemize}
 
@@ -738,16 +739,20 @@
 			\label{fig:automated_request_sequence}
 		\end{figure}
 
-	\subsection{Performance Requirments}
-	The system must be able to handle a huge quantity of requests simultaneously throughout the day, responding to users' necessities in the shortest time possible. In order to improve the perfomance of the system, since data are received in a discrete way (e.g. monitored every 5 seconds), TrackMe relies on a UDP non-persistent connection.\\
-	For what concerns the AutomatedSOS service, it is required that each ambulance request is generated and sent to the Ambulance Dispatching System within 5 seconds from the moment in which the vital parameters of an elder user get below the fixed threshold.
+	\subsection{Performance Requirements}
+	The system must be able to handle a huge quantity of requests simultaneously throughout the day, responding to users' necessities in the shortest time possible. In order to improve the performance of the system, since data are received in a discrete way (e.g. monitored every 5 seconds), TrackMe should rely on lightweight TCP connections.\\
+	For what concerns the AutomatedSOS service, it is required that each ambulance request is generated and sent to the Ambulance Dispatching System within 5 seconds from the moment in which the vital parameters of a user subscribed to this service get below the fixed threshold.
 
-	\subsection{Desgin Constraints}
+	\newpage
+	\subsection{Design Constraints}
 	\subsubsection{Hardware Limitations}
 		\begin{itemize}
-			\item \texttt{Mobile App}: iOS/Android, Internet Connection, GPS.
-			\item \texttt{watchOS/WearOS}: smartwatches linked to mobile devices or equipped with GPS and equipped with hearbeat/pressure sensors.
-			\item \texttt{Web App}: browser (e.g. Google Chrome / Safari) able to retrieve users' location.
+			\item \texttt{Mobile App}: 
+				\begin{itemize}
+					\item Smartphones: iOS/Android, Internet Connection, GPS.
+					\item Smartwatches: watchOS/WearOS with hearbeat/pressure sensors linked to mobile devices or equipped with GPS and internet connectivity.
+				\end{itemize}
+			\item \texttt{Web App}: modern web browser (e.g. Google Chrome / Safari), able to support the already mentioned communication protocols and APIs.
 		\end{itemize}
 	
 	%\subsubsection{Other Constraints}
@@ -756,13 +761,14 @@
 		\subsubsection{Reliability}
 		The system must guarantee a 24/7 service. This requirment should not have any sort of deviation (especially concerning AutomatedSOS).
 		\subsubsection{Availability}
-		The system must fullfil all the requests whenever needed (e.g. get/update personal information, request for medical assistance). Only a small percentage of the total requests is admissible (less than 0.01\% of the total amount of requests). The system relies on a RAPS architecture, to better guarantee availability. The whole system is partitioned in nodes, each one managing a single service, in which data is made redudant in different servers. In this way, the malfuction of a service will not cause a service breakdown, but only a decrease of performance.
+		The system must fullfil all the requests whenever needed (e.g. get/update personal information, request for medical assistance). Only a small percentage of the total requests is admissible (less than 0.01\% of the total amount of requests). The system relies on a RAPS architecture (see more in deep in Design Document, section 2.6.2), to better guarantee availability.
 		\subsubsection{Security}
 		Despite the fact that personal information is stored, the system guarantees not to spread them outside, and third parties are obliged to be confirmed with a privacy policy.
 		\subsubsection{Maintainability}
 		Enforced by the usage of specific design patterns (e.g. third party subscription is notified through an Observer Pattern whenever new data is generated by the users) and the provided documentation.
 		\subsubsection{Scalability}
-		Relying on a RAPS architecture, it is easier to enlarge the structure of the system, since it is possible to invest only on those services that need to handle the higher amount of requests or the ones where the number of users is relevant.
+		The architecture must be simply scalable as the number of users grows during the time.
+		 Enlarging the structure of the system must be an easy task, having the possibility to invest only on those services that need to handle the higher amount of requests or the ones where the number of users is relevant.
 
 
 	\newpage

@@ -5,6 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
 \author{Luca Conterio - 920261\\
 	Ibrahim El Shemy - 920174}
 \date{A.Y. 2018/2019 - Prof. Di Nitto Elisabetta}
@@ -168,38 +169,39 @@ The architecture of our system can be streamlined into 3 logic layers:
 					This tier is composed by the Client (implemented as a Thin Client), that includes the Web App (run by a web browser) and the Mobile Application (run by smartphones). 
 					\item \textbf{Tier 2}\\
 					This tier is composed by the Web Server, whose main functionality is to store, process static content and deliver web pages to the Clients. For this reason, we opted for NGINX, that guarantees better perfomances for static content processing. It can be also configured as a load balancer, in order to better handle multiple connections.
+						\begin{figure}[H]
+							\centering
+							\includegraphics[width=0.8\linewidth]{images/mobile_artifacts}
+							\caption{Deployment View for Mobile Application (Tier 1).}
+							\label{fig:mobile_artifacts}
+						\end{figure}
+						\begin{figure}[H]
+							\centering
+							\includegraphics[width=0.6\linewidth]{images/web_browser_artifacts}
+							\caption{Deployment View for Web Browser clients and Web Server (Tier 1 and 2).}
+							\label{fig:web_browser_artifacts}
+						\end{figure}
 					\item \textbf{Tier 3}\\
 					This tier corresponds to the Application Server, that provides both facilities to create web applications and a server environment to run them. We opted for WildFly (v. 12.0.0 or recent versions - previously JBoss) since it fully implements all Java EE specifications.
+						\begin{figure}[H]
+							\centering
+							\includegraphics[width=0.7\linewidth]{images/app_server_artifacts}
+							\caption{Deployment View for Application Server (Tier 3).}
+							\label{fig:app_server_artifacts}
+						\end{figure}
 					\item \textbf{Tier 4}\\
-					This tier corresponds to the Database Server on which the DBMS is running. We opted for MySQL (v. 8.0.12) since it is one of the most secure and reliable database management system used in popular web applications and guarantees scalability and high performance.
+					This tier corresponds to the Database Server on which the DBMS is running. We opted for MySQL (v. 8.0.12) since it is one of the most secure and reliable database management system used in popular web applications and guarantees scalability and high performance. \\ \\ \\ \\ \\
 				\end{itemize}
-
 			\begin{figure}[H]
 				\centering
-				\includegraphics[width=0.7\linewidth]{images/deployment_diagram}
-				\caption{Deployment View Diagram.}
+				\includegraphics[width=1.2\linewidth]{images/deployment_diagram}
+				\caption{Deployment View Diagram (entire system).}
 				\label{fig:deployment_diagram}
 			\end{figure}
 		
 			
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.8\linewidth]{images/app_server_artifacts}
-				\caption{Deployment View for Application Server.}
-				\label{fig:app_server_artifacts}
-			\end{figure}
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.8\linewidth]{images/mobile_artifacts}
-				\caption{Deployment View for Mobile Application.}
-				\label{fig:mobile_artifacts}
-			\end{figure}
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.7\linewidth]{images/web_browser_artifacts}
-				\caption{Deployment View for Web Browser clients and Web Server.}
-				\label{fig:web_browser_artifacts}
-			\end{figure}
+			
+			
 		
 		\newpage
 		\subsection{Component Interfaces}
@@ -209,31 +211,57 @@ The architecture of our system can be streamlined into 3 logic layers:
 				\caption{Component interfaces and their interactions.}
 				\label{fig:comp_interfaces}
 			\end{figure}
+			\subsubsection{External Interfaces}
+				TrackMe will make use of some Application Programming Interfaces to simplify the implementation, since these components are largely used and compatible with the majority of the devices currently on the market:
+				\begin{itemize}
+					\item \texttt{Google Maps API} to have a visual representation of user location and to get it in critical moments, such as AutomatedSOS requests to the Ambulance Dispatching System.
+					\item \texttt{Google Fit Sensors API} to read raw sensor data in real time. It allows listing the available sensors on the device on which te application is running and registering a listener on specific sensors to retrieve data automatically. ---> CoreMotion e HealthKit per iOS.
+					\item \texttt{Google Notifications API}: this lets applications send information to a user even if the app is idle or in the background. ---> e per iOS ?
+					\item \texttt{Ambulance Dispatching System API} to perform assistance requests. Actually it could be an automatic phone call to the ambulance contact center, during which an algorithm communicates all relevant data to the interlocutor (e.g. name, age, location etc.).
+					\item \texttt{Database API}
+					\item \texttt{SMS API}
+				\end{itemize}
 		
 		\newpage
 		\subsection{Runtime View}
+			\subsubsection{On-Demand Assistance Request}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1.0\linewidth]{images/ass_request_sequence}
+					\label{fig:ass_request_sequence}
+				\end{figure}
+			\subsubsection{Automated Assistance Request}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1.0\linewidth]{images/automated_request_sequence}
+					\label{fig:automated_request_sequence}
+				\end{figure}
 		
 		\newpage
 		\subsection{Architectural Styles and Design Patterns}
 			\subsubsection{Design Patterns}
-			In order to better formalize our architecture and make it as flexible as possible and speed up the devolpment process of our system we used different design patterns:
-			\begin{itemize}
-				\item \textbf{Model View Controller}\\ 
-				The majority of Mobile and Web applications rely on this pattern. In fact, these applications retrieve data from a data collector (generally a Database) and update the User Interface, according to the input provided and the validity of the requested operation is checked by the Controller.\\
-				Thus, the main key of this pattern is to create a separation between the User Interface (View), the data (Model) and the response and validity checking of the User's input (Controller).
-				\item \textbf{Observer and Observable}\\
-				In this pattern, there are many observers (objects) which are observing a particular subject (observable object). Observers are basically interested and want to be notified when there is a change made inside that subject. So, they register themselves to that subject. When they lose interest in the subject they simply unregister from the subject. In our system, the intent of this pattern is to let the User execute some query through the UI and after searching the Database, the result is reflected back in the UI. In most of the cases we segregate the UI with the Database. If a change occurs in the database, the UI should be notified so that it can update its display according to the change. When a change is occurring an event is notified and the changes are applied and updated for the User.
-				\item \textbf{Visitor Pattern}\\
-				This pattern's main purpose is to abstract functionalities that can be applied to an aggregate hierarchy of 'element' objects. In particular, we adopted this pattern in order to handle events that notify changes to the User Interface (View component). This way, we create a double dispatching mechanism, and the Controller is able to recognize the event type and associate correctly the requested operation.
-				\newpage
-				\item \textbf{Façade Pattern}\\
-				This design pattern supports loose coupling. In fact we emphasize the abstraction and hide complex details by exposing a single interface instead of multiple ones. According to our system we expose to the client \texttt{ThirdPartyWebServices} and \texttt{UserMobileServices} that are in turn extended respectively by all the interfaces provided by the subsystems Third Party Web Services, User Mobile Services and User Smartwatch Services (see section 3, Component View).
-				\item \textbf{Proxy Pattern}\\
-				It provides a surrogate for another object to control access to it. In our system architecture it can be useful to interface the Application Server with the Database Server. For example, whenever a user or a third party requests some data that is unchanged, the proxy can answer the query without involving access to the database, providing a better response time. 
-			\end{itemize}
-		
-		\newpage
-		\subsection{Other Design Decisions}
+				In order to better formalize our architecture and make it as flexible as possible and speed up the devolpment process of our system we used different design patterns:
+				\begin{itemize}
+					\item \textbf{Model View Controller}\\ 
+					The majority of Mobile and Web applications rely on this pattern. In fact, these applications retrieve data from a data collector (generally a Database) and update the User Interface, according to the input provided and the validity of the requested operation is checked by the Controller.\\
+					Thus, the main key of this pattern is to create a separation between the User Interface (View), the data (Model) and the response and validity checking of the User's input (Controller).
+						\begin{figure}[H]
+							\centering
+							\includegraphics[width=0.7\linewidth]{images/mvc}
+							\caption{Distributed MVC in the context of Java EE.}
+							\label{fig:mvc}
+						\end{figure}
+					\item \textbf{Observer and Observable}\\
+					In this pattern, there are many observers (objects) which are observing a particular subject (observable object). Observers are basically interested and want to be notified when there is a change made inside that subject. So, they register themselves to that subject. When they lose interest in the subject they simply unregister from the subject. In our system, the intent of this pattern is to let the User execute some query through the UI and after searching the Database, the result is reflected back in the UI. In most of the cases we segregate the UI with the Database. If a change occurs in the database, the UI should be notified so that it can update its display according to the change. When a change is occurring an event is notified and the changes are applied and updated for the User.\\ 
+					When referring to a distributed system, this pattern is called Pub-Sub (\textbf{Publish-Subscribe}). 
+					\item \textbf{Visitor Pattern (?)}\\
+					This pattern's main purpose is to abstract functionalities that can be applied to an aggregate hierarchy of 'element' objects. In particular, we adopted this pattern in order to handle events that notify changes to the User Interface (View component). This way, we create a double dispatching mechanism, and the Controller is able to recognize the event type and associate correctly the requested operation.
+					\item \textbf{Façade Pattern}\\
+					This design pattern supports loose coupling. In fact we emphasize the abstraction and hide complex details by exposing a single interface instead of multiple ones. According to our system we expose to the client \texttt{ThirdPartyWebServices} and \texttt{UserMobileServices} that are in turn extended respectively by all the interfaces provided by the subsystems Third Party Web Services, User Mobile Services and User Smartwatch Services (see section 3, Component View).
+					\item \textbf{Proxy Pattern}\\
+					It provides a surrogate for another object to control access to it. In our system architecture it can be useful to interface the Application Server with the Database Server. For example, whenever a user or a third party requests some data that is unchanged, the proxy can answer the query without involving access to the database, providing a better response time. In our case, this is useful to improve service response time, very important in critical services that involve users' health.
+				\end{itemize}
+			\subsubsection{RAPS Architecture}
 			As mentioned briefly in the RASD (sections 3.9.2, 3.9.5), our system has to rely on a RAPS (texttt{Reliable Array of Partitioned Service}) architecture, in order to prevent unavailability of some functionalities in case of breakdowns. This architecture consists in a partitioned and redundant structure: servers are cloned to achieve this objective.
 			More precisly, multiple services are divided on different machines and each machine can access in turn to a copy of the stored data. Such architecture guarantees better availability and scalability and provides a high rate of maintainability: in case of breakdowns, it is sufficient to work on the damaged machine, without interfering with the other machines' tasks, while the specific service can still be perfomed. 
 			In addition, if the system is willing to expand some services, it is sufficient invest on the specific partition associated to that service.
@@ -243,6 +271,14 @@ The architecture of our system can be streamlined into 3 logic layers:
 				\caption{RAPS Architecture}
 				\label{fig:raps}
 			\end{figure}
+		
+		\newpage
+		\subsection{Other Design Decisions}
+			For what concerns the Mobile App, we decided not provide a cross-platform web based application, using some framework/library such as React.js, even though it can save time since the code can be reused for different platform. \\
+			Due to the fact that our application must interface with some wearable devices, we prefer providing native applications, both for Android and iOS.
+			Doing so the developed applications can guarantee a better performance during their execution and a better user experience: a user who is used to, for example, the iOS graphical interface, will feel more comfortable using an app with the same type of GUI components.\\
+			Furthermore, native applications guarantee their optimal integration the one with the other and with the entire ecosystem (referring for example to an Apple Watch paired to an iPhone device).
+			
 		
 	\newpage
 	\section{User Interface Design}
@@ -329,7 +365,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 					\begin{itemize}
 						\item Requirements:
 							\begin{itemize}
-								\item {[R17] - [R20]}
+								\item {[R17] - [R19]}
 							\end{itemize}
 						\item Components:
 							\begin{itemize}
@@ -345,7 +381,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 					\begin{itemize}
 						\item Requirements:
 							\begin{itemize}
-								\item {[R21] - [R23]}
+								\item {[R18] - [R20]}
 							\end{itemize}
 						\item Components:
 							\begin{itemize}
@@ -361,7 +397,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 							\begin{itemize}
 								\item {[R5]}
 								\item {[R14]}
-								\item {[R24] - [R27]}
+								\item {[R21] - [R24]}
 							\end{itemize}
 						\item Components:
 							\begin{itemize}
@@ -390,7 +426,10 @@ The architecture of our system can be streamlined into 3 logic layers:
 				22/11/2018 & Component View & 1.5 \\ \hline
 				25/11/2018 & Component View & 3 \\ \hline
 				26/11/2018 & Deployment View & 2.5 \\ \hline
-				27/11/2018 & Component Interfaces & 1.5 \\ \hline
+				27/11/2018 & Deployment View & 2 \\ \hline
+				29/11/2018 & Component Interfaces & 1.5 \\ \hline
+				02/12/2018 & Runtime View & 2 \\ \hline
+				03/12/2018 & Requirements Traceability & 1 \\ \hline
 				Total &									& \\ \hline
 			\end{tabular}
 		\end{center}
@@ -403,7 +442,8 @@ The architecture of our system can be streamlined into 3 logic layers:
 				19/11/2018 & Introduction of the document & 1.5 \\ \hline
 				22/11/2018 & Component View & 2.5 \\ \hline
 				25/11/2018 & Component View & 3 \\ \hline
-				26/11/2018 & Deployment View and Design Patterns & 2.5 \\ \hline
+				26/11/2018 & Deployment View & 2.5 \\ \hline
+				27/11/2018 & Deployment View and Design Patterns & 2 \\ \hline
 				Total &									& \\ \hline
 			\end{tabular}
 		\end{center}
