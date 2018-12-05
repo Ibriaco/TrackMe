@@ -79,7 +79,8 @@
 			This section provides an overview on how the User Interface will look like and furthermore gives a more detailed extension using UX and BCE diagrams.
 			\item \textbf{4 Requirments Traceability}\\\\
 			This section explains how the requirements defined in the RASD map to the design elements defined in this document.
-			\item \textbf{5 Implementation, Integration and Test Plan}
+			\item \textbf{5 Implementation, Integration and Test Plan}\\\\
+			In this section we identify the order in which we plan to implement the subcomponents of the system and the order in which we plan to integrate and test them.
 		\end{itemize}
 \newpage
 \section{Architectural Design}
@@ -211,6 +212,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 				\caption{Component interfaces and their interactions.}
 				\label{fig:comp_interfaces}
 			\end{figure}
+		\newpage
 			\subsubsection{External Interfaces}
 				TrackMe will make use of some Application Programming Interfaces to simplify the implementation, since these components are largely used and compatible with the majority of the devices currently on the market:
 				\begin{itemize}
@@ -261,6 +263,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 					\item \textbf{Proxy Pattern}\\
 					It provides a surrogate for another object to control access to it. In our system architecture it can be useful to interface the Application Server with the Database Server. For example, whenever a user or a third party requests some data that is unchanged, the proxy can answer the query without involving access to the database, providing a better response time. In our case, this is useful to improve service response time, very important in critical services that involve users' health.
 				\end{itemize}
+			\newpage
 			\subsubsection{RAPS Architecture}
 			As mentioned briefly in the RASD (sections 3.9.2, 3.9.5), our system has to rely on a RAPS (texttt{Reliable Array of Partitioned Service}) architecture, in order to prevent unavailability of some functionalities in case of breakdowns. This architecture consists in a partitioned and redundant structure: servers are cloned to achieve this objective.
 			More precisly, multiple services are divided on different machines and each machine can access in turn to a copy of the stored data. Such architecture guarantees better availability and scalability and provides a high rate of maintainability: in case of breakdowns, it is sufficient to work on the damaged machine, without interfering with the other machines' tasks, while the specific service can still be perfomed. 
@@ -412,6 +415,23 @@ The architecture of our system can be streamlined into 3 logic layers:
 	
 	\newpage
 	\section{Implementation, Integration and Test Plan}
+		\subsection{Implementation Plan}
+		The implementation of our system will be done component by component and module by module. The order in which our implementation will be carried out, takes in account different factors such as the complexity of the modules and how they are interconnected with one another and we must take in consideration the possibility of discovering flaws and bugs in our designed system that will require to be fixed as soon as possible in order to prevent further additional costs and difficulties in debugging.\\\\
+		Hence, we can group the system components as follows:
+		\begin{itemize}
+			\item \textbf{Model}:
+			This component is the first one that must be implemented since all the parts of the Application Server will be using its elements and it allows services to communicate with the DBMS and thus, it is a very important and crucial component for the whole system.\\
+			\item \textbf{User Mobile Services}\\
+			\item \textbf{Third Party Web Services}\\
+			\item \textbf{Client and Router}: These components are used to redirect requests and offer the User a way to communicate with the modules and services which will be carrying out the main functions of the system.
+			
+			 
+		\end{itemize}
+		
+		\subsection{Integration and Testing}
+			\subsubsection{Entry Criteria}
+			\subsubsection{Elements to be Integrated}
+			\subsubsection{Integration Testing Strategy}
 		
 	\newpage
 	%\section{Appendix}
