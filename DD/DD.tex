@@ -395,7 +395,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 				\end{itemize}
 		\subsubsection*{[G5]: Guarantee the preservation of the privacy of the Users}
 				\begin{itemize}
-					\begin{itemize}
+ 					\begin{itemize}
 						\item Requirements: 
 							\begin{itemize}
 								\item {[R5]}
@@ -416,21 +416,70 @@ The architecture of our system can be streamlined into 3 logic layers:
 	\newpage
 	\section{Implementation, Integration and Test Plan}
 		\subsection{Implementation Plan}
-		The implementation of our system will be done component by component and module by module. The order in which our implementation will be carried out, takes in account different factors such as the complexity of the modules and how they are interconnected with one another and we must take in consideration the possibility of discovering flaws and bugs in our designed system that will require to be fixed as soon as possible in order to prevent further additional costs and difficulties in debugging.\\\\
+		The implementation of our system will be done component by component and module by module, according to a bottom-up approach that will facilitate a high deployment coverage in early phases. The order in which our implementation will be carried out, takes in account different factors such as the complexity of the modules and how they are interconnected with one another and we must take in consideration the possibility of discovering flaws and bugs in our designed system that will require to be fixed as soon as possible in order to prevent further additional costs and difficulties in debugging.\\\\
 		Hence, we can group the system components as follows:
 		\begin{itemize}
 			\item \textbf{Model}:
-			This component is the first one that must be implemented since all the parts of the Application Server will be using its elements and it allows services to communicate with the DBMS and thus, it is a very important and crucial component for the whole system.\\
-			\item \textbf{User Mobile Services}\\
-			\item \textbf{Third Party Web Services}\\
-			\item \textbf{Client and Router}: These components are used to redirect requests and offer the User a way to communicate with the modules and services which will be carrying out the main functions of the system.
-			
+			This component is the first one that must be implemented since all the parts of the Application Server will be using its elements and it allows services to communicate with the DBMS and thus, it is a very important and crucial component for the whole system.\\\\
+			The following two components can be identified as the most crucial of the system and their implementation is required to be accomplished as soon as possible since they enclose all the functionalities required both for Users and for Third Parties, and for this reason their fulfillment will require a significative amount of time.
+			\item \textbf{User Mobile Services}: This macro-component, along with the \texttt{Third Party Web Services} component is the most complex and most important of the system, due to its functionalities of providing all the services necessary for the User. The functionalities provided are achieved by means of different internal modules, identified as follows: \texttt{ActivityTrackerModuel}, \texttt{HealthMonitoringModule}, \texttt{SOSAssistanceModule}, \texttt{AccessRequestsModule} and \texttt{ProfileManagerModule}.
+			\item \textbf{Third Party Web Services}: Likewise, this macro-component is very complex and its functionalities provide all the services necessary for Third Parties. The functionalities provided are achieved by means of different internal modules, identified as follows: \texttt{DataAccessModule}, \texttt{SubscriptionModule}, \texttt{IndividualRequestsModule}, \texttt{SamplingRequestsModule} and \texttt{AuthenticationManagerModule}.
+			\newpage
+			\item \textbf{Client and Router}: These components are used to redirect requests and offer the User a way to communicate with the modules and services which will be carrying out the main functions of the system. 
+		
 			 
 		\end{itemize}
 		
 		\subsection{Integration and Testing}
+		In the following sections we are going to illustrate how external components will be integrated with the ones implemented for the system and what testing strategy will be adopted.
 			\subsubsection{Entry Criteria}
+			The integration of components and its testing should be carried out as soon as possible, although some conditions must be respected. In the very first place, external components and API must be available and serviceable even before the beginning of the implementation process. Secondly, the modules which are being integrated in the system are supposed to have at least the operations concerning on another created, if not carried out completely. The developed operations should, in the first place, pass unit tests to make sure that the components are working properly, and in case of failure, it will be guaranteed that a misfunctioning is located in the integration process itself and it will be consequently much easier to target the problem and solve it.\\
+			More clearly, 
 			\subsubsection{Elements to be Integrated}
+			The system is composed by the components previously described and will be integrated as follows:
+			\begin{itemize}
+				\item \texttt{Integration of the components with the DBMS}
+				\item \texttt{Integration of the components with external services}
+				\item \texttt{Integration of the Client side with the Application Server}
+				\item \texttt{Integration of the components of the Application Server}
+			\end{itemize}
+		\newpage
+		\begin{itemize}
+			\item \textbf{Integration of the components with the DBMS}\\
+			The required integrations are the following:
+			\begin{itemize}
+				\item \texttt{ActivityTrackerModule, DBMS}
+				\item \texttt{SOSAssistanceModule, DBMS}
+				\item \texttt{AccessRequestModule, DBMS}
+				\item \texttt{ProfileManagerModule, DBMS}
+				\item \texttt{DataAccessModule, DBMS}
+				\item \texttt{SubscriptionModule, DBMS}
+				\item \texttt{SamplingRequestsModule, DBMS}
+				\item \texttt{AutheticationManagerMoudle, DBMS}
+			\end{itemize}
+			
+			\item \texttt{Integration of the components with external services}\\
+			The required integrations are the following:
+			\begin{itemize}
+				\item \texttt{ActivityTrackerModule, MapsService}
+				\item \texttt{ActivityTrackerModule, SensorsService}
+				\item \texttt{SOSAssistanceModule, AmbulanceDispatchingSystem}
+				\item \texttt{SOSAssistanceModule, NotificationsService}
+				\item \texttt{AccessRequestModule, NotificationsService}
+				\item \texttt{ProfileManagerModule, SMSAPIService}
+				\item \texttt{IndividualRequestsModule, NotificationsService}
+			\end{itemize}
+			\item \texttt{Integration of the Client side with the Application Server}
+			\item \texttt{Integration of the components of the Application Server}\\
+				The required integrations are the following:
+				\begin{itemize}
+				\item \texttt{HealthMonitoringModule, ActivityTrackerModule}
+				\item \texttt{SOSAssistanceModule, ActivityTrackerModule}
+				\item \texttt{SOSAssistanceModule, HealthMonitoringSystem}
+				\item \texttt{SubscriptionModule, DataAccessModule}
+				\item \texttt{IndividualRequestsModule, SubscriptionModule}
+			\end{itemize}
+		\end{itemize}
 			\subsubsection{Integration Testing Strategy}
 		
 	\newpage
@@ -464,6 +513,8 @@ The architecture of our system can be streamlined into 3 logic layers:
 				25/11/2018 & Component View & 3 \\ \hline
 				26/11/2018 & Deployment View & 2.5 \\ \hline
 				27/11/2018 & Deployment View and Design Patterns & 2 \\ \hline
+				04/12/2018 & Implementation, Integration and Test Plan & 1 \\ \hline 
+				05/12/2018 & Implementation, Integration and Test Plan & 3 \\ \hline
 				Total &									& \\ \hline
 			\end{tabular}
 		\end{center}
