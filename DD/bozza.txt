@@ -1,4 +1,10 @@
 
+Mancano descrizioni dei sequence diagram
+
+Individual requests module deve usare database: anche in access request sequence diagram
+Non serve che Individual requests module usi subscription module 
+Non serve che SOS Assistance Module usi activity tracker module 
+
 Menzionare processo di sviluppo utilizzato (incremental, devops, waterfall, etc)
 Dare motivazioni dell'ordine di implementazione e integrazione
 Meglio la rappresentazione tramite un albero/grafo anzi che come una lista
