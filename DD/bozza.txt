@@ -1,5 +1,6 @@
 
 Mancano descrizioni dei sequence diagram
+Mancano numeri sulle chiamate dei metodi nei sequence diagrams
 
 Individual requests module deve usare database: anche in access request sequence diagram
 Non serve che Individual requests module usi subscription module 
