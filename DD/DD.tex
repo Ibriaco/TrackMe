@@ -220,8 +220,8 @@ The architecture of our system can be streamlined into 3 logic layers:
 					\item \texttt{Google Fit Sensors API} to read raw sensor data in real time. It allows listing the available sensors on the device on which te application is running and registering a listener on specific sensors to retrieve data automatically. ---> CoreMotion e HealthKit per iOS.
 					\item \texttt{Google Notifications API}: this lets applications send information to a user even if the app is idle or in the background. ---> e per iOS ?
 					\item \texttt{Ambulance Dispatching System API} to perform assistance requests. Actually it could be an automatic phone call to the ambulance contact center, during which an algorithm communicates all relevant data to the interlocutor (e.g. name, age, location etc.).
-					\item \texttt{Database API}
-					\item \texttt{SMS API}
+					\item \texttt{Database API} to support mutiple database servers easily, to provide a structured interface for the dynamic construction of queries and to enforce security checks.
+					\item \texttt{SMS API} to enable code to send short messages via a SMS Gateway.
 				\end{itemize}
 		
 		\newpage
@@ -268,7 +268,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 					\item \textbf{Observer and Observable}\\
 					In this pattern, there are many observers (objects) which are observing a particular subject (observable object). Observers are basically interested and want to be notified when there is a change made inside that subject. So, they register themselves to that subject. When they lose interest in the subject they simply unregister from the subject. In our system, the intent of this pattern is to let the User execute some query through the UI and after searching the Database, the result is reflected back in the UI. In most of the cases we segregate the UI with the Database. If a change occurs in the database, the UI should be notified so that it can update its display according to the change. When a change is occurring an event is notified and the changes are applied and updated for the User.\\ 
 					When referring to a distributed system, this pattern is called Pub-Sub (\textbf{Publish-Subscribe}). 
-					\item \textbf{Visitor Pattern (?)}\\
+					\item \textbf{Visitor Pattern}\\
 					This pattern's main purpose is to abstract functionalities that can be applied to an aggregate hierarchy of 'element' objects. In particular, we adopted this pattern in order to handle events that notify changes to the User Interface (View component). This way, we create a double dispatching mechanism, and the Controller is able to recognize the event type and associate correctly the requested operation.
 					\item \textbf{Façade Pattern}\\
 					This design pattern supports loose coupling. In fact we emphasize the abstraction and hide complex details by exposing a single interface instead of multiple ones. According to our system we expose to the client \texttt{ThirdPartyWebServices} and \texttt{UserMobileServices} that are in turn extended respectively by all the interfaces provided by the subsystems Third Party Web Services, User Mobile Services and User Smartwatch Services (see section 3, Component View).
@@ -446,8 +446,27 @@ The architecture of our system can be streamlined into 3 logic layers:
 		\subsection{Integration and Testing}
 		In the following sections we are going to illustrate how external components will be integrated with the ones implemented for the system and what testing strategy will be adopted.
 			\subsubsection{Entry Criteria}
-			The integration of components and its testing should be carried out as soon as possible, although some conditions must be respected. In the very first place, external components and API must be available and serviceable even before the beginning of the implementation process. Secondly, the modules which are being integrated in the system are supposed to have at least the operations concerning on another created, if not carried out completely. The developed operations should, in the first place, pass unit tests to make sure that the components are working properly, and in case of failure, it will be guaranteed that a misfunctioning is located in the integration process itself and it will be consequently much easier to target the problem and solve it.\\
-			More clearly, 
+			The integration of components and its testing should be carried out as soon as possible, although some conditions must be respected before beginning the verification activity. 
+			\begin{itemize}
+				\item In the very first place, the \texttt{Requirements Analysis and Specification Document} and the \texttt{Desing Document} must be complete and available to all the people involved in the development of the system in order to make them aware about requirments and adopted design choices.
+				\item External components and API must be available and serviceable even before the beginning of the implementation process.
+				\item The modules which are being integrated in the system are supposed to have at least the operations concerning on another created, if not carried out completely. 
+				\item The developed operations should, in the first place, pass unit tests to make sure that the components are working properly, and in case of failure, it will be guaranteed that a misfunctioning is located in the integration process itself and it will be consequently much easier to target the problem and solve it.
+			\end{itemize} 
+			Furthermore, in order to test the integration of two generic components, the main featues of both of them should have been developed (partially, if not completely) and the related test units should have been performed. More clearly, there are minimum coverage percentages of completion of each component with its functionalities that have to be reached:
+			\begin{itemize}
+				\item 70\% of the Activity Tracker Module
+				\item 70\% of the Health Monitoring Module
+				\item 80\% of the SOS Assistance Module
+				\item 80\% of the Access Requests Module
+				\item 60\% of the Profile Manager Module
+				\item 80\% of the Data Access Module
+				\item 60\% of the Subscription Module
+				\item 80\% of the Individual Requests Module
+				\item 60\% of the Sampling Requests Module
+				\item 60\% of the Authentication Manager Module
+			\end{itemize}
+		The different percentage values reflect the minimum number of features which need to be implemented in order to perform meaningful integration tests.
 			\subsubsection{Elements to be Integrated}
 			The system is composed by the components previously described and will be integrated as follows:
 			\begin{itemize}
@@ -482,7 +501,8 @@ The architecture of our system can be streamlined into 3 logic layers:
 				\item \texttt{ProfileManagerModule, SMSAPIService}
 				\item \texttt{IndividualRequestsModule, NotificationsService}
 			\end{itemize}
-			\item \texttt{Integration of the Client side with the Application Server}
+			\item \texttt{Integration of the Client side with the Application Server}\\
+			This integration is accomplished to enable the sending of requests between the Server side and the App used by the User.
 			\item \texttt{Integration of the components of the Application Server}\\
 				The required integrations are the following:
 				\begin{itemize}
@@ -493,8 +513,34 @@ The architecture of our system can be streamlined into 3 logic layers:
 				\item \texttt{IndividualRequestsModule, SubscriptionModule}
 			\end{itemize}
 		\end{itemize}
+		\newpage
 			\subsubsection{Integration Testing Strategy}
-		
+			Given that the entire development process follows a bottom-up approach, we opted to use a similar approach for the testing phase: in the very first place we will start by integrating those components that do not depend on other ones in order to work properly, or those who depend on already developed components (such as external API's). After all the single components are tested, we will end up by the subsystems the previous components take part of. This allows us to begin to test a component or a subsystem as soon as it's finished (or near completion), which in turn gives us immediate feedback and allows us to (partially) parallelize the development phase and the testing phase.
+			\subsection{Sequence of Component/Function Integration}
+			In this section of the document the order of integration of the components and subsystems of TrackMe system will be described.
+			As a notation, an arrow going from component A to component B means that A is necessary for B to function, so it must have already been implemented before performing the integration.
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.7\linewidth]{images/BneedsA}
+				\label{fig:bneedsa}
+			\end{figure}
+			\subsubsection{Software Integration sequence}
+			\begin{figure}[h]}
+				\centering
+				\includegraphics[width=0.5\linewidth]{images/profile_manager_integration}
+				\caption{Profile Manager}
+				\label{fig:profilemanagerintegration}
+			\end{figure}
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.7\linewidth]{images/activity_tracker_integration}
+				\caption{Activity Tracker}
+				\label{fig:activitytrackerintegration}
+			\end{figure}
+			
+			
+			
 	\newpage
 	%\section{Appendix}
 	\section{Effort Spent}
