@@ -34,8 +34,9 @@
 \BOOKMARK [3][-]{subsubsection.5.2.2}{Elements to be Integrated}{subsection.5.2}% 34
 \BOOKMARK [3][-]{subsubsection.5.2.3}{Integration Testing Strategy}{subsection.5.2}% 35
 \BOOKMARK [2][-]{subsection.5.3}{Sequence of Component/Function Integration}{section.5}% 36
-\BOOKMARK [3][-]{subsubsection.5.3.1}{Software Integration sequence}{subsection.5.3}% 37
-\BOOKMARK [1][-]{section.6}{Effort Spent}{}% 38
-\BOOKMARK [1][-]{section.7}{References and Used Tools}{}% 39
-\BOOKMARK [2][-]{subsection.7.1}{Reference Documents}{section.7}% 40
-\BOOKMARK [2][-]{subsection.7.2}{Tools}{section.7}% 41
+\BOOKMARK [3][-]{subsubsection.5.3.1}{User side Integration sequence}{subsection.5.3}% 37
+\BOOKMARK [3][-]{subsubsection.5.3.2}{Third Party side Integration sequence}{subsection.5.3}% 38
+\BOOKMARK [1][-]{section.6}{Effort Spent}{}% 39
+\BOOKMARK [1][-]{section.7}{References and Used Tools}{}% 40
+\BOOKMARK [2][-]{subsection.7.1}{Reference Documents}{section.7}% 41
+\BOOKMARK [2][-]{subsection.7.2}{Tools}{section.7}% 42
