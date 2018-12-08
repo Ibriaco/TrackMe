@@ -1,14 +1,12 @@
 
-Posso usare Google notifications e sensors su iOS? Mi sa de no
+Posso usare Google notifications e sensors su iOS? Mi sa di no
 
-Sequence diagrams su automated assistance mi sa sbagliato: health monitor non deve parlare direttamente all'ambulance system.
+Sequence diagrams su automated assistance mi sa sbagliato: health monitor non deve parlare direttamente all'ambulance system
 Ricontrollare nomi delle "entità"
 Sequence Diagrams troppo dettagliati
 Manca sequence diagram su samplings
 
-Manca scenario e blocco in use case diagram sulla rimozione dell'accesso ai third parties e di conseguenza use case correlato.
-
-Riguardare UML, ho messo Maps API ma non Sensors API ecc, meglio toglierlo?
+Health Status Monitoring System in use case diagram non è mai citato da altre parti
 
 Mondo Alloy con più di un third party (?)
 

@@ -1,4 +1,11 @@
 
+Aggiornare document structure (BCE e UX)
+Togliere tutte le parole "google" nei moduli e interfacce e nelle loro descrizioni
+
+Motivare percentuali implementazione
+Controllare nomi dei moduli citati
+
+Manca sequence diagram su sampling
 Mancano descrizioni dei sequence diagram
 Mancano numeri sulle chiamate dei metodi nei sequence diagrams
 
@@ -6,10 +13,4 @@ Individual requests module deve usare database: anche in access request sequence
 Non serve che Individual requests module usi subscription module 
 Non serve che SOS Assistance Module usi activity tracker module 
 
-Menzionare processo di sviluppo utilizzato (incremental, devops, waterfall, etc)
-Dare motivazioni dell'ordine di implementazione e integrazione
-Meglio la rappresentazione tramite un albero/grafo anzi che come una lista
-
-Non più parlato neanche dei collegamenti con system administrator
-
-Visitor pattern troppo rivolto all'implementazione piuttosto che all'architettura.
+Visitor pattern troppo rivolto all'implementazione piuttosto che all'architettura

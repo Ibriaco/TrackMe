@@ -161,6 +161,37 @@ The architecture of our system can be streamlined into 3 logic layers:
 					\item \texttt{Sampling Requests Module}: similar to the Access Requests Module, provides an interface to allow the third party retrieving anonymized information of a group of users.
 					\item \texttt{Authentication Manager Module}: this module provides all functionalities concerning with the registration and login of a third party to the system.
 				\end{itemize}
+			
+		\newpage
+		\subsection{Component Interfaces}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[height=1.2\linewidth]{images/comp_interfaces}
+				\caption{Component interfaces and their interactions.}
+				\label{fig:comp_interfaces}
+			\end{figure}
+			\newpage
+			\subsubsection{External Interfaces}
+			TrackMe will make use of some Application Programming Interfaces to simplify the implementation, since these components are largely used and compatible with the majority of the devices currently on the market:
+			\begin{itemize}
+				\item \texttt{Google Maps API} to have a visual representation of user location and to get it in critical moments, such as AutomatedSOS requests to the Ambulance Dispatching System.
+				\item \texttt{Google Fit Sensors API} to read raw sensor data in real time. It allows listing the available sensors on the device on which te application is running and registering a listener on specific sensors to retrieve data automatically. ---> CoreMotion e HealthKit per iOS.
+				\item \texttt{Google Notifications API}: this lets applications send information to a user even if the app is idle or in the background. ---> e per iOS ?
+				\item \texttt{Ambulance Dispatching System API} to perform assistance requests. Actually it could be an automatic phone call to the ambulance contact center, during which an algorithm communicates all relevant data to the interlocutor (e.g. name, age, location etc.).
+				\item \texttt{Database API} to support mutiple database servers easily, to provide a structured interface for the dynamic construction of queries and to enforce security checks.
+				\item \texttt{SMS API} to enable code to send short messages via a SMS Gateway.
+			\end{itemize}
+			
+		\newpage
+		\subsection{Model and Database Structure}
+			In this section, a description of the model structure is given. \\
+			The following UML Class Diagram is used to map the model components to their correspondant database tables. Moreover, we give an idea of what types of data are needed and what attributes are related to the described data structures.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.2\linewidth]{images/UML}
+				\caption{UML Class Diagram for database structure.}
+				\label{fig:UML}
+			\end{figure}
 		
 		\newpage
 		\subsection{Deployment View}
@@ -191,38 +222,15 @@ The architecture of our system can be streamlined into 3 logic layers:
 							\label{fig:app_server_artifacts}
 						\end{figure}
 					\item \textbf{Tier 4}\\
-					This tier corresponds to the Database Server on which the DBMS is running. We opted for MySQL (v. 8.0.12) since it is one of the most secure and reliable database management system used in popular web applications and guarantees scalability and high performance. \\ \\ \\ \\ \\
+					This tier corresponds to the Database Server on which the DBMS is running. We opted for MySQL (v. 8.0.12) since it is one of the most secure and reliable database management system used in popular web applications and guarantees scalability and high performance. \\ \\
 				\end{itemize}
+			The following diagram represents how the previously described tiers are assembled:
 			\begin{figure}[H]
 				\centering
 				\includegraphics[width=1.2\linewidth]{images/deployment_diagram}
 				\caption{Deployment View Diagram (entire system).}
 				\label{fig:deployment_diagram}
 			\end{figure}
-		
-			
-			
-			
-		
-		\newpage
-		\subsection{Component Interfaces}
-			\begin{figure}[H]
-				\centering
-				\includegraphics[height=1.2\linewidth]{images/comp_interfaces}
-				\caption{Component interfaces and their interactions.}
-				\label{fig:comp_interfaces}
-			\end{figure}
-		\newpage
-			\subsubsection{External Interfaces}
-				TrackMe will make use of some Application Programming Interfaces to simplify the implementation, since these components are largely used and compatible with the majority of the devices currently on the market:
-				\begin{itemize}
-					\item \texttt{Google Maps API} to have a visual representation of user location and to get it in critical moments, such as AutomatedSOS requests to the Ambulance Dispatching System.
-					\item \texttt{Google Fit Sensors API} to read raw sensor data in real time. It allows listing the available sensors on the device on which te application is running and registering a listener on specific sensors to retrieve data automatically. ---> CoreMotion e HealthKit per iOS.
-					\item \texttt{Google Notifications API}: this lets applications send information to a user even if the app is idle or in the background. ---> e per iOS ?
-					\item \texttt{Ambulance Dispatching System API} to perform assistance requests. Actually it could be an automatic phone call to the ambulance contact center, during which an algorithm communicates all relevant data to the interlocutor (e.g. name, age, location etc.).
-					\item \texttt{Database API} to support mutiple database servers easily, to provide a structured interface for the dynamic construction of queries and to enforce security checks.
-					\item \texttt{SMS API} to enable code to send short messages via a SMS Gateway.
-				\end{itemize}
 		
 		\newpage
 		\subsection{Runtime View}
@@ -293,7 +301,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 			For what concerns the Mobile App, we decided not provide a cross-platform web based application, using some framework/library such as React.js, even though it can save time since the code can be reused for different platform. \\
 			Due to the fact that our application must interface with some wearable devices, we prefer providing native applications, both for Android and iOS.
 			Doing so the developed applications can guarantee a better performance during their execution and a better user experience: a user who is used to, for example, the iOS graphical interface, will feel more comfortable using an app with the same type of GUI components.\\
-			Furthermore, native applications guarantee their optimal integration the one with the other and with the entire ecosystem (referring for example to an Apple Watch paired to an iPhone device).
+			Furthermore, native applications guarantee their optimal integration with one another and with the entire ecosystem (referring for example to an Apple Watch paired to an iPhone device).
 			
 		
 	\newpage
@@ -435,7 +443,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 			\item \textbf{Model}:
 			This component is the first one that must be implemented since all the parts of the Application Server will be using its elements and it allows services to communicate with the DBMS and thus, it is a very important and crucial component for the whole system.\\\\
 			The following two components can be identified as the most crucial of the system and their implementation is required to be accomplished as soon as possible since they enclose all the functionalities required both for Users and for Third Parties, and for this reason their fulfillment will require a significative amount of time.
-			\item \textbf{User Mobile Services}: This macro-component, along with the \texttt{Third Party Web Services} component is the most complex and most important of the system, due to its functionalities of providing all the services necessary for the User. The functionalities provided are achieved by means of different internal modules, identified as follows: \texttt{ActivityTrackerModuel}, \texttt{HealthMonitoringModule}, \texttt{SOSAssistanceModule}, \texttt{AccessRequestsModule} and \texttt{ProfileManagerModule}.
+			\item \textbf{User Mobile Services}: This macro-component, along with the \texttt{Third Party Web Services} component is the most complex and most important of the system, due to its functionalities of providing all the services necessary for the User. The functionalities provided are achieved by means of different internal modules, identified as follows: \texttt{ActivityTrackerModule}, \texttt{HealthMonitoringModule}, \texttt{SOSAssistanceModule}, \texttt{AccessRequestsModule} and \texttt{ProfileManagerModule}.
 			\item \textbf{Third Party Web Services}: Likewise, this macro-component is very complex and its functionalities provide all the services necessary for Third Parties. The functionalities provided are achieved by means of different internal modules, identified as follows: \texttt{DataAccessModule}, \texttt{SubscriptionModule}, \texttt{IndividualRequestsModule}, \texttt{SamplingRequestsModule} and \texttt{AuthenticationManagerModule}.
 			\newpage
 			\item \textbf{Client and Router}: These components are used to redirect requests and offer the User a way to communicate with the modules and services which will be carrying out the main functions of the system. 
@@ -450,10 +458,10 @@ The architecture of our system can be streamlined into 3 logic layers:
 			\begin{itemize}
 				\item In the very first place, the \texttt{Requirements Analysis and Specification Document} and the \texttt{Desing Document} must be complete and available to all the people involved in the development of the system in order to make them aware about requirments and adopted design choices.
 				\item External components and API must be available and serviceable even before the beginning of the implementation process.
-				\item The modules which are being integrated in the system are supposed to have at least the operations concerning on another created, if not carried out completely. 
+				\item The modules which are being integrated in the system are supposed to have at least the operations concerning one another created, if not carried out completely. 
 				\item The developed operations should, in the first place, pass unit tests to make sure that the components are working properly, and in case of failure, it will be guaranteed that a misfunctioning is located in the integration process itself and it will be consequently much easier to target the problem and solve it.
 			\end{itemize} 
-			Furthermore, in order to test the integration of two generic components, the main featues of both of them should have been developed (partially, if not completely) and the related test units should have been performed. More clearly, there are minimum coverage percentages of completion of each component with its functionalities that have to be reached:
+			Furthermore, in order to test the integration of two generic components, the main featues of both of them should have been developed (partially, if not completely) and the related unit tests should have been performed. More clearly, there are minimum coverage percentages of completion of each component with its functionalities that have to be reached:
 			\begin{itemize}
 				\item 70\% of the Activity Tracker Module
 				\item 70\% of the Health Monitoring Module
@@ -622,7 +630,8 @@ The architecture of our system can be streamlined into 3 logic layers:
 				29/11/2018 & Component Interfaces & 1.5 \\ \hline
 				02/12/2018 & Runtime View & 2 \\ \hline
 				04/12/2018 & Runtime View & 2 \\ \hline
-				06/12/2018 & Requirements Traceability & 1 \\ \hline
+				06/12/2018 & UML Class Diagram & 2 \\ \hline
+				08/12/2018 & Requirements Traceability & 1 \\ \hline
 				Total &									& \\ \hline
 			\end{tabular}
 		\end{center}
@@ -639,6 +648,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 				27/11/2018 & Deployment View and Design Patterns & 2 \\ \hline
 				04/12/2018 & Implementation, Integration and Test Plan & 1 \\ \hline 
 				05/12/2018 & Implementation, Integration and Test Plan & 3 \\ \hline
+				08/12/2018 & Integration Diagrams & 3.5 \\ \hline
 				Total &									& \\ \hline
 			\end{tabular}
 		\end{center}
