@@ -24,3 +24,4 @@ REVISION HISTORY:
 24/11/2018 update in UML class diagram (error correction)
 03/12/2018 added web app mockups
 04/12/2018 removed some description of system architecture, covered later in the DD, and the idea of using the UDP protocol. Also removed some duplication of requirements.
+08/12/2018 added Manage Third Party Accesses use case
