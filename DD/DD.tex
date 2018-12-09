@@ -48,6 +48,7 @@
  				\item \texttt{Individual Access Request}: sometimes referred only as \texttt{individual request} or \texttt{access request}. It refers to a singular request sent by a Third Party to a User whenever it wants to have access to User's data. It needs the User's approval. 
  				\item \texttt{Sampling Search}: it refers to a search conducted by a Third Party according to some filters, returning anonymized results for a group of people. In this document it is often called only \texttt{sampling}.
  				\item \texttt{Mobile App}: an application that can be run by mobile devices, both smartphones and smartwatches.
+ 				\item \texttt{External Service}: a service provided by some components/modules through an API that is not needed to be implemented, since it is already available.
  			\end{itemize}
  		\subsubsection{Acronyms}
  			\begin{itemize}
@@ -122,7 +123,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 	
 		\newpage
 		\subsubsection{User Mobile Services Projection}
-			User Mobile Services subsystem is composed by five components: \texttt{Activity Tracker Module}, \texttt{Health Monitoring Module}, \texttt{SOS Assistance Module}, \texttt{Access Requests Module} and \texttt{Profile Manager Module}. These components provide to the User Mobile Application the following interfaces: \texttt{ActivityTracker}, \texttt{HealthMonitor}, \texttt{AssistanceRequestHandler}, \texttt{RequestHandler} and \texttt{ProfileManager}. The components need also to communicate with \texttt{Google Maps}, \texttt{Google Sensors}, \texttt{Google Notifications}, \texttt{Ambulance Dispatching System}, \texttt{SMS gateway} and the \texttt{DBMS} to work properly and guarantee a better User experience with the Application.
+			User Mobile Services subsystem is composed by five components: \texttt{Activity Tracker Module}, \texttt{Health Monitoring Module}, \texttt{SOS Assistance Module}, \texttt{Access Requests Module} and \texttt{Profile Manager Module}. These components provide to the User Mobile Application the following interfaces: \texttt{ActivityTracker}, \texttt{HealthMonitor}, \texttt{AssistanceRequestHandler}, \texttt{RequestHandler} and \texttt{ProfileManager}. The components need also to communicate with a \texttt{Maps Service}, a \texttt{Sensors Service}, a \texttt{Notifications Service}, the \texttt{Ambulance Dispatching System}, a \texttt{SMS Service} and the \texttt{DBMS} to work properly and guarantee a better User experience with the Application.
 			\begin{figure}[H]
 				\centering
 				\includegraphics[height=1.0\linewidth]{images/user_projection}
@@ -145,7 +146,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 		
 		\newpage
 		\subsubsection{Third Party Web Services Projection}
-				 Third Party Web Services subsystem is composed by five components: \texttt{Data Access Module}, \texttt{Subscription Module}, \texttt{Individual Requests Module}, \texttt{Sampling Requests Module} and \texttt{Authentication Manager Module}. These components provide to the Web Application the following interfaces: \texttt{DataAccessManager}, \texttt{SubscriptionManager}, \texttt{RequestProvider} and \texttt{AuthenticationManager}. The components need also to communicate with \texttt{Google Notifications} and the \texttt{DBMS} to work properly.
+				 Third Party Web Services subsystem is composed by five components: \texttt{Data Access Module}, \texttt{Subscription Module}, \texttt{Individual Requests Module}, \texttt{Sampling Requests Module} and \texttt{Authentication Manager Module}. These components provide to the Web Application the following interfaces: \texttt{DataAccessManager}, \texttt{SubscriptionManager}, \texttt{RequestProvider} and \texttt{AuthenticationManager}. The components need also to communicate with a \texttt{Notifications Service} and the \texttt{DBMS} to work properly.
 			\begin{figure}[H]
 				\centering
 				\includegraphics[height=1.0\linewidth]{images/third_party_projection}
@@ -156,8 +157,8 @@ The architecture of our system can be streamlined into 3 logic layers:
 				\begin{itemize}
 					\item \texttt{Data Access Module}: it deals with accessing to user's data, in case of the specific third party has access to him/her.
 					\item \texttt{Subscription Module}: this component is responsible for subscribing a third party to a specific user, after the access request has been accepted. If the operation terminates successfully it checks the existence of new data retrieved by the Data Access Module and notifies the involved third party, thanks to the Notifications API.
-					\item \texttt{Individual Requests Module}: it provides the third party with an interface that allows it to send data access request to a specific user.
-					If a request is accepted, it also gives the possibility to the third party to subscribe to user's new data.
+					\item \texttt{Individual Requests Module}: it provides the third party with an interface that allows it to search a user and to send data access request to that specific user.
+					If a request is accepted, it also gives the possibility to the third party to subscribe to user's new data, interfacing with the Subscription Module.
 					\item \texttt{Sampling Requests Module}: similar to the Access Requests Module, provides an interface to allow the third party retrieving anonymized information of a group of users.
 					\item \texttt{Authentication Manager Module}: this module provides all functionalities concerning with the registration and login of a third party to the system.
 				\end{itemize}
@@ -174,12 +175,12 @@ The architecture of our system can be streamlined into 3 logic layers:
 			\subsubsection{External Interfaces}
 			TrackMe will make use of some Application Programming Interfaces to simplify the implementation, since these components are largely used and compatible with the majority of the devices currently on the market:
 			\begin{itemize}
-				\item \texttt{Google Maps API} to have a visual representation of user location and to get it in critical moments, such as AutomatedSOS requests to the Ambulance Dispatching System.
-				\item \texttt{Google Fit Sensors API} to read raw sensor data in real time. It allows listing the available sensors on the device on which te application is running and registering a listener on specific sensors to retrieve data automatically. ---> CoreMotion e HealthKit per iOS.
-				\item \texttt{Google Notifications API}: this lets applications send information to a user even if the app is idle or in the background. ---> e per iOS ?
+				\item \texttt{Maps API} to have a visual representation of user location and to get it in critical moments, such as AutomatedSOS requests to the Ambulance Dispatching System. For our purpose the Google Maps API is perfectly suitable, since it can be embedded in both Android and iOS applications.
+				\item \texttt{Sensors API} to read raw sensor data in real time. It allows listing the available sensors on the device on which te application is running and registering a listener on specific sensors to retrieve data automatically. For the Android system we selected the Google Sensors API and for iOS the native CoreMotion and HealthKit libraries.
+				\item \texttt{Notifications API}: this lets applications send information to a user even if the app is idle or in the background. In the case if Android the app will use the Google Notifications API, while for iOS the standard library will be used.
 				\item \texttt{Ambulance Dispatching System API} to perform assistance requests. Actually it could be an automatic phone call to the ambulance contact center, during which an algorithm communicates all relevant data to the interlocutor (e.g. name, age, location etc.).
-				\item \texttt{Database API} to support mutiple database servers easily, to provide a structured interface for the dynamic construction of queries and to enforce security checks.
-				\item \texttt{SMS API} to enable code to send short messages via a SMS Gateway.
+				\item \texttt{Database API} to support multiple database servers easily, to provide a structured interface for the dynamic construction of queries and to enforce security checks.
+				\item \texttt{SMS API} to enable code to send short messages via a SMS Service, such as during the registration process.
 			\end{itemize}
 			
 		\newpage
@@ -454,77 +455,81 @@ The architecture of our system can be streamlined into 3 logic layers:
 		\subsection{Integration and Testing}
 		In the following sections we are going to illustrate how external components will be integrated with the ones implemented for the system and what testing strategy will be adopted.
 			\subsubsection{Entry Criteria}
-			The integration of components and its testing should be carried out as soon as possible, although some conditions must be respected before beginning the verification activity. 
-			\begin{itemize}
-				\item In the very first place, the \texttt{Requirements Analysis and Specification Document} and the \texttt{Desing Document} must be complete and available to all the people involved in the development of the system in order to make them aware about requirments and adopted design choices.
-				\item External components and API must be available and serviceable even before the beginning of the implementation process.
-				\item The modules which are being integrated in the system are supposed to have at least the operations concerning one another created, if not carried out completely. 
-				\item The developed operations should, in the first place, pass unit tests to make sure that the components are working properly, and in case of failure, it will be guaranteed that a misfunctioning is located in the integration process itself and it will be consequently much easier to target the problem and solve it.
-			\end{itemize} 
-			Furthermore, in order to test the integration of two generic components, the main featues of both of them should have been developed (partially, if not completely) and the related unit tests should have been performed. More clearly, there are minimum coverage percentages of completion of each component with its functionalities that have to be reached:
-			\begin{itemize}
-				\item 70\% of the Activity Tracker Module
-				\item 70\% of the Health Monitoring Module
-				\item 80\% of the SOS Assistance Module
-				\item 80\% of the Access Requests Module
-				\item 60\% of the Profile Manager Module
-				\item 80\% of the Data Access Module
-				\item 60\% of the Subscription Module
-				\item 80\% of the Individual Requests Module
-				\item 60\% of the Sampling Requests Module
-				\item 60\% of the Authentication Manager Module
-			\end{itemize}
-		The different percentage values reflect the minimum number of features which need to be implemented in order to perform meaningful integration tests.
-			\subsubsection{Elements to be Integrated}
-			The system is composed by the components previously described and will be integrated as follows:
-			\begin{itemize}
-				\item \texttt{Integration of the components with the DBMS}
-				\item \texttt{Integration of the components with external services}
-				\item \texttt{Integration of the Client side with the Application Server}
-				\item \texttt{Integration of the components of the Application Server}
-			\end{itemize}
-		\newpage
-		\begin{itemize}
-			\item \textbf{Integration of the components with the DBMS}\\
-			The required integrations are the following:
-			\begin{itemize}
-				\item \texttt{ActivityTrackerModule, DBMS}
-				\item \texttt{SOSAssistanceModule, DBMS}
-				\item \texttt{AccessRequestModule, DBMS}
-				\item \texttt{ProfileManagerModule, DBMS}
-				\item \texttt{DataAccessModule, DBMS}
-				\item \texttt{SubscriptionModule, DBMS}
-				\item \texttt{SamplingRequestsModule, DBMS}
-				\item \texttt{AutheticationManagerMoudle, DBMS}
-			\end{itemize}
-			
-			\item \texttt{Integration of the components with external services}\\
-			The required integrations are the following:
-			\begin{itemize}
-				\item \texttt{ActivityTrackerModule, MapsService}
-				\item \texttt{ActivityTrackerModule, SensorsService}
-				\item \texttt{SOSAssistanceModule, AmbulanceDispatchingSystem}
-				\item \texttt{SOSAssistanceModule, NotificationsService}
-				\item \texttt{AccessRequestModule, NotificationsService}
-				\item \texttt{ProfileManagerModule, SMSAPIService}
-				\item \texttt{IndividualRequestsModule, NotificationsService}
-			\end{itemize}
-			\item \texttt{Integration of the Client side with the Application Server}\\
-			This integration is accomplished to enable the sending of requests between the Server side and the App used by the User.
-			\item \texttt{Integration of the components of the Application Server}\\
-				The required integrations are the following:
+				The integration of components and its testing should be carried out as soon as possible, although some conditions must be respected before beginning the verification activity. 
 				\begin{itemize}
-				\item \texttt{HealthMonitoringModule, ActivityTrackerModule}
-				\item \texttt{SOSAssistanceModule, ActivityTrackerModule}
-				\item \texttt{SOSAssistanceModule, HealthMonitoringSystem}
-				\item \texttt{SubscriptionModule, DataAccessModule}
-				\item \texttt{IndividualRequestsModule, SubscriptionModule}
-			\end{itemize}
-		\end{itemize}
-		\newpage
+					\item In the very first place, the \texttt{Requirements Analysis and Specification Document} and the \texttt{Desing Document} must be complete and available to all the people involved in the development of the system in order to make them aware about requirments and adopted design choices.
+					\item External components and API must be available and serviceable even before the beginning of the implementation process.
+					\item The modules which are being integrated in the system are supposed to have at least the operations concerning one another created, if not carried out completely. 
+					\item The developed operations should, in the first place, pass unit tests to make sure that the components are working properly, and in case of failure, it will be guaranteed that a misfunctioning is located in the integration process itself and it will be consequently much easier to target the problem and solve it.
+				\end{itemize} 
+				Furthermore, in order to test the integration of two generic components, the main featues of both of them should have been developed (partially, if not completely) and the related unit tests should have been performed. More clearly, there are minimum coverage percentages of completion of each component with its functionalities that have to be reached:
+				\begin{itemize}
+					\item 70\% of the ActivityTrackerModule
+					\item 70\% of the HealthMonitoringModule
+					\item 80\% of the SOSAssistanceModule
+					\item 80\% of the AccessRequestsModule
+					\item 60\% of the ProfileManagerModule
+					\item 80\% of the DataAccessModule
+					\item 60\% of the SubscriptionModule
+					\item 80\% of the IndividualRequestsModule
+					\item 60\% of the SamplingRequestsModule
+					\item 60\% of the AuthenticationManagerModule
+				\end{itemize}
+				The different percentage values reflect the minimum number of features which need to be implemented in order to perform meaningful integration tests.
+			\subsubsection{Elements to be Integrated}
+				The system is composed by the components previously described and will be integrated as follows:
+				\begin{itemize}
+					\item \texttt{Integration of the components with the DBMS}
+					\item \texttt{Integration of the components with external services}
+					\item \texttt{Integration of the components of the Application Server}
+					\item \texttt{Integration of the Client side with the Application Server}
+				\end{itemize}
+				\newpage
+				\begin{itemize}
+					\item \textbf{Integration of the components with the DBMS}\\
+					The required integrations are the following:
+					\begin{itemize}
+						\item \texttt{ActivityTrackerModule, DBMS}
+						\item \texttt{SOSAssistanceModule, DBMS}
+						\item \texttt{AccessRequestsModule, DBMS}
+						\item \texttt{ProfileManagerModule, DBMS}
+						\item \texttt{DataAccessModule, DBMS}
+						\item \texttt{SubscriptionModule, DBMS}
+						\item \texttt{IndividualRequestsModule, DBMS}
+						\item \texttt{SamplingRequestsModule, DBMS}
+						\item \texttt{AutheticationManagerMoudle, DBMS}
+					\end{itemize}
+			
+					\item \texttt{Integration of the components with external services}\\
+					The required integrations are the following:
+					\begin{itemize}
+						\item \texttt{ActivityTrackerModule, MapsService}
+						\item \texttt{ActivityTrackerModule, SensorsService}
+						\item \texttt{SOSAssistanceModule, AmbulanceDispatchingSystem}
+						\item \texttt{SOSAssistanceModule, NotificationsService}
+						\item \texttt{AccessRequestsModule, NotificationsService}
+						\item \texttt{ProfileManagerModule, SMSService}
+						\item \texttt{SubscriptionModule, NotificationsService}
+						\item \texttt{IndividualRequestsModule, NotificationsService}
+					\end{itemize}
+					\item \texttt{Integration of the components of the Application Server}\\
+						The required integrations are the following:
+						\begin{itemize}
+						\item \texttt{HealthMonitoringModule, ActivityTrackerModule}
+						\item \texttt{HealthMonitoringModule, SOSAssistanceModule}
+						\item \texttt{SubscriptionModule, DataAccessModule}
+						\item \texttt{DataAccessModule, ActivityTrackerModule}
+						\item \texttt{IndividualRequestsModule, AccessRequestsModule}
+					\end{itemize}
+					\item \texttt{Integration of the Client side with the Application Server}\\
+					This integration is accomplished to enable the sending of requests between the Server side and the App used by the User.
+				\end{itemize}
+			
+			\newpage
 			\subsubsection{Integration Testing Strategy}
-			Given that the entire development process follows a bottom-up approach, we opted to use a similar approach for the testing phase: in the very first place we will start by integrating those components that do not depend on other ones in order to work properly, or those who depend on already developed components (such as external API's). After all the single components are tested, we will end up by the subsystems the previous components take part of. This allows us to begin to test a component or a subsystem as soon as it's finished (or near completion), which in turn gives us immediate feedback and allows us to (partially) parallelize the development phase and the testing phase.
-			\subsection{Sequence of Component/Function Integration}
+				Given that the entire development process follows a bottom-up approach, we opted to use a similar approach for the testing phase: in the very first place we will start by integrating those components that do not depend on other ones in order to work properly, or those who depend on already developed components (such as external API's). After all the single components are tested, we will end up by the subsystems the previous components take part of. This allows us to begin to test a component or a subsystem as soon as it's finished (or near completion), which in turn gives us immediate feedback and allows us to (partially) parallelize the development phase and the testing phase.
+				
+		\subsection{Application Server Components Integration}
 			In this section of the document the order of integration of the components and subsystems of TrackMe system will be described.
 			As a notation, an arrow going from component A to component B means that A is necessary for B to function, so it must have already been implemented before performing the integration.
 			\begin{figure}[H]
@@ -533,85 +538,77 @@ The architecture of our system can be streamlined into 3 logic layers:
 				\label{fig:bneedsa}
 			\end{figure}
 			\subsubsection{User side Integration sequence}
-			
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.7\linewidth]{images/activity_tracker_integration}
-				\caption{Activity Tracker}
-				\label{fig:activitytrackerintegration}
-			\end{figure}
-			
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.7\linewidth]{images/health_monitoring_integration}
-				\caption{Health Monitoring}
-				\label{fig:healthmonitoringintegration}
-			\end{figure}
-			
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.7\linewidth]{images/sos_integration}
-				\caption{SOS Assistance}
-				\label{fig:sosintegration}
-			\end{figure}
-			
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.7\linewidth]{images/access_request_integration}
-				\caption{Access Request}
-				\label{fig:accessrequestintegration}
-			\end{figure}
-			
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.5\linewidth]{images/profile_manager_integration}
-				\caption{Profile Manager}
-				\label{fig:profilemanagerintegration}
-			\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.7\linewidth]{images/activity_tracker_integration}
+					\caption{Activity Tracker}
+					\label{fig:activitytrackerintegration}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.7\linewidth]{images/health_monitoring_integration}
+					\caption{Health Monitoring}
+					\label{fig:healthmonitoringintegration}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.7\linewidth]{images/sos_integration}
+					\caption{SOS Assistance}
+					\label{fig:sosintegration}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.7\linewidth]{images/access_request_integration}
+					\caption{Access Requests}
+					\label{fig:accessrequestintegration}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.5\linewidth]{images/profile_manager_integration}
+					\caption{Profile Manager}
+					\label{fig:profilemanagerintegration}
+				\end{figure}
 		
-			\newpage
 			\subsubsection{Third Party side Integration sequence}
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.7\linewidth]{images/data_access_integration}
-				\caption{Data Access}
-				\label{fig:dataaccessintegration}
-			\end{figure}
-		
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.7\linewidth]{images/sub_integration}
-				\caption{Subscription}
-				\label{fig:subintegration}
-			\end{figure}
-		
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.7\linewidth]{images/ind_request_integration}
-				\caption{Individual Request}
-				\label{fig:indrequestintegration}
-			\end{figure}
-		
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.7\linewidth]{images/sampling_integration}
-				\caption{Sampling Requests}
-				\label{fig:samplingintegration}
-			\end{figure}
-		
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=0.7\linewidth]{images/auth_integration}
-				\caption{Authentication Manager}
-				\label{fig:authintegration}
-			\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.7\linewidth]{images/data_access_integration}
+					\caption{Data Access}
+					\label{fig:dataaccessintegration}
+				\end{figure}
 			
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.7\linewidth]{images/sub_integration}
+					\caption{Subscription}
+					\label{fig:subintegration}
+				\end{figure}
 			
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.7\linewidth]{images/ind_request_integration}
+					\caption{Individual Requests}
+					\label{fig:indrequestintegration}
+				\end{figure}
 			
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.7\linewidth]{images/sampling_integration}
+					\caption{Sampling Requests}
+					\label{fig:samplingintegration}
+				\end{figure}
 			
-			
-	
-			
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.7\linewidth]{images/auth_integration}
+					\caption{Authentication Manager}
+					\label{fig:authintegration}
+				\end{figure}
 			
 	\newpage
 	%\section{Appendix}

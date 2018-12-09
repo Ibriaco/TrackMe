@@ -13,7 +13,6 @@ Mondo Alloy con più di un third party (?)
 User state chart diagram should not include AutomatedSOS functionalities and states
 
 Togliere frecce in class diagram
-Aggiungere sensors api in uml class diagram
 
 Fixare distinzione fra Purpose e Scope e descrizione del sistema
 

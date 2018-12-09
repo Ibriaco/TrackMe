@@ -3,7 +3,6 @@ Aggiornare document structure (BCE e UX)
 Togliere tutte le parole "google" nei moduli e interfacce e nelle loro descrizioni
 
 Motivare percentuali implementazione
-Controllare nomi dei moduli citati
 
 Manca sequence diagram su sampling
 Mancano descrizioni dei sequence diagram
