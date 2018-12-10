@@ -35,7 +35,7 @@
 	\texttt{TrackMe} is a company that wants to develop a software-based service allowing third parties to monitor the location and health status of individuals. Hence, the system has to be composed by two specific services:
 	\begin{itemize}
 	 	\item \textbf{Data4Help}\\\\
-	 	This service supports the registration of individuals who agree that TrackMe acquires their data (through electronic devices such as smartwatches).
+	 	This service supports the registration of individuals who agree that TrackMe acquires their data (through electronic devices such as smartwatches). Third Party will be able to access User's data (after their approval) and to request anonymized sampling searches.
 	 	\item \textbf{AutomatedSOS}\\\\ 
 	 	This service is oriented to elderly people: monitoring their health status parameters, the system can send to the location of the customer an ambulance when some parameters are below certain thresholds, guaranteeing a reaction time of less than 5 seconds from the time the parameters get lower than the threshold.
 	\end{itemize}
@@ -309,6 +309,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 				\caption{RAPS Architecture}
 				\label{fig:raps}
 			\end{figure}
+			\newpage
 			\subsubsection{Transactions Commit Protocol}
 				Since our system is likely to use more than one single node for the Database Server, that communicate with one or more Application Server nodes, a non-blocking distributed protocol for transaction should be selected. An example is the Three-Phase Commit Protocol (3PC): the protagonists are a Coordinator (Transaction Manager, TM) and several Participants/Cohorts (Resource Manager, RM). Thanks to a third phase (with respect to the simple Two-Phase Commit Protocol, 2PC), each participant can become a coordinator in case of failure of the TM itself. This allows 3PC to been non-blocking, while 2PC would block in case of failure of both the coordinator or a participant. This protocol also ensures that whenever a transaction is holding some resources, it will release the lock after a timeout, trying to avoid possible deadlocks (see section 7.1 Reference Documents for more details).
 		
@@ -633,16 +634,16 @@ The architecture of our system can be streamlined into 3 logic layers:
 			\begin{tabular}{| c | c | c |}
 				\hline
 				Day & Subject & Hours \\ \hline
-				19/11/2018 & High Level Components & 1.5 \\ \hline
-				22/11/2018 & Component View & 1.5 \\ \hline
-				25/11/2018 & Component View & 3 \\ \hline
-				26/11/2018 & Deployment View & 2.5 \\ \hline
-				27/11/2018 & Deployment View & 2 \\ \hline
-				29/11/2018 & Component Interfaces & 1.5 \\ \hline
-				02/12/2018 & Runtime View & 2 \\ \hline
-				04/12/2018 & Runtime View & 3 \\ \hline
-				06/12/2018 & UML Class Diagram & 2 \\ \hline
-				08/12/2018 & Requirements Traceability & 1 \\ \hline
+				19/11/2018 & High Level Components & 1.5 \\
+				22/11/2018 & Component View & 1.5 \\
+				25/11/2018 & Component View & 3 \\
+				26/11/2018 & Deployment View & 2.5 \\ 
+				27/11/2018 & Deployment View & 2 \\ 
+				29/11/2018 & Component Interfaces & 1.5 \\ 
+				02/12/2018 & Runtime View & 2 \\ 
+				04/12/2018 & Runtime View & 3 \\ 
+				06/12/2018 & UML Class Diagram & 2 \\ 
+				08/12/2018 & Requirements Traceability & 1 \\ 
 				11/12/2018 & Document review & 4 \\ \hline
 				Total &									& 24 \\ \hline
 			\end{tabular}
@@ -653,19 +654,21 @@ The architecture of our system can be streamlined into 3 logic layers:
 			\begin{tabular}{| c | c | c |}
 				\hline
 				Day & Subject & Hours \\ \hline
-				19/11/2018 & Introduction of the document & 1.5 \\ \hline
-				22/11/2018 & Component View & 2.5 \\ \hline
-				25/11/2018 & Component View & 3 \\ \hline
-				26/11/2018 & Deployment View & 2.5 \\ \hline
-				27/11/2018 & Deployment View and Design Patterns & 2 \\ \hline
-				04/12/2018 & Implementation, Integration and Test Plan & 2 \\ \hline 
-				05/12/2018 & Implementation, Integration and Test Plan & 3 \\ \hline
-				08/12/2018 & Integration Diagrams & 3.5 \\ \hline
-				11/12/2018 & Document review & 4 \\ \hline
-				Total &									& 24 \\ \hline
+				19/11/2018 & Introduction of the document & 1.5 \\ 
+				22/11/2018 & Component View & 3 \\ 
+				25/11/2018 & Component View & 3 \\ 
+				26/11/2018 & Deployment View & 2.5 \\ 
+				27/11/2018 & Deployment View and Design Patterns & 2.5 \\ 
+				04/12/2018 & Implementation, Integration and Test Plan & 2 \\  
+				05/12/2018 & Implementation, Integration and Test Plan & 3 \\ 
+				08/12/2018 & Integration Diagrams & 4 \\ 
+				11/12/2018 & Document review & 4 \\  \hline
+				Total &									& 25.5 \\  \hline
 			\end{tabular}
 		\end{center}
 	\end{itemize}
+
+	\newpage
 	\section{References and Used Tools}
 		\subsection{Reference Documents}
 			\begin{itemize}

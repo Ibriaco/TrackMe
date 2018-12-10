@@ -4,21 +4,6 @@ Ricontrollare nomi delle "entità"
 Sequence Diagrams troppo dettagliati
 Manca sequence diagram su samplings
 
-Health Status Monitoring System in use case diagram non è mai citato da altre parti
-
-Mondo Alloy con più di un third party (?)
-
-User state chart diagram should not include AutomatedSOS functionalities and states
-
 Togliere frecce in class diagram ????
 
-Fixare distinzione fra Purpose e Scope e descrizione del sistema: magari meglio come descrizione continua anzi che schema (più schematica nel DD)
-
 -----------------------------------------
-
-REVISION HISTORY:
-22/11/2018 added used tools 
-24/11/2018 update in UML class diagram (error correction)
-03/12/2018 added web app mockups
-04/12/2018 removed some description of system architecture, covered later in the DD, and the idea of using the UDP protocol. Also removed some duplication of requirements.
-08/12/2018 added Manage Third Party Accesses use case
