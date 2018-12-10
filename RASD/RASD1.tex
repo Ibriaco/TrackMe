@@ -38,17 +38,11 @@
 
 	\subsection{Scope}
 	\texttt{TrackMe} is a company that wants to develop a software-based service allowing third parties to monitor the location and health status of individuals.
-	Hence, the system has to be composed by two specific services:
-	\begin{itemize}
-		\item \textbf{Data4Help}\\\\This service supports the registration of individuals who agree that TrackMe acquires their data (through electronic devices such as smartwatches). \\In addition, it supports the registration of third parties that can request:
-		\begin{itemize}
-			\item Access to the data of some specific individuals, who can accept/refuse it.
-			\item Access to anonymized data of groups of individuals. These requests are approved by TrackMe if it is able to properly anonymize the requested data. The request is rejected if it is way too specific.
-		\end{itemize}
-		As soon as a request for some certain data is approved, TrackMe makes the previously saved data available to the third party. Also, it allows the third party to subscribe to new data and to receive them as soon as they are produced.
-		\newpage
-		\item \textbf{AutomatedSOS}\\\\This service is oriented to elderly people: monitoring their health status parameters, the system can send to the location of the customer an ambulance when some parameters are below certain thresholds, guaranteeing a reaction time of less than 5 seconds from the time the parameters get lower than the threshold.
-	\end{itemize}
+	Hence, the system has to be composed by two specific services: Data4Help and AutomatedSOS.
+	\textbf{Data4Help}\\\\is a service that supports the registration of individuals who agree that TrackMe acquires their data (through electronic devices such as smartwatches). \\In addition, it supports the registration of third parties that can request to access to the data of some specific individuals (who can accept/refuse it) and to access to anonymized data of groups of individuals. These latter requests are approved by the system if it is able to properly anonymize the requested data. The request is rejected if it is way too specific.
+	As soon as a request for some certain data is approved, TrackMe makes the previously saved data available to the third party. Also, it allows the third party to subscribe to new data and to receive them as soon as they are produced.
+	\newpage
+	\item \textbf{AutomatedSOS}\\\\This service is oriented to elderly people: monitoring their health status parameters, the system can send to the location of the customer an ambulance when some parameters are below certain thresholds, guaranteeing a reaction time of less than 5 seconds from the time the parameters get lower than the threshold.
 
 	\subsubsection{Goals}
 	\begin{itemize}

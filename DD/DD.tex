@@ -77,7 +77,7 @@
 			\item \textbf{2 Architectural Design}\\\\
 			This section is focused on the main components used for this system and the relationship between them, providing information about their deployment and how they operate. It also focuses on the architectural styles and the design patterns adopted for designing the system.
 			\item \textbf{3 User Interface Design}\\\\
-			This section provides an overview on how the User Interface will look like and furthermore gives a more detailed extension using UX and BCE diagrams.
+			This section provides an overview on how the User Interface will look like. In our case this section won't be detailed since all the product functions have been already represented in the RASD.
 			\item \textbf{4 Requirments Traceability}\\\\
 			This section explains how the requirements defined in the RASD map to the design elements defined in this document.
 			\item \textbf{5 Implementation, Integration and Test Plan}\\\\
@@ -300,7 +300,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 				\end{itemize}
 			\newpage
 			\subsubsection{RAPS Architecture}
-			As mentioned briefly in the RASD (sections 3.9.2, 3.9.5), our system has to rely on a RAPS (texttt{Reliable Array of Partitioned Service}) architecture, in order to prevent unavailability of some functionalities in case of breakdowns. This architecture consists in a partitioned and redundant structure: servers are cloned to achieve this objective.
+			As mentioned briefly in the RASD (sections 3.9.2, 3.9.5), our system has to rely on a RAPS (\texttt{Reliable Array of Partitioned Service}) architecture, in order to prevent unavailability of some functionalities in case of breakdowns. This architecture consists in a partitioned and redundant structure: servers are cloned to achieve this objective.
 			More precisly, multiple services are divided on different machines and each machine can access in turn to a copy of the stored data. Such architecture guarantees better availability and scalability and provides a high rate of maintainability: in case of breakdowns, it is sufficient to work on the damaged machine, without interfering with the other machines' tasks, while the specific service can still be perfomed. 
 			In addition, if the system is willing to expand some services, it is sufficient invest on the specific partition associated to that service.
 			\begin{figure}[H]
@@ -486,7 +486,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 					\item 80\% of the DataAccessModule 
 					\item 60\% of the SubscriptionModule (at least the subscription feature itself).
 					\item 80\% of the IndividualRequestsModule
-					\item 60\% of the SamplingRequestsModule 
+					\item 60\% of the SamplingRequestsModule (at least half of the possible search filters should be available)
 					\item 60\% of the AuthenticationManagerModule (at least the authentication feature itself, ignoring in the very first place functionalities such as password recovery).
 				\end{itemize}
 				The different percentage values reflect the minimum number of features which need to be implemented in order to perform meaningful integration tests.
