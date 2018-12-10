@@ -1,6 +1,5 @@
 
 Aggiornare document structure (BCE e UX)
-Togliere tutte le parole "google" nei moduli e interfacce e nelle loro descrizioni
 
 Motivare percentuali implementazione
 
@@ -8,8 +7,4 @@ Manca sequence diagram su sampling
 Mancano descrizioni dei sequence diagram
 Mancano numeri sulle chiamate dei metodi nei sequence diagrams
 
-Individual requests module deve usare database: anche in access request sequence diagram
-Non serve che Individual requests module usi subscription module 
-Non serve che SOS Assistance Module usi activity tracker module 
-
-Visitor pattern troppo rivolto all'implementazione piuttosto che all'architettura
+Mancano metodi nelle interface in Component Interfaces

@@ -1,6 +1,4 @@
 
-Posso usare Google notifications e sensors su iOS? Mi sa di no
-
 Sequence diagrams su automated assistance mi sa sbagliato: health monitor non deve parlare direttamente all'ambulance system
 Ricontrollare nomi delle "entità"
 Sequence Diagrams troppo dettagliati
@@ -12,9 +10,9 @@ Mondo Alloy con più di un third party (?)
 
 User state chart diagram should not include AutomatedSOS functionalities and states
 
-Togliere frecce in class diagram
+Togliere frecce in class diagram ????
 
-Fixare distinzione fra Purpose e Scope e descrizione del sistema
+Fixare distinzione fra Purpose e Scope e descrizione del sistema: magari meglio come descrizione continua anzi che schema (più schematica nel DD)
 
 -----------------------------------------
 
