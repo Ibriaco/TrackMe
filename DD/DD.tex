@@ -236,29 +236,45 @@ The architecture of our system can be streamlined into 3 logic layers:
 		\newpage
 		\subsection{Runtime View}
 			\subsubsection{On-Demand Assistance Request}
-				\begin{figure}[H]
+					\begin{figure}[H]
 					\centering
 					\includegraphics[width=1.0\linewidth]{images/ass_request_sequence}
 					\label{fig:ass_request_sequence}
 				\end{figure}
-			\subsubsection{Automated Assistance Request}
+				In this sequence diagram the on-demand assistance request process is shown. The main component of this process is the AssistanceRequestHandler. The process begins when a User clicks on the assistance button and the Mobile App notifies the AssistanceRequestHandler which in turn queries the Database. From the Database, information about the user is retrievied and then forwarded to the Ambulance API, where it is processed in order to send an ambulance to assist the User. A confirmation message is returned in first place to the AssistanceRequestHandler and then to the Mobile App and with a show() method the UI is updated.
+				\newpage
+				\subsubsection{Automated Assistance Request}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=1.0\linewidth]{images/automated_request_sequence}
 					\label{fig:automated_request_sequence}
 				\end{figure}
-			\subsubsection{Data Access Request}
+				In this sequence diagram the automated assistance request process is shown. The main components of this process are the AutomatedAssistance interface and the HealthMonnitor. The process in the HealthMonitor where it loops calculating health status of a generic User and retrieves vital parameter from the Activity Tracker. When some parameters are below a fixed threshold, a request assistance is forwarded to the AutomatedAssistance interfaces which in turn retrieves information from the database and then forwards it to the Ambulance API, where it is processed to send an ambulance to assist the User. A notification is sent afterwards to the User, updating the UI and a confirmation message is then returned to the Health Monitor.
+				\newpage
+				\subsubsection{Data Access Request}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=1.0\linewidth]{images/access_request_sequence}
 					\label{fig:access_request_sequence}
 				\end{figure}
-			\subsubsection{Subscription to User's Data}
+				In this sequence diagram the data access request process is shown. The main components of this process are the RequestProvider and the RequestHandler. The process begins when a third party searches for a user throught the web app. A search request is sent to the RequestProvides that in turn retrieves information about the specific user from the database. If the User's SSN has been found in the database, his profile is returned to the third party which can in turn send a request to access his profile. Such request is forwarded in first place to the RequestProvider and then to the RequestHandler. When such request is sent, the User can either either accept it or refuse from the app, and then the answer is notified back to the third party, refreshing the web page either with a confirmation message and showing the user profile or with a rejection message.
+				\newpage
+				\subsubsection{Subscription to User's Data}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=1.0\linewidth]{images/subscription_sequence}
 					\label{fig:subscription_sequence}
 				\end{figure}
+				In this sequence diagram the subscriotion to user's data process is shown. The main component of this process is the SubscriptionManager. This process is asynchronous and can begin if and only if a User has accepted the access to his/her profile from a third party. A third party, through the Web App, can click on the subscription button and a subscription request is notified to the SubscriptionManager which in turn creates a subscription and stores its information in the database. A confirmation messages is returned afterwards to the Web App and a confirmation message is shown to the third party. From this point, whenever new data is generated, the system loops and retrieves it, refreshing the third party web app.
+				\newpage 
+				\subsection{Sampling Search}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1.0\linewidth]{images/sampling_sequence}
+					\label{fig:samplingsequence}
+				\end{figure}
+			In this sequence diagram the sampling search process is shown. The main component of this process is the RequestProvider. The process begins when a third party, through the Web App, can click on the sampling button and a sampling request is then forwarded to the RequestProvided which in turn gets sampled data from the database and returns the results to the RequestProvided. When sampled data is returned, the RequestProvider checks if the number of sampled people is greater or equal that 1000. If this is the case, the results are notified to the third party, otherwise an error message is shown.
+				
 		
 		\newpage
 		\subsection{Architectural Styles and Design Patterns}

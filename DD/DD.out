@@ -21,23 +21,24 @@
 \BOOKMARK [3][-]{subsubsection.2.6.2}{Automated Assistance Request}{subsection.2.6}% 21
 \BOOKMARK [3][-]{subsubsection.2.6.3}{Data Access Request}{subsection.2.6}% 22
 \BOOKMARK [3][-]{subsubsection.2.6.4}{Subscription to User's Data}{subsection.2.6}% 23
-\BOOKMARK [2][-]{subsection.2.7}{Architectural Styles and Design Patterns}{section.2}% 24
-\BOOKMARK [3][-]{subsubsection.2.7.1}{Design Patterns}{subsection.2.7}% 25
-\BOOKMARK [3][-]{subsubsection.2.7.2}{RAPS Architecture}{subsection.2.7}% 26
-\BOOKMARK [3][-]{subsubsection.2.7.3}{Transactions Commit Protocol}{subsection.2.7}% 27
-\BOOKMARK [2][-]{subsection.2.8}{Other Design Decisions}{section.2}% 28
-\BOOKMARK [1][-]{section.3}{User Interface Design}{}% 29
-\BOOKMARK [1][-]{section.4}{Requirements Traceability}{}% 30
-\BOOKMARK [1][-]{section.5}{Implementation, Integration and Test Plan}{}% 31
-\BOOKMARK [2][-]{subsection.5.1}{Implementation Plan}{section.5}% 32
-\BOOKMARK [2][-]{subsection.5.2}{Integration and Testing}{section.5}% 33
-\BOOKMARK [3][-]{subsubsection.5.2.1}{Entry Criteria}{subsection.5.2}% 34
-\BOOKMARK [3][-]{subsubsection.5.2.2}{Elements to be Integrated}{subsection.5.2}% 35
-\BOOKMARK [3][-]{subsubsection.5.2.3}{Integration Testing Strategy}{subsection.5.2}% 36
-\BOOKMARK [2][-]{subsection.5.3}{Application Server Components Integration}{section.5}% 37
-\BOOKMARK [3][-]{subsubsection.5.3.1}{User side Integration sequence}{subsection.5.3}% 38
-\BOOKMARK [3][-]{subsubsection.5.3.2}{Third Party side Integration sequence}{subsection.5.3}% 39
-\BOOKMARK [1][-]{section.6}{Effort Spent}{}% 40
-\BOOKMARK [1][-]{section.7}{References and Used Tools}{}% 41
-\BOOKMARK [2][-]{subsection.7.1}{Reference Documents}{section.7}% 42
-\BOOKMARK [2][-]{subsection.7.2}{Tools}{section.7}% 43
+\BOOKMARK [2][-]{subsection.2.7}{Sampling Search}{section.2}% 24
+\BOOKMARK [2][-]{subsection.2.8}{Architectural Styles and Design Patterns}{section.2}% 25
+\BOOKMARK [3][-]{subsubsection.2.8.1}{Design Patterns}{subsection.2.8}% 26
+\BOOKMARK [3][-]{subsubsection.2.8.2}{RAPS Architecture}{subsection.2.8}% 27
+\BOOKMARK [3][-]{subsubsection.2.8.3}{Transactions Commit Protocol}{subsection.2.8}% 28
+\BOOKMARK [2][-]{subsection.2.9}{Other Design Decisions}{section.2}% 29
+\BOOKMARK [1][-]{section.3}{User Interface Design}{}% 30
+\BOOKMARK [1][-]{section.4}{Requirements Traceability}{}% 31
+\BOOKMARK [1][-]{section.5}{Implementation, Integration and Test Plan}{}% 32
+\BOOKMARK [2][-]{subsection.5.1}{Implementation Plan}{section.5}% 33
+\BOOKMARK [2][-]{subsection.5.2}{Integration and Testing}{section.5}% 34
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Entry Criteria}{subsection.5.2}% 35
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Elements to be Integrated}{subsection.5.2}% 36
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Integration Testing Strategy}{subsection.5.2}% 37
+\BOOKMARK [2][-]{subsection.5.3}{Application Server Components Integration}{section.5}% 38
+\BOOKMARK [3][-]{subsubsection.5.3.1}{User side Integration sequence}{subsection.5.3}% 39
+\BOOKMARK [3][-]{subsubsection.5.3.2}{Third Party side Integration sequence}{subsection.5.3}% 40
+\BOOKMARK [1][-]{section.6}{Effort Spent}{}% 41
+\BOOKMARK [1][-]{section.7}{References and Used Tools}{}% 42
+\BOOKMARK [2][-]{subsection.7.1}{Reference Documents}{section.7}% 43
+\BOOKMARK [2][-]{subsection.7.2}{Tools}{section.7}% 44
