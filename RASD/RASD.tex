@@ -94,6 +94,7 @@
 				\item 24/11/2018: update in UML class diagram (error correction).
 				\item 03/12/2018: removed some descriptions concerning of system architecture, covered later in the DD, and the idea of using the UDP protocol. Also removed some duplications of the requirements.
 				\item 04/12/2018: added Manage Third Party Accesses use case.
+				\item 08/12/2018: updated Sequence Diagrams
 			\end{itemize}
 
 	\subsection{Document Structure}
@@ -157,7 +158,7 @@
 		%\subsection{Assumptions, Dependencies and Constraints}
 		\subsection{Domain Assumptions}
 			\begin{itemize}
-				\item {\textbf[}\textbf{D1}{\textbf]}: The Social Security Number is be unique.
+				\item {\textbf[}\textbf{D1}{\textbf]}: The Social Security Number is unique.
 				\item {\textbf[}\textbf{D2}{\textbf]}: Users are assumed to provide a valid Mobile Number and e-mail.
 				\item {\textbf[}\textbf{D3}{\textbf]}: The verification message sent by SMS/e-mail will be certainly received by the User/Third Party.
 				\item {\textbf[}\textbf{D4}{\textbf]}: Users' devices are up and running in order to retrieve and process vital parameters.
@@ -266,7 +267,7 @@
 	\subsubsection*{{[}{G1}{]}: Allow visitors to easily register in the system and later to login}
 	\begin{itemize}
 		\begin{itemize}
-			\item {[D1]}: The Social Security Number is be unique.
+			\item {[D1]}: The Social Security Number is unique.
 			\item {[D2]} Users are assumed to provide a valid Mobile Number and e-mail.
 			\item {[D3]}: The verification message sent by SMS/e-mail will be certainly received by the User/Third Party.
 			\\\\
@@ -741,29 +742,35 @@
 				\label{fig:registration_sequence}
 			\end{figure}
 		\subsubsection{Login}
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=1.2\linewidth]{Images/login_sequence}
-			\label{fig:login_sequence}
-		\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.2\linewidth]{Images/login_sequence}
+				\label{fig:login_sequence}
+			\end{figure}
 		\subsubsection{User Data Access Request and Subscription}
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=1.2\linewidth]{Images/request_subscription_sequence}
-			\label{fig:request_subscription_sequence}
-		\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.2\linewidth]{Images/request_subscription_sequence}
+				\label{fig:request_subscription_sequence}
+			\end{figure}
 		\subsubsection{On-Demand Assistance Request}
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=1.2\linewidth]{Images/ass_request_sequence}
-			\label{fig:ass_request_sequence}
-		\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.1\linewidth]{Images/ass_request_sequence}
+				\label{fig:ass_request_sequence}
+			\end{figure}
 		\subsubsection{Automated Assistance Request}
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=1.2\linewidth]{Images/automated_request_sequence}
-			\label{fig:automated_request_sequence}
-		\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.1\linewidth]{Images/automated_request_sequence}
+				\label{fig:automated_request_sequence}
+			\end{figure}
+		\subsubsection{Sampling Search}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=1.2\linewidth]{Images/sampling_request_sequence}
+				\label{fig:sampling_request_sequence}
+			\end{figure}
 
 	\subsection{Performance Requirements}
 	The system must be able to handle a huge quantity of requests simultaneously throughout the day, responding to users' necessities in the shortest time possible. In order to improve the performance of the system, since data are received in a discrete way (e.g. monitored every 5 seconds), TrackMe should rely on lightweight TCP connections.\\

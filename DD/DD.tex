@@ -249,7 +249,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 					\includegraphics[width=1.0\linewidth]{images/automated_request_sequence}
 					\label{fig:automated_request_sequence}
 				\end{figure}
-				In this sequence diagram the automated assistance request process is shown. The main components of this process are the AutomatedAssistance interface and the HealthMonnitor. The process in the HealthMonitor where it loops calculating health status of a generic User and retrieves vital parameter from the Activity Tracker. When some parameters are below a fixed threshold, a request assistance is forwarded to the AutomatedAssistance interfaces which in turn retrieves information from the database and then forwards it to the Ambulance API, where it is processed to send an ambulance to assist the User. A notification is sent afterwards to the User, updating the UI and a confirmation message is then returned to the Health Monitor.
+				In this sequence diagram the automated assistance request process is shown. The main components of this process are the AutomatedAssistance interface and the HealthMonnitor. The process in the HealthMonitor where it loops calculating health status of a generic User and retrieves vital parameter from the Activity Tracker. When some parameters are below a fixed threshold, a request assistance is forwarded to the AutomatedAssistance interfaces which in turn retrieves information from the database and then forwards it to the Ambulance API, where it is processed to send an ambulance to assist the User. A notification is sent afterwards to the User, updating the UI.
 				\newpage
 				\subsubsection{Data Access Request}
 				\begin{figure}[H]
@@ -257,7 +257,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 					\includegraphics[width=1.0\linewidth]{images/access_request_sequence}
 					\label{fig:access_request_sequence}
 				\end{figure}
-				In this sequence diagram the data access request process is shown. The main components of this process are the RequestProvider and the RequestHandler. The process begins when a third party searches for a user throught the web app. A search request is sent to the RequestProvides that in turn retrieves information about the specific user from the database. If the User's SSN has been found in the database, his profile is returned to the third party which can in turn send a request to access his profile. Such request is forwarded in first place to the RequestProvider and then to the RequestHandler. When such request is sent, the User can either either accept it or refuse from the app, and then the answer is notified back to the third party, refreshing the web page either with a confirmation message and showing the user profile or with a rejection message.
+				In this sequence diagram the data access request process is shown. The main components of this process are the RequestProvider and the RequestHandler. The process begins when a third party searches for a user throught the web app. A search request is sent to the RequestProvider that in turn retrieves information about the specific user from the database. If the User's SSN has been found in the database, his profile is returned to the third party which can in turn send a request to access his profile. Such request is forwarded in first place to the RequestProvider and then to the RequestHandler. When such request is sent, the User can either either accept it or refuse from the app, and then the answer is notified back to the third party, refreshing the web page either with a confirmation message and showing the user profile or with a rejection message.
 				\newpage
 				\subsubsection{Subscription to User's Data}
 				\begin{figure}[H]
@@ -265,7 +265,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 					\includegraphics[width=1.0\linewidth]{images/subscription_sequence}
 					\label{fig:subscription_sequence}
 				\end{figure}
-				In this sequence diagram the subscription to user's data process is shown. The main component of this process is the SubscriptionManager. This process is asynchronous and can begin if and only if a User has accepted the access to his/her profile from a third party. A third party, through the Web App, can click on the subscription button and a subscription request is notified to the SubscriptionManager which in turn creates a subscription and stores its information in the database. A confirmation messages is returned afterwards to the Web App and a confirmation message is shown to the third party. From this point, whenever new data is generated, the system loops and retrieves it, refreshing the third party web app.
+				In this sequence diagram the subscription to user's data process is shown. The main component of this process is the SubscriptionManager. This process is asynchronous and can begin if and only if a User has accepted the access to his/her profile from a third party. A third party, through the Web App, can click on the subscription button and a subscription request is notified to the SubscriptionManager which in turn creates a subscription and stores its information in the database. A confirmation message is returned afterwards to the Web App and a confirmation message is shown to the third party. From this point, whenever new data is generated, the system loops and retrieves it, refreshing the third party web app.
 				\newpage 
 				\subsection{Sampling Search}
 				\begin{figure}[H]
@@ -470,27 +470,26 @@ The architecture of our system can be streamlined into 3 logic layers:
 		\subsection{Integration and Testing}
 		In the following sections we are going to illustrate how external components will be integrated with the ones implemented for the system and what testing strategy will be adopted.
 			\subsubsection{Entry Criteria}
-				The integration of components and its testing should be carried out as soon as possible, although some conditions must be respected before beginning the verification activity. 
+				The integration of components and its testing should be carried out as soon as possible, although some conditions must be respected before beginning the verification process. 
 				\begin{itemize}
 					\item In the very first place, the \texttt{Requirements Analysis and Specification Document} and the \texttt{Desing Document} must be complete and available to all the people involved in the development of the system in order to make them aware about requirments and adopted design choices.
 					\item External components and API must be available and serviceable even before the beginning of the implementation process.
 					\item The modules which are being integrated in the system are supposed to have at least the operations concerning one another created, if not carried out completely. 
 					\item The developed operations should, in the first place, pass unit tests to make sure that the components are working properly, and in case of failure, it will be guaranteed that a misfunctioning is located in the integration process itself and it will be consequently much easier to target the problem and solve it.
 				\end{itemize} 
-				Furthermore, in order to test the integration of two generic components, the main featues of both of them should have been developed (partially, if not completely) and the related unit tests should have been performed. More clearly, there are minimum coverage percentages of completion of each component with its functionalities that have to be reached:
+				Furthermore, in order to test the integration of two generic components, the main featues of both of them should have been developed (partially, if not completely) and the related unit tests should have been performed. More clearly, there are minimum percentages of completion of each component with its functionalities that have to be reached in order to perform meaningful integration tests:
 				\begin{itemize}
-					\item 70\% of the ActivityTrackerModule
-					\item 70\% of the HealthMonitoringModule
+					\item 70\% of the ActivityTrackerModule (must be enough accurate to test if it is really working, so the majority of its functions should be completed).
+					\item 70\% of the HealthMonitoringModule (it is one of the most critical parts, it must be almost completed to give a decent accuracy).
 					\item 80\% of the SOSAssistanceModule (all features are expected to be implemented completely except for minor ones, such as checking ETA).
-					\item 80\% of the AccessRequestsModule
+					\item 80\% of the AccessRequestsModule (most of the feature should be implemented, since it is crucial to guarantee users' privacy).
 					\item 60\% of the ProfileManagerModule (at least the feature of editing the most important information of a User).
-					\item 80\% of the DataAccessModule 
+					\item 60\% of the DataAccessModule (it deals with users' data, so it is expected to be at least half completed).
 					\item 60\% of the SubscriptionModule (at least the subscription feature itself).
-					\item 80\% of the IndividualRequestsModule
-					\item 60\% of the SamplingRequestsModule (at least half of the possible search filters should be available)
+					\item 80\% of the IndividualRequestsModule (it is the counterpart of the AccessRequestsModule, so most of its functionalities should be implemented).
+					\item 60\% of the SamplingRequestsModule (at least half of the possible search filters should be available).
 					\item 60\% of the AuthenticationManagerModule (at least the authentication feature itself, ignoring in the very first place functionalities such as password recovery).
 				\end{itemize}
-				The different percentage values reflect the minimum number of features which need to be implemented in order to perform meaningful integration tests.
 			\subsubsection{Elements to be Integrated}
 				The system is composed by the components previously described and will be integrated as follows:
 				\begin{itemize}
@@ -542,7 +541,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 			
 			\newpage
 			\subsubsection{Integration Testing Strategy}
-				Given that the entire development process follows a bottom-up approach, we opted to use a similar approach for the testing phase: in the very first place we will start by integrating those components that do not depend on other ones in order to work properly, or those who depend on already developed components (such as external API's). After all the single components are tested, we will end up by the subsystems the previous components take part of. This allows us to begin to test a component or a subsystem as soon as it's finished (or near completion), which in turn gives us immediate feedback and allows us to (partially) parallelize the development phase and the testing phase.
+				Since the development process follows a bottom-up approach, we decided to use a similar approach for the testing phase: in the very first place we will start by integrating those components that do not depend on other ones in order to work properly, or those who depend on already developed components (such as external API's). After all the single components are tested, we will end up by the subsystems the previous components take part of. This allows us to begin to test a component or a subsystem as soon as it's finished (or near completion), which in turn gives us immediate feedback and allows us to (partially) parallelize the development phase and the testing phase.
 				
 		\subsection{Application Server Components Integration}
 			In this section of the document the order of integration of the components and subsystems of TrackMe system will be described.
