@@ -310,10 +310,10 @@ The architecture of our system can be streamlined into 3 logic layers:
 				\label{fig:raps}
 			\end{figure}
 			\subsubsection{Transactions Commit Protocol}
-				Since our system is likely to use more than one single node for the Database Server, that communicate with one or more Application Server nodes, a non-blocking distributed protocol for transaction should be selected. An example is the Three-Phase Commit Protocol (3PC): the protagonists are a Coordinator ()Transaction Manager, TM) and several Participants/Cohorts (Resource Manager, RM). Thanks to a third phase (with respect to the simple Two-Phase Commit Protocol, 2PC), each participant can become a coordinator in case of failure of the TM itself. This allows 3PC to been non-blocking, while 2PC would block in case of failure of both the coordinator or a participant. This protocol also ensures that whenever a transaction is holding some resources, it will release the lock after a timeout, trying to avoid possible deadlocks (see section 7.1 Reference Documents for more details).
+				Since our system is likely to use more than one single node for the Database Server, that communicate with one or more Application Server nodes, a non-blocking distributed protocol for transaction should be selected. An example is the Three-Phase Commit Protocol (3PC): the protagonists are a Coordinator (Transaction Manager, TM) and several Participants/Cohorts (Resource Manager, RM). Thanks to a third phase (with respect to the simple Two-Phase Commit Protocol, 2PC), each participant can become a coordinator in case of failure of the TM itself. This allows 3PC to been non-blocking, while 2PC would block in case of failure of both the coordinator or a participant. This protocol also ensures that whenever a transaction is holding some resources, it will release the lock after a timeout, trying to avoid possible deadlocks (see section 7.1 Reference Documents for more details).
 		
 		\subsection{Other Design Decisions}
-			For what concerns the Mobile App, we decided not provide a cross-platform web based application, using some framework/library such as React.js, even though it can save time since the code can be reused for different platform. \\
+			For what concerns the Mobile App, we decided not provide a cross-platform web based application, using some framework/library such as React.js, even though it can save time since the code can be reused for different platforms. \\
 			Due to the fact that our application must interface with some wearable devices, we prefer providing native applications, both for Android and iOS.
 			Doing so the developed applications can guarantee a better performance during their execution and a better user experience: a user who is used to, for example, the iOS graphical interface, will feel more comfortable using an app with the same type of GUI components.\\
 			Furthermore, native applications guarantee their optimal integration with one another and with the entire ecosystem (referring for example to an Apple Watch paired to an iPhone device).
@@ -640,10 +640,11 @@ The architecture of our system can be streamlined into 3 logic layers:
 				27/11/2018 & Deployment View & 2 \\ \hline
 				29/11/2018 & Component Interfaces & 1.5 \\ \hline
 				02/12/2018 & Runtime View & 2 \\ \hline
-				04/12/2018 & Runtime View & 2 \\ \hline
+				04/12/2018 & Runtime View & 3 \\ \hline
 				06/12/2018 & UML Class Diagram & 2 \\ \hline
 				08/12/2018 & Requirements Traceability & 1 \\ \hline
-				Total &									& \\ \hline
+				11/12/2018 & Document review & 4 \\ \hline
+				Total &									& 24 \\ \hline
 			\end{tabular}
 		\end{center}
 
@@ -660,7 +661,8 @@ The architecture of our system can be streamlined into 3 logic layers:
 				04/12/2018 & Implementation, Integration and Test Plan & 2 \\ \hline 
 				05/12/2018 & Implementation, Integration and Test Plan & 3 \\ \hline
 				08/12/2018 & Integration Diagrams & 3.5 \\ \hline
-				Total &									& \\ \hline
+				11/12/2018 & Document review & 4 \\ \hline
+				Total &									& 24 \\ \hline
 			\end{tabular}
 		\end{center}
 	\end{itemize}
