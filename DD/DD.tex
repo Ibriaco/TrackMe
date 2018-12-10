@@ -541,7 +541,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 			
 			\newpage
 			\subsubsection{Integration Testing Strategy}
-				Since the development process follows a bottom-up approach, we decided to use a similar approach for the testing phase: in the very first place we will start by integrating those components that do not depend on other ones in order to work properly, or those who depend on already developed components (such as external API's). After all the single components are tested, we will end up by the subsystems the previous components take part of. This allows us to begin to test a component or a subsystem as soon as it's finished (or near completion), which in turn gives us immediate feedback and allows us to (partially) parallelize the development phase and the testing phase.
+				Since the development process follows a bottom-up approach, we decided to use a similar approach for the testing phase: in the very first place we will start by integrating those components that do not depend on other ones in order to work properly, or those who depend on already developed components (such as external API's). After all the single components are tested, we will end up by integrating the subsystems the previous components take part of. This allows us to begin to test a component or a subsystem as soon as it's finished (or near completion), which in turn gives us immediate feedback and allows us to (partially) parallelize the development phase and the testing phase.
 				
 		\subsection{Application Server Components Integration}
 			In this section of the document the order of integration of the components and subsystems of TrackMe system will be described.
