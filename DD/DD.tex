@@ -265,7 +265,7 @@ The architecture of our system can be streamlined into 3 logic layers:
 					\includegraphics[width=1.0\linewidth]{images/subscription_sequence}
 					\label{fig:subscription_sequence}
 				\end{figure}
-				In this sequence diagram the subscriotion to user's data process is shown. The main component of this process is the SubscriptionManager. This process is asynchronous and can begin if and only if a User has accepted the access to his/her profile from a third party. A third party, through the Web App, can click on the subscription button and a subscription request is notified to the SubscriptionManager which in turn creates a subscription and stores its information in the database. A confirmation messages is returned afterwards to the Web App and a confirmation message is shown to the third party. From this point, whenever new data is generated, the system loops and retrieves it, refreshing the third party web app.
+				In this sequence diagram the subscription to user's data process is shown. The main component of this process is the SubscriptionManager. This process is asynchronous and can begin if and only if a User has accepted the access to his/her profile from a third party. A third party, through the Web App, can click on the subscription button and a subscription request is notified to the SubscriptionManager which in turn creates a subscription and stores its information in the database. A confirmation messages is returned afterwards to the Web App and a confirmation message is shown to the third party. From this point, whenever new data is generated, the system loops and retrieves it, refreshing the third party web app.
 				\newpage 
 				\subsection{Sampling Search}
 				\begin{figure}[H]
