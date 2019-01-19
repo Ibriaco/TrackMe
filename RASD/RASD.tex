@@ -812,7 +812,7 @@
 				\item All the users that receive an automated assistance are necessarily subscribed to the AutomatedSOS service. 
 				Furthermore, users cannot receive multiple assistances at the same time and an automatic assistance is generated 
 				whenever his/her health status gets below the critical threshold (here represented by 0). All the users with an age grater or equal to 60 (here represented by 6) are automatically registered to AutomatedSOS, but this doesn't preclude younger users to subscribe to the service too. If an automated assistance request is generated, then it must be sent to the Ambulance System within 5 seconds.
-				\item All the third parties in order to have access to some users' data, have to send a request to the specific user, that can be either accepted or requested. Only if the user accepts the request, then the third party can access all his/her data. If the access is granted, then the third party has the possibility to subscribe to user's new data (but it is not necessary).
+				\item All the third parties in order to have access to some users' data, have to send a request to the specific user, that can be either accepted or rejected. Only if the user accepts the request, then the third party can access all his/her data. If the access is granted, then the third party has the possibility to subscribe to user's new data (but it is not necessary).
 				\item Third Parties have the possibility to do sample searches according to some filters. TrackMe validates only those searches that result in more than 1000 users (here represented by 1). 
 			\end{itemize}
 		\subsection{Alloy Model}
@@ -849,7 +849,7 @@
 	\newpage
 	\subsection{Generated World}
 		\subsubsection{First Instance}
-			As can be seen from this instance there are two different users, but only User1 is monitored by AutomatedSOS, since his age is equal to 7 (>= 6). In addition his health status is negative and there exist an AssistanceRequest that has already been sent (the elapsed time equals to 5). 
+			As can be seen from this instance there are two different users, but only User1 is monitored by AutomatedSOS, since his age is equal to 7 (greater than 6). In addition his health status is negative and there exist an AssistanceRequest that has already been sent (the elapsed time equals to 5). 
 			Moreover, there's a Third Party that has access to both of the users' data, but it is subscribed only to User0. This situation is possible thanks to the two accepted IndividualAccessRequest sent by the Third Party to both the users.\\
 			\begin{figure}[H]
 				\centering
