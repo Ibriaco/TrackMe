@@ -1,8 +1,7 @@
 
 # TrackMe
 
-Software Engineering 2 Project  
-Politecnico di Milano, A.Y. 2018/2019  
+Software Engineering 2 course project at Politecnico di Milano, A.Y. 2018/2019  
 Ibrahim El Shemy - Luca Conterio
 
 ### Overview
