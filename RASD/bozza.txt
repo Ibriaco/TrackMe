@@ -1,9 +1,0 @@
-
-Sequence diagrams su automated assistance mi sa sbagliato: health monitor non deve parlare direttamente all'ambulance system
-Ricontrollare nomi delle "entità"
-Sequence Diagrams troppo dettagliati
-Manca sequence diagram su samplings
-
-Togliere frecce in class diagram ????
-
------------------------------------------
